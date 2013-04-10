@@ -1,0 +1,29 @@
+/*
+	This is an extension to homepage.css
+*/
+
+/*-----------------------------------------figcaption------------------------------------------*/
+.h2_welcome{font-size: 18px; text-align: center; line-height: 20px;}
+
+/*------------------------------------------Anchor tag-----------------------------------------*/
+
+header a:hover{text-decoration: none;}
+.sys-title{border: 0 none; text-align: center;}
+.sys-title img{height: 100px; width: 100px; border-radius: 100%;}
+.sys-title-abb a:hover{color: #fff; opacity: 0.8;}
+.sys-title-abb a{font-size: 25px;}
+
+/*----------------------------------------Background slide--------------------------------------*/
+
+.bg-slide{height: 360px; width: 940px;}
+
+/*---------------------------------------Sign Up Area-------------------------------------------*/
+
+.signup-section{}
+#signup-container{border: 0 none; width: 100%;}
+#signup-container ul{font-size: 30px; border: 0 none; margin: 0 auto; width: 60%;}
+#signup-container ul li{font-size: 30px; line-height: 40px; color: #ff9900; }
+#signup-container #form_user_type{border: 0 none; width: 90%; margin: 0 auto; line-height: 40px; text-align: center;}
+#signup-container input[type='radio']{margin-top: -10px;}
+#signup-container .lbl_user_type_SP{display: inline;font-size: 30px; }
+#signup-container #signup_submit{font-size: 30px;}
