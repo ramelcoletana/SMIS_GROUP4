@@ -79,20 +79,46 @@
     border: 1px solid silver;
     margin: 0 auto;
     width: 700px;
+    margin-bottom:10px;
 }
 #tbl_for_assessment{border: 1px solid silver; margin: 0 auto; width: 100%;}
-#tbl_for_assessment th{border: 1px solid silver; height: 30px;}
+#tbl_for_assessment th{border: 1px solid silver; height: 45px;}
 #tbl_for_assessment th #assessment_no, #tbl_for_assessment th #mode_of_payment{ color: blue; font-size: 13px;}
 #tbl_for_assessment #noAss{text-align: center;}
-#div_cash_tendered{border: 1px solid silver; width: 220px; margin-left: 300px; margin-top: -110px;}
+/*#div_cash_tendered{border: 1px solid silver; width: 220px; margin-left: 300px; margin-top: -110px;} */
 
 /*--------------------------------------------------ALERT MESSAGES---------------------------------------------------*/
 #div_alert_msg_p{
-    background-color: #c0c0c0;
+    background-color: green;
     border: 1px solid silver;
 }
+#alert_msg_p:hover{
+    color:white;
+}
 #alert_msg_p{
-    font-size: 10px;
+    font-size: 15px;
     color: #00ff00;
     font-weight: bold;
 }
+
+ /*-------------  Ruel's eddtited    date: 13/04/17   ------------ */
+
+#assPay{background-color:#00FA9A;font-family:Arial sans-serif;font-size:20px;color:red;}
+#desc{background-color:#FFFFE0;color:blue;}
+#assess{background-color:#FAFAD2;color:green;}
+#assbal{background-color:#FFFFE0;color:blue;}
+#payhere{background-color:#FAFAD2;color:green;}
+#advance{background-color:#FFFFE0;color:blue;}
+#div_bottom_cash_payment{background-color:#E6E6FA;}
+#div_button_cancel_done{margin-left:300px;margin-top:10px;}
+#btn_ass_payment_done:hover{color:yellow;}
+#btn_ass_payment_cancel:hover{color:red;}
+#div_cash_tendered{width: 220px; margin-left:420px;margin-top:-110px;}
+#amount_ten{margin-left:150px;width:100px;}
+#change{margin-left:150px;width:100px;}
+#change2{margin-left:70px;}
+#t_amount_ass{width:100px;margin-left:250px;}
+#t_current_pymnt{width:100px;margin-left:250px;}
+#tcp{margin-left:20px;}
+
+/*------------------------ End  -------------------------------------- */

@@ -19,10 +19,10 @@
     <body>
         <div id='div_payment_wrapper'>
             <div id='div_search'>
-                <input type='text' id='p_student_search'/>
-                    <button id='btn_p_search_stud' class='btn btn-medium btn-primary'>Searchs</button>
-            </div>  
-            <!-- /SEARCH/ -->
+                <br/>
+            <input type='text' id='p_student_search'/><button id='btn_p_search_stud' class='btn btn-medium btn-primary'>Searchs</button>
+            </div>
+            <br/>
             <div id='div_for_payment_data'>
              <div id=''></div>
                 <span id="date">DATE  : </span>&nbsp;&nbsp;<span id='date_now'>00000-00-00 00:00:00</span>
@@ -43,25 +43,26 @@
                  <br/>
                 
             </div>
+            <br/>
             <!-- /PAYMENT DATAS/ -->
             
             <div id='div_assessment_data'>
                 <div id='div_alert_msg_p'>
                     <span class="ui-icon ui-icon-notice" style="float: left; margin: 0 7px 20px 0;"></span>
-                    <span id='alert_msg_p'>Note: The exist amount your current payment is automatically saved to advance payment.</span>
+                 <span id='alert_msg_p'>Note: The exist amount your current payment is automatically saved to advance payment.</span>
                 </div><!-- end div-alert-msg-F -->
                 <table id='tbl_for_assessment'>
                     <thead>
-                        <tr>
-                            <th colspan=4>ASSESSMENT NO.: [-:&nbsp;&nbsp;<span id="assessment_no">
+                        <tr id="assPay">
+                            <th colspan=5>ASSESSMENT NO.: [-:&nbsp;&nbsp;<span id="assessment_no">
                             </span>&nbsp;&nbsp;:-] | MODE OF PAYMENT [-:&nbsp;&nbsp;<span id="mode_of_payment"></span>&nbsp;&nbsp;:-]</th>
                         </tr>
                         <tr>
-                            <th>DESCRIPTION</th>
-                            <th>ASSESSMENT AMOUNT</th>
-                            <th>ASSESSMENT BAL.</th>
-                            <th>PAYMENT HERE</th>
-                            <th>ADVANCE PYMNT.</th>
+                            <th id="desc">DESCRIPTION</th>
+                            <th id="assess">ASSESSMENT AMOUNT</th>
+                            <th id="assbal">ASSESSMENT BAL.</th>
+                            <th id="payhere">PAYMENT HERE</th>
+                            <th id="advance">ADVANCE PYMNT.</th>
                         </tr>
                     </thead>
                     <tbody id="tbody_for_tbl_assessment">
@@ -69,14 +70,15 @@
                     </tbody>
                 </table><!-- END tbl_for_assessment -->
                 <div id="div_bottom_cash_payment">
-                    <label>TOTAL AMOUNT FOR THIS ASS.</label><input type="text" id="t_amount_ass"/>
+                    <br/>
+                    <label >TOTAL AMOUNT FOR THIS Ass. : </label><input type="text" id="t_amount_ass"/>
                     <p>
-                    <label>TOTAL CURRENT PAYMNT.</label><input type="text" id="t_current_pymnt"/>
+                    <label id="tcp">TOTAL CURRENT PAYMENT : </label><input type="text" id="t_current_pymnt"/>
                     <p>
                     <div id="div_cash_tendered">
-                        <label>AMOUNT TENDER</label><input type="text" id="amount_ten"/>
+                        <label>AMOUNT TENDER : </label><input type="text" id="amount_ten"/>
                         <p>
-                        <label>CHANGE</label><input type="text" id="change" />
+                        <label id="change2">CHANGE : </label><input type="text" id="change" />
                         <p>
                     </div>
                     
