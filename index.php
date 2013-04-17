@@ -127,7 +127,7 @@ $(function () {
       <article>
         <figure><img src="images/demo/32x32.gif" width="32" height="32" alt=""></figure>
         <strong>Student Information</strong>
-        <p>Get easy access to student particulars their grades, schedules, address, parents info, disciplinary records, extracurricular activities, and any reports, anytime.</p>
+        <p>Get easy access to student particulars their grades, schedules, address, parents info, disciplinary records, extracurricular activities, and any reports, anytime ffdggtfyrtytrytytyrtyrtyrtytyrtyhdtyhtyrtyrt.</p>
         <p class="more"><a href="#">Read More &raquo;</a></p>
       </article>
       <article>
