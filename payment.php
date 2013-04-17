@@ -24,7 +24,7 @@
             </div>  
             <!-- /SEARCH/ -->
             <div id='div_for_payment_data'>
-             <div id='div_for_line'></div>
+             <div id=''></div>
                 <span id="date">DATE  : </span>&nbsp;&nbsp;<span id='date_now'>00000-00-00 00:00:00</span>
                 <br/><br/>
                    <div id="div_for_show_records">
