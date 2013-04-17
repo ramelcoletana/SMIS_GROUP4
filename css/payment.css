@@ -1,0 +1,49 @@
+/*-------------------------------------------------PAYMENT WRAPPER--------------------------------------------------*/
+#div_payment_wrapper{
+    border: 1px solid silver;
+    width: 800px;
+    margin: 0 auto;
+    font-family: arial,monospace,serif,sans-serif;
+}
+
+/*----------------------------------------------------PAYMENT DATA---------------------------------------------------*/
+#div_for_payment_data{
+    border: 1px solid silver;
+    width: 400px;
+    height: 250px;
+    margin: 0 auto;
+}
+#div_for_payment_data label{
+    line-height: 45px;
+    float: left;
+    font-family: arial,monospace,serif,sans-serif;
+    margin-top: -7px;
+}
+#div_for_payment_data input[type='text']{
+    float: right;
+    background-color: #fff;
+    border: 0 none;
+}
+
+/*-------------------------------------------------ASSESSMENT DATA---------------------------------------------------*/
+#div_assessment_data{
+    border: 1px solid silver;
+    margin: 0 auto;
+    width: 700px;
+}
+#tbl_for_assessment{border: 1px solid silver; margin: 0 auto; width: 100%;}
+#tbl_for_assessment th{border: 1px solid silver; height: 30px;}
+#tbl_for_assessment th #assessment_no, #tbl_for_assessment th #mode_of_payment{ color: blue; font-size: 13px;}
+#tbl_for_assessment #noAss{text-align: center;}
+#div_cash_tendered{border: 1px solid silver; width: 220px; margin-left: 300px; margin-top: -110px;}
+
+/*--------------------------------------------------ALERT MESSAGES---------------------------------------------------*/
+#div_alert_msg_p{
+    background-color: #c0c0c0;
+    border: 1px solid silver;
+}
+#alert_msg_p{
+    font-size: 10px;
+    color: #00ff00;
+    font-weight: bold;
+}

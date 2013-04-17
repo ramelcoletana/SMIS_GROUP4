@@ -1,0 +1,40 @@
+/* 
+    Document   : index
+    Created on : Mar 20, 2013, 2:52:51 PM
+    Author     : brooklyn
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+#div-main-wrapper{
+    border: 0 none;
+    font-family: Monaco,"Helvetica Neue",arial,monospace,serif,sans-serif;
+}
+#pname{
+    font-size: 20px;
+}
+#nav-container{
+    border: 0 none;
+    width: 1260px;
+}
+#username-signin, #password-signin{
+    height: 30px;
+}
+#btn-signin{
+    height: 50px;
+}
+.hero-unit{
+    border: 0 none;
+}
+#signup-container{
+    border: 0 none;
+    width: 1260px;
+}
+footer{
+    text-align: center;
+    margin-top: 50px;
+}
+

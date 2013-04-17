@@ -1,0 +1,83 @@
+.div-header-nav-bar{
+	width: 99%;
+	margin: 0 auto;
+}
+.navbar-inner{
+	border: 0 none;
+	padding-top: 10px;
+}
+.container-pname{
+	border: 0 none;
+	width: 300px;
+	text-align: center;
+	line-height: 30px;
+	position: absolute;
+	margin-left: 120px;
+}
+.container-pname a{
+	font-size: 25px;
+	font-weight: bold;
+	color: red;
+}
+.container-pname a:hover{
+	text-decoration: none;
+}
+.nav{
+	border: 1px solid silver;
+	border-radius: 5px;
+	width: 545px;
+	height: 60px;
+	padding: 0;
+	margin-left: 35%;
+	text-align: center;
+}
+.nav i{
+	margin-top: 4px;
+}
+.nav li{
+	display: block;
+	float: left;
+	height: 70%;
+	padding-top: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+
+}
+.nav li a{
+	 font-size: 20px;
+	 color: #022C65;
+}
+.nav li ul{
+	background-color: #fff;
+	display: none;
+	border: 1px solid silver;
+	border-radius: 2px;
+	margin-left: -11px;
+	top: 60px;
+	padding-top: 20px;
+	position: absolute;
+	width: 350px;
+}
+.nav li ul input[type='text'],input[type='password']{
+	width: 250px;
+}
+.nav li:hover ul{
+	display: block;
+}
+#signin-button{
+	width: 150px;
+}
+#nav-home{
+	border-right: 1px solid silver;
+}
+#nav-contact-us{
+	border-left: 1px solid silver;
+	border-right: 1px solid silver;
+}
+#nav-sign-in{
+	border: 0 none;
+	width: 110px;
+}
+input[type='text'],input[type='password']{
+	height: 40px;
+}

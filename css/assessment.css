@@ -1,0 +1,498 @@
+/* 
+    Document   : assessment
+    Created on : Feb 18, 2013, 8:23:16 AM
+    Author     : brooklyn
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+/*---------------------div-assessment-wrapper----------------*/
+#div-assessment-wrapper{
+    border: 1px solid silver;
+    width: 730px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#div-search{
+    margin-left: 0px;
+}
+#btn-search-stud{
+    margin-top: -10px;
+}
+
+#div-search input[type='text']{
+    border: 1px solid silver;
+    text-align: center;
+    color: #000;
+    font-size: 15px;
+    width: 200px;
+}
+#div-btn-done-cancel{
+    margin-left: 430px;
+}
+#btn-done-assmnt,#btn-cancel-assmnt{
+    height: 30px;
+    width: 100px;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+/*------------------div-stud-info----------------------*/
+#div-stud-info{
+    border: 1px solid silver;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    -webkit-padding-bottom: 10px;
+    width: 715px;
+}
+#div-primary-info{
+    border: 1px solid #c0c0c0;
+    width: 685px;
+    margin-left: 10px;
+}
+/*-------------------div-float-left-------------------*/
+#div-float-left{
+    border: 0 none;
+    width: 440px;
+    padding-top: 12px;
+    padding-bottom: 15px!important;
+    
+}
+#div-for-pic{
+    height: 100px;
+    width: 100px;
+    border: 1px solid #c0c0c0;
+    position: absolute;
+    margin-left: 330px;
+}
+#div-float-left input[type='text']{
+    font-family: monospace,arial,serif,sans-serif;
+}
+#studentId{
+    font-family: monospace,arial,serif,sans-serif;
+    color: blue;
+}
+#studentName{
+    background-color: #fff;
+    font-family: monospace,arial,serif,sans-serif;
+    width: 300px;
+    margin-left: 0px;
+    color: blue;
+    border: 1px solid #fff;
+    border-bottom: 1px solid #c0c0c0;
+    text-align: center;
+}
+.studNameLabel{
+    font-family: arial,helvitica,serif,sans-serif;
+    color: #060200;
+    font-size: 10px;
+}
+#div-department{
+    padding-left: 10px;
+    border: 0 none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.labelF{
+    font-family: arial,monospace,serif,sans-serif;
+    display: block;
+    margin-top: 15px;
+}
+#div-department label,.labelForStudId{
+    display: inline;
+    font-family: arial,monospace,serif,sans-serif;
+}
+.floatleft-input-label{
+    margin-left: 30px;
+    border: 0 none;
+    width: 380px;
+    height: 190px;
+}
+.floatleft-input-label label{
+    float: left;
+}
+.floatleft-input-label input[type='text'],.floatleft-input-label #yrLevel,.floatleft-input-label #grade,.floatleft-input-label #syEntered{
+    float: right;
+    height: 25px;
+    border-radius: 0px;
+}
+.floatleft-input-label input[type='text']{
+    height: 15px;
+}
+/*------------------end div-float-left--------------------*/
+
+/*-------------------div-float-right----------------------*/
+#div-float-right{
+    float: right;
+    border: 0 none;
+    height: 393px;
+    width: 230px;
+    margin-top: -420px!important;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    position: relative;
+}
+#div-float-right input[type='text']{
+    margin-right: 10px;
+    background-color: #fff;
+    border: 0 none;
+    text-align: center;
+    font-family: monospace,arial,serif,sans-serif;
+}
+#span-date{
+    font-family: arial,helvitica,serif,sans-serif;
+    font-size: 14px;
+    color: #cd0a0a;
+}
+#span-time{
+    font-family: arial,helvitica,serif,sans-serif;
+    font-size: 14px;
+    color: #000;
+}
+.labelForEnrollNo,.labelForTranNo,.labelForRecentBal{
+    font-family: arial,monospace,serif,sans-serif;
+}
+/*---------------end div-float-right----------------------*/
+/*-----------------end div-stud-info----------------------*/
+
+/*-------------------div-payment-info---------------------*/
+#div-payment-info{
+    border: 0 none;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 773px;
+}
+#div-radio-mode{
+    border: 1px solid silver;
+    width: 430px;
+    height: 85px;
+    padding-left: 10px;
+    padding-bottom: 20px;
+    background: #fff;
+}
+#h3-how-to-pay,#h3-department{
+    font-family: arial,"lucida grande",cursive,fantasy,serif,sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: blue;
+}
+.mode-label{
+    font-family: arial,helvitica,serif,sans-serif;
+    color: #060200;
+    font-size: 12px;
+    display: inline;
+}
+#div-category{
+    border: 1px solid silver;
+    height: 75px;
+    width: 233px;
+    float: right;
+    margin-top: -107px!important;
+    margin-right: 87px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    background: #fff;
+    position: relative;
+    text-align: center;
+}
+#div-category label,#div-category small{
+    display: inline;
+}
+#div-category small{
+    font-family: arial,monospace,serif,sans-serif;
+    color: blue;
+}
+/*--------div-sub-fee-wrapper--, div-for-fees---and div-for-subject-----------------*/
+#div-sub-fee-wrapper{
+    border: 0 none;
+    width: 685px!important;
+    position: relative;
+    background: #fff;
+}
+#div-for-full{
+    border: 0 none;
+    width: 686px;
+    margin: 0 auto;
+    margin-left: 0px;
+    display: none;
+}
+#div-for-MS{
+    border: 0 none;
+    width: 686px;
+    margin: 0 auto;
+    margin-left: 0px;
+    display: none;
+}
+#div-for-subject{
+    border: 0 none;
+    width: 686px;
+    margin: 0 auto;
+    margin-right: 21px;
+    display: none;
+}
+#div-for-table-full-pymnt{
+    border: 0 none;
+}
+#div-for-table-MS-pymnt{
+    border: 0 none;
+}
+#div-for-table-subject{
+    border: 0 none;
+    height: 360px;
+}
+#div-alert-msg-MS,#div-alert-msg-F{
+    color: #f00;
+    font-size: 10px;
+    display: none;
+    border: 1px solid red;
+    border-radius: 0px;
+    height: 20px;
+    background-color: #ff9999;
+    padding-left: 10px;
+}
+#div-warning-msg-MS,#div-warning-msg-F{
+    color: orange;
+    font-size: 10px;
+    display: none;
+    border: 1px solid orange;
+    border-radius: 0px;
+    height: 20px;
+    background-color: #e0e0e0;
+    padding-left: 10px;
+}
+
+#div-bottom-full-pymnt{
+    border: 0 none;
+}
+#div-bottom-monthly-pymnt{
+    border: 0 none;
+}
+#tbody-for-fees-MS td .currentPayment{
+    border: 0 none;
+    border-radius: 0px;
+    margin-top: 5px;
+}
+#totalAmountMS,#cPaymentMS{
+    border: 0 none;
+    border-bottom: 1px solid #505050;
+    border-radius: 0px;
+}
+#div-enter-cash{
+    border: 0 none;
+    width: 225px;
+    position: relative;
+    margin-left: 335px;
+    margin-top: -130px;
+    padding-left: 40px;
+    padding-right: 40px
+}
+#div-btn-back-next-MS,#div-btn-back-next-sub,#div-btn-back-next-F{
+    margin-left: 535px;
+}
+.tbl-for-fee-sub{
+    border: 1px solid silver;
+    width: 686px;
+}
+.tbl-for-fee-sub th{
+    border: 1px solid silver;
+    font-family: arial,fantasy,serif,sans-serif;
+    color: gray;
+    font-size: 13px;
+    background: #ccc;
+    background: -moz-linear-gradient(#fff,#ccc);
+    background: -webkit-linear-gradient(#fff,#ccc);
+    height: 30px;
+}
+.tbody-for-fee-sub{
+    border: 0 none;
+    background: #fff;
+    background-image: -moz-linear-gradient(#fff,#fff);
+    background-image: -webkit-linear-gradient(#fff,#fff);
+}
+.tbl-for-fee-sub tr{
+    height: 25px;
+}
+.tbl-for-fee-sub td{
+    border: 0 none;
+    font-family: arial,fantasy,serif,sans-serif;
+    color: #000;
+    font-size: 12px;
+    text-align: center;
+}
+.tbl-for-fee-sub tfoot{
+    border: 1px solid silver;
+    background: #fff;
+    background: -moz-linear-gradient(#fff,#ccc);
+    background: -webkit-linear-gradient(#fff,#ccc);
+    background: -o-linear-gradient(#fff,#ccc);
+}
+.tbl-for-fee-sub tfoot td{
+    border: 0 none;
+}
+.div-foot-full-MS{
+    padding-left: 30px;
+    border: 0 none;
+    background: #fff;
+}
+#div-foot-subject{
+    background: #fff;
+}
+.lbl-foot-full-MS{
+    font-family: arial,fantasy,serif,sans-serif;
+    color: blue;
+    font-size: 13px;
+}
+/*-----(pagination button)---div-prev-next-data-full-pymnt-----*/
+#div-prev-next-data-full-pymnt{
+    border: 0 none;
+    width: 100px;
+    margin-left: 500px;
+    margin-top: 10px;
+}
+#div-prev-next-data-MS-pymnt{
+    border: 0 none;
+    width: 100px;
+    margin-left: 500px;
+    margin-top: 10px;
+}
+#div-prev-next-data-subject{
+    border: 0 none;
+    width: 100px;
+    margin-left: 500px;
+    margin-top: 10px;
+}
+/*------------------end div-payment-info-------------------*/
+
+/*------------------div-overlay-alert-msg------------------*/
+#div-overlay-alert-msg{
+    display: none;
+    border: 0 none;
+    border-radius: 2px;
+    width: 100%;
+    background-color: #000;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+#div-alert-msg-content{
+    text-align: center;
+    border: 0 none;
+    margin: 0 auto;
+    position: static;
+    height: 15px;
+}
+.span-alert-msg{
+    font-family: arial,helvitica,fantasy,serif,sans-serif;
+    color: red;
+    font-size: 15px;
+}
+/*------------------end div-overlay-alert-msg----------------*/
+
+/*--------------------Dialog-------------------------------*/
+#dialog-confirm{
+    display: none;
+}
+#dialog-cancel-ass{
+    display: none;
+}
+
+/*table zebra stripe*/
+.even{
+    background-color: #fff;
+}
+.even:hover{
+    background-color: rgba(0,255,255,.2);
+}
+.even td input[type=text]{
+    background-color: #fff;
+    border: 0 none;
+    border-bottom: 1px solid #000;
+    height: 20px;
+    font-family: monospace,arial,serif,sans-serif;
+    text-align: center;
+}
+.odd{
+    background-color: #e0e0e0;
+}
+.odd:hover{
+    background-color:  rgba(0,255,255,.2);
+}
+.odd td input[type=text]{
+    background-color: #e0e0e0;
+    border: 0 none;
+    border-bottom: 1px solid #000;
+    height: 20px;
+    font-family: monospace,arial,serif,sans-serif;
+    text-align: center;
+}
+
+/*Pagination*/
+#containerPaginate{
+    width: 700px;
+    border: 0 none;
+}
+#containerPaginate .pagination{
+    border: 0 none;
+    width: 500px;
+    height: 25px;
+}
+#containerPaginate .pagination ul li{
+    list-style: none;
+    float: left;
+    border: 1px solid #505050;
+    color: #000;
+    font-family: arial,monospace,serif,sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    background-color: #e8e8e8;
+    background: -moz-linear-gradient(top, #fff 0%,#c0c0c0 100%);
+    background: -webkit-linear-gradient(top, #fff 0%,#c0c0c0 100%);
+    background: -o-linear-gradient(top, #fff 0%,#c0c0c0 100%);
+    padding: 3px 3px 3px 3px;
+    border-radius: 1px;
+    margin: 0 3px 0 3px;
+}
+#containerPaginate .pagination ul li:hover{
+    cursor: pointer;
+    color: #fff;
+}
+#containerPaginate .pagination span{
+    font-family: arial,monospace,serif,sans-serif;
+    font-weight: bold;
+    color: #505050;
+    font-size: 13px;
+}
+#containerPaginate .pagination .curr_page{
+    color: blue;
+}
+#containerPaginate .pagination .no_of_paginations{
+    color: #505050;
+}
+#containerPaginate .pagination ul li.inactive,#containerPaginate .pagination ul li.inactive:hover{
+    background-color:#ededed;
+    color:#bababa;
+    border:1px solid #bababa;
+    cursor: default;
+    opacity: 0.8;
+}
+
+
+/*DIALOG-CONFIRM*/
+#dialog-confirm-done-MS-assessment{
+    display: none;
+}
+#dialog-confirm-done-MS-assessment .labelData{
+    font-weight: bold;
+}
+#dialog-confirm-done-MS-assessment small{
+    color: blue;
+}

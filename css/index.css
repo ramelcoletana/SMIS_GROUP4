@@ -1,0 +1,47 @@
+/* 
+    Document   : index
+    Created on : Mar 25, 2013, 3:20:04 PM
+    Author     : brooklyn
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+#div-main-wrapper{
+	border: 1px solid #9acd32;
+}
+
+/*=====I M A G E  S L I D E R=======*/
+.div-image-slider-wrapper{
+	border: 1px solid #9acd32;
+	height: 300px;
+	width: 900px;
+	margin: 0 auto;
+}
+
+/*========F E A T  U R E S==========*/
+.div-features-wrapper{
+	border: 1px solid #9acd32;
+	height: 300px;
+	width: 900px;
+	margin: 0 auto;
+}
+
+/*===========S A Y I N G S===========*/
+.div-sayings-wrapper{
+	border: 1px solid #9acd32;
+	height: 200px;
+	width: 900px;
+	margin: 0 auto;
+}
+
+/*=============F O O T E R============*/
+.div-footer-wrapper{
+	border: 1px solid #9acd32;
+	height: 100px;
+	width: 99.9%;
+	margin: 0 auto;
+}
+
