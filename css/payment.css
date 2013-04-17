@@ -45,7 +45,7 @@
 #div_for_payment_data input[type='text']{
     float: right;
     background-color: #fff;
-    border: 0 none;
+    /*border: 0 none;*/
     margin-right: 16px;
     font: normal 15px "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;
     
