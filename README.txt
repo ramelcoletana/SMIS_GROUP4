@@ -1,5 +1,3 @@
-Ruel Costob
-
 Jinky Cabias
 
 Lemuel Nueveras
