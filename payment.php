@@ -22,23 +22,30 @@
                 <br/>
             <input type='text' id='p_student_search'/><button id='btn_p_search_stud' class='btn btn-medium btn-primary'>Searchs</button>
             </div>
-            <!-- /SEARCH/ -->
             <br/>
             <div id='div_for_payment_data'>
-                <span>DATE</span>&nbsp;&nbsp;<span id='date_now'>00000-00-00 00:00:00</span>
+             <div id='div_for_line'></div>
+                <span id="date">DATE  : </span>&nbsp;&nbsp;<span id='date_now'>00000-00-00 00:00:00</span>
                 <br/><br/>
-                <label>STUDENT ID</label><input type="text" id='student_id' class='p_spn_right' readonly='readonly'/>
-                <br/>
-                <label>STUDENT NAME</label><input type="text" id='student_name' class='p_spn_right' readonly='readonly'/>
-                <br/>
-                <label>ENROLLMENT NO</label><input type="text" id='enrollment_no' class='p_spn_right' readonly='readonly'/>
-                <br/>
-                <label>GRADE | YEAR LEVEL</label><input type="text" id='grade_year_level' class='p_spn_right' readonly='readonly'/>
-                <br/>
+                   <div id="div_for_show_records">
+                        <label>STUDENT ID</label>
+                            <input type="text" id='student_id' class='p_spn_right' readonly='readonly'/>
+                        <br/>
+                        <label>STUDENT NAME</label>
+                            <input type="text" id='student_name' class='p_spn_right' readonly='readonly'/>
+                        <br/>
+                        <label>ENROLLMENT NO</label>
+                            <input type="text" id='enrollment_no' class='p_spn_right' readonly='readonly'/>
+                        <br/>
+                        <label>GRADE | YEAR LEVEL</label>
+                            <input type="text" id='grade_year_level' class='p_spn_right' readonly='readonly'/>
+                    </div> 
+                 <br/>
                 
             </div>
             <br/>
             <!-- /PAYMENT DATAS/ -->
+            
             <div id='div_assessment_data'>
                 <div id='div_alert_msg_p'>
                     <span class="ui-icon ui-icon-notice" style="float: left; margin: 0 7px 20px 0;"></span>

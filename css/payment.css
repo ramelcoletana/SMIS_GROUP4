@@ -6,24 +6,73 @@
     font-family: arial,monospace,serif,sans-serif;
 }
 
+/*-------------------------------------EDITED BY: REGIE CADAYONG---------------------------------------------------*/
+#div_search input[type="text"]{
+    margin-top: 15px;
+    margin-left: 150px;
+    text-align: center;
+    font: normal 15px "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;
+}
+ button #btn_p_search_stud{
+      margin-top: 5px;
+ }
+
 /*----------------------------------------------------PAYMENT DATA---------------------------------------------------*/
+
+/*-------------------------------------EDITED BY: REGIE CADAYONG-----------------------------------------------------*/
+
 #div_for_payment_data{
-    border: 1px solid silver;
-    width: 400px;
+   /*border: 1px solid silver;*/
+    width: 500px;
     height: 250px;
     margin: 0 auto;
+    margin-bottom: 20px; 
+    margin-top: 10px;
+    box-shadow: 6px 4px 5px 5px #C8C8C8  ;
+    border-radius: 5px;
+    background: #F8F8F8   ;
+   
 }
 #div_for_payment_data label{
     line-height: 45px;
     float: left;
     font-family: arial,monospace,serif,sans-serif;
+    /*font: normal 15px "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;*/
     margin-top: -7px;
+    color:   	#505050 ;
+    padding-left: 20px;
 }
 #div_for_payment_data input[type='text']{
     float: right;
     background-color: #fff;
     border: 0 none;
+    margin-right: 16px;
+    font: normal 15px "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;
+    
 }
+
+#date_now{
+    font-family: arial,monospace,serif,sans-serif;
+    font-size: 15px;
+
+}
+#div_for_show_records{
+    /*border: 1px solid green;*/
+    height: 160px;
+    margin-top: 15px;
+}     
+
+#date{
+     margin-left: 250px;
+     font: normal 15px "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;
+     margin-top: 10px;
+}
+
+#div_for_line{
+    color: 
+}
+
+/*-------------------------------------------END--------------------------------------------------------------------*/
 
 /*-------------------------------------------------ASSESSMENT DATA---------------------------------------------------*/
 #div_assessment_data{
