@@ -2,11 +2,7 @@
 
 class DB_Connect{
 	protected $con;
-<<<<<<< HEAD
-	private $db_name = "atissmis_group4";
-=======
 	private $db_name = "atissmis_ramel";
->>>>>>> aebbf17b2ff1bff9270d7153bc356d3daa6a08b2
 	private $db_user = "root"/*"atis"*/;
 	private $db_password = ""/*"try"*/;
 	private $db_host = "localhost"/*"192.168.0.205"*/;

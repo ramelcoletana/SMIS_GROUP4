@@ -1,4 +1,5 @@
 $(document).ready(function(){
+<<<<<<< HEAD
     alert('hi')
     $('#btn_p_search_stud').removeAttr('disabled');
     //delete from table assessment
@@ -17,6 +18,11 @@ $(document).ready(function(){
         searchStudent();
         $(this).attr('disabled', 'disabled');
         
+=======
+    //SEARCH STUDENT FOR ASSESSMENT
+    $('#btn_p_search_stud').click(function(){
+        searchStudent();
+>>>>>>> aebbf17b2ff1bff9270d7153bc356d3daa6a08b2
     });
     
 });
@@ -118,6 +124,7 @@ function computeTotalCPayment(id){
     var assCPayment = parseFloat($('#c_payment'+id).val());
     var assName = $('#assName'+id).html();
     var assOrigAmnt = parseFloat($('#assOrigAmnt'+id).val());
+<<<<<<< HEAD
     var chkCP = $('#c_payment'+id).val();
     //var chkOA = $('#assOrigAmnt'+id).val();
     if( chkCP === NaN  || chkCP === "" || chkCP === null ){
@@ -128,6 +135,9 @@ function computeTotalCPayment(id){
     //}
     //
     //alert(assCPayment)
+=======
+    //
+>>>>>>> aebbf17b2ff1bff9270d7153bc356d3daa6a08b2
     if(assCPayment <= assAmount){//NO ADVANCE PAYMENT || HAS A BALANCE
     	assBalance = (assAmount - assCPayment);
     	$('#assBalance'+id).html(assBalance);
@@ -160,7 +170,11 @@ function computeTotalCPayment(id){
         //maybe there is a problem in changing advance payment..
         alert(assAdvance);
         var objHA = {"enrollmentNo": getEnrollmentNo(), "studentNo": getStudentId(), "autoId": id,
+<<<<<<< HEAD
             "assName": assName, "assessmentNo": assessmentNo, "assBalance": assBalance, "assAdvance": assAdvance, "assOrigAmnt": assOrigAmnt, "assCPayment" : assCPayment};
+=======
+            "assName": assName, "assessmentNo": assessmentNo, "assBalance": assBalance, "assAdvance": assAdvance, "assOrigAmnt": assOrigAmnt};
+>>>>>>> aebbf17b2ff1bff9270d7153bc356d3daa6a08b2
         $.ajax({
            type: 'POST',
             url: 'process/p_hasadvance.php',

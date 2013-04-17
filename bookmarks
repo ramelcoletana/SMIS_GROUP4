@@ -2,6 +2,7 @@ BOOKMARKS:
 
 JQUERY UI ICONS:
 
+<<<<<<< HEAD
 http://jquery-ui.googlecode.com/svn/tags/1.6rc5/tests/static/icons.html
 
 GITHUB
@@ -9,3 +10,6 @@ http://github.com
 
 GITLAB
 http://gitlab.icotpict.org:1024
+=======
+http://jquery-ui.googlecode.com/svn/tags/1.6rc5/tests/static/icons.html
+>>>>>>> aebbf17b2ff1bff9270d7153bc356d3daa6a08b2

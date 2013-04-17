@@ -351,36 +351,16 @@ class sqlfunction extends DB_Connect{
         $result1 = mysql_query($sql1,$this->openCon());
         $assessmentCounter = 2;
         $nextAss = 0;
-<<<<<<< HEAD
-        $toBePaid = 0;
-        while($row1 = mysql_fetch_array($result1)){
-            if($row1[5]=="Monthly"){
-                $nextAss = number_format($row1[3]/10, 2);
-                $toBePaid = 10;
-            }else if($row1[4]=="Semestral"){
-                $nextAss = number_format($row1[3]/2,2);
-                $toBepaid = 2;
-=======
         while($row1 = mysql_fetch_array($result1)){
             if($row1[5]=="Monthly"){
                 $nextAss = number_format($row1[3]/10, 2);
             }else if($row1[4]=="Semestral"){
                 $nextAss = number_format($row1[3]/2,2);
->>>>>>> aebbf17b2ff1bff9270d7153bc356d3daa6a08b2
             }
              
             $sql2 = "INSERT INTO tblpreparedAssessment (fldTransactionNo,fldEnrollmentNo,fldStudentNo,fldAssessmentName,fldOriginalAmount,fldOriginalBalance,fldAssessmentAmount,fldAdvancedPayment,fldAssessmentNo)
                 VALUES ('$transactionNo','$enrollmentNo','$studentNo','$row1[0]',$row1[1],$row1[3],$nextAss,$row1[4],$assessmentCounter)";
             mysql_query($sql2,$this->openCon());
-<<<<<<< HEAD
-
-            //
-            $sql5 = "INSERT INTO tblamountPerAssessment (fldTransactionNo, fldEnrollmentNo, fldStudentNo, fldAssessmentName, fldOriginalAmount, fldOriginalBalance, fldAssessmentAmount, fldAdvancedPayment, fldToBePaid) VALUES 
-            ('$transactionNo','$enrollmentNo', '$studentNo', '$row1[0]','$row1[1]','$row1[3]',$nextAss, $row1[4], $toBePaid)";
-            mysql_query($sql5, $this->openCon());
-
-=======
->>>>>>> aebbf17b2ff1bff9270d7153bc356d3daa6a08b2
             
         }
         
@@ -390,10 +370,7 @@ class sqlfunction extends DB_Connect{
         $sql3 = "INSERT INTO tblenrolldata (fld_Enrollment_Id,fld_Student_Num,fld_School_Year,fld_Grade_Year_Level,fld_Section,fld_Adviser) 
             VALUES ('$enrollmentNo','$studentNo','$schoolYear','$grade_Year','$section','$adviser')";
         mysql_query($sql3,$this->openCon());
-<<<<<<< HEAD
-=======
        
->>>>>>> aebbf17b2ff1bff9270d7153bc356d3daa6a08b2
         //UPDATE STUDENT RECORD
         $sql4 = "UPDATE tblstudentrecord SET fldStudentStatus='enrolled' WHERE fldStudent_No='$studentNo'";
         mysql_query($sql4,$this->openCon());
