@@ -34,13 +34,13 @@ include "connection.php";
         function p_getCurrentAssessment($enrollmentNo,$studentNo){
             $con = $this->openCon();
             //
-            $sql1 = "SELECT MAX(fldAssessmentNo) FROM tblpreparedAssessment WHERE fldEnrollmentNo = '$enrollmentNo' AND fldStudentNo = '$studentNo'";
+            $sql1 = "SELECT MAX(fldAssessmentNo) FROM tblpreparedassessment WHERE fldEnrollmentNo = '$enrollmentNo' AND fldStudentNo = '$studentNo'";
             $result1 = mysql_query($sql1,$con);
             $row1 = mysql_fetch_array($result1);
             $assNo = $row1[0];
             //
             $sql2 = "SELECT fldId,fldTransactionNo,fldEnrollmentNo,fldStudentNo,fldAssessmentName, fldOriginalAmount,
-            fldOriginalBalance, fldAssessmentAmount, fldAdvancedPayment FROM tblpreparedAssessment 
+            fldOriginalBalance, fldAssessmentAmount, fldAdvancedPayment FROM tblpreparedassessment 
             WHERE fldEnrollmentNo = '$enrollmentNo' AND fldStudentNo = '$studentNo' AND fldOriginalBalance 
             !=0 AND fldAssessmentAmount !=0 AND fldAssessmentNo = $assNo ";
             
@@ -52,7 +52,7 @@ include "connection.php";
                 echo "<td><span id=assAmnt".$row2[0].">".$row2[7]."</span></td>";
                 echo "<td><span id=assBalance".$row2[0].">".$row2[7]."</span></td>";
                 echo "<td><input type='text' id=c_payment".$row2[0]." onkeyup = 'computeTotalCPayment(".$row2[0].")'/>
-                <input type='hidden' id=assNum value=".$assNo." /></td>";
+                <input type='hidden' id=assNum value=".$assNo." /><input type='hidden' id=assOrigAmnt".$row2[0]." value=".$row2[6]." /></td>";
                 echo "<td><span id=advanceP".$row2[0].">0</span></td>";
                 echo "</tr>";
                 
@@ -69,10 +69,11 @@ include "connection.php";
             	$assNum = $assNo + 1;
             	//note: tanggalin ang /**/
             	
-            	/*$sqlInsertA = "INSERT INTO tblpreparedAssessment (fldTransactionNo,fldEnrollmentNo,fldStudentNo,fldAssessmentName,fldOriginalAmount,
+//<<<<<<< HEAD
+            	$sqlInsertA = "INSERT INTO tblnextAssessment (fldTransactionNo,fldEnrollmentNo,fldStudentNo,fldAssessmentName,fldOriginalAmount,
             	fldOriginalBalance,fldAssessmentAmount,fldAdvancedPayment,fldAssessmentNo) 
             	VALUES ('$transNo','$enrollNo','$studentNo','$assName','$origAmount','$origBal','$assAmount','$advance','$assNum')";
-            	mysql_query($sqlInsertA,$con);*/
+            	mysql_query($sqlInsertA,$con);
                
                $notFound = false;
             }
@@ -81,10 +82,6 @@ include "connection.php";
 				}
             //close connection
             $this->closeCon();
-            /*NOTE:
-                1. Minus the original balance(update tblpreparedAssessment and tblassissment)
-                2. set fldAdvanced payment
-            */ 
         }
 
         //SET MODE OF PAYMENT
@@ -96,34 +93,47 @@ include "connection.php";
         }
         
         //NO BALANCE
-        function p_noadvanceAss($enrollmentNo,$studentNo,$autoId,$assName,$assessmentNo,$balance){
+        function p_noadvanceAss($enrollmentNo,$studentNo,$autoId,$assName,$assessmentNo,$balance,$assOrigAmnt,$assCPayment){
         		$con = $this->openCon();
         		$balanceFromDB = 0;
-        		$sql1 = "SELECT fldBalance FROM tblassissment WHERE fldEnrollmentNo = '$enrollmentNo' AND fldStudentNum = '$studentNo'
-        		 AND fldAssessmentName = '$assName'";
-        		 $result1 = mysql_query($sql1,$con);
-        		 $row1 = mysql_fetch_array($result1);
-        		 $balanceFromDB = $row1[0];
-        		 $newBal = $balanceFromDB - $balance;
+        		 $newBal = $assOrigAmnt - $assCPayment;
         		 
-        		 /*
-        		    Note: 
-        		        1.dapat meron nang original balance na ipapasa sa function
-        		        2.hindi eto tama na ang balance ay mababawasan every keyup event ,malamang ay mauubos lahat na balance sa 
-        		        tblassissment
-        		        
-        		        Last edition: April 05, 2013 || 4:53:30 PM
+        		  /* Note: 
+        		        1.dapat machange ang balance ng current assessment
         		 */
+//<<<<<<< HEAD
+                //$sqlUpdate1 = "UPDATE tblpreparedAssessment SET fldOriginalBalance = $newBal WHERE fldEnrollmentNo = '$enrollmentNo' AND fldStudentNo = '$studentNo' AND fldAssessmentName = '$assName'";
+        		 /*$sqlUpdate1 = "UPDATE tblassissment SET fldBalance = $newBal WHERE fldEnrollmentNo = '$enrollmentNo' AND fldStudentNum = '$studentNo'
+        		 AND fldAssessmentName = '$assName'";*/
+//=======
         		 $sqlUpdate1 = "UPDATE tblassissment SET fldBalance = $newBal WHERE fldEnrollmentNo = '$enrollmentNo' AND fldStudentNum = '$studentNo' 
         		 AND fldAssessmentName = '$assName'";
         		 mysql_query($sqlUpdate1,$con);
-        		 echo $sqlUpdate1;
         		 
         		 
         		//close connection
         		$this->closeCon();
         }
+
+         //HAS BALANCE
+//<<<<<<< HEAD
+         function p_hasadvance($enrollmentNO,$studentNo,$autoId,$assName,$assessmentNo,$assBalance,$assAdvance,$assOrigAmnt,$assCPayment){
+             $con = $this->openCon();
+             $newBal = $assOrigAmnt - $assCPayment;
+
+             $sqlUpdate1 = "UPDATe tblpreparedAssessment SET fldOriginalBalance = $newBal, fldfldAdvancedPayment = $assAdvance WHERE fldId = $autoId AND fldEnrollmentNO='$enrollmentNO'
+                            AND fldStudentNo='$studentNo'";
+                            echo $sqlUpdate1;
+             mysql_query($sqlUpdate1,$con);
+
+             //Note: 04/15/2013 11: 25 AM
+             //UNFINISHED..updating...
+         }
         
-        
+        //delete all data from tblnextAssessment
+        function p_deleteDNAss(){
+            $sql = "DELETE FROM tblnextAssessment";
+            mysql_query($sql, $this->openCon());
+        }
      }
 ?>

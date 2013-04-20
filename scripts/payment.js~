@@ -1,7 +1,20 @@
 $(document).ready(function(){
+    $('#btn_p_search_stud').removeAttr('disabled');
+    //delete from table assessment
+    $.ajax({
+        type: 'POST',
+        url: 'process/p_deleteDNAss.php',
+        success: function(data){
+            //alert(data);
+        },
+        error: function(data){
+            alert('error in deleting data from tblnextAssessment =>'+data);
+        }
+    });
     //SEARCH STUDENT FOR ASSESSMENT
     $('#btn_p_search_stud').click(function(){
         searchStudent();
+        $(this).attr('disabled', 'disabled');
     });
     
 });
@@ -77,11 +90,6 @@ function searchStudent(){
 
 //COMPUTE CURRENT PAYMENT
 function computeTotalCPayment(id){
-    /*
-    NOTE:
-        1. Finish the computation.
-        2. Something to do with the database
-    */
     var regexNum = /^[0-9\.]$/;
     var inputCPayment = $('#c_payment'+id).val();
     var inputCPaymentLength = inputCPayment.length;
@@ -101,21 +109,35 @@ function computeTotalCPayment(id){
     
     var assAmount = parseFloat($('#assAmnt'+id).html());
     var assCPayment = parseFloat($('#c_payment'+id).val());
+    var assName = $('#assName'+id).html();
+    var assOrigAmnt = parseFloat($('#assOrigAmnt'+id).val());
+    var chkCP = $('#c_payment'+id).val();
+    //var chkOA = $('#assOrigAmnt'+id).val();
+    if( chkCP === NaN  || chkCP === "" || chkCP === null ){
+        assCPayment = 0;
+    }
+    //if( chkOA === NaN || chkOA === "" || chkOA === null){
+        //assOrigAmnt = 0;
+    //}
+    //
+    //alert(assCPayment)
     if(assCPayment <= assAmount){//NO ADVANCE PAYMENT || HAS A BALANCE
     	assBalance = (assAmount - assCPayment);
     	$('#assBalance'+id).html(assBalance);
     	$('#advanceP'+id).html(assAdvance);
     	//
-    	var balance = $('#assBalance'+id).html();
-    	var assName = $('#assName'+id).html();
+    	var balance = ($('#assBalance'+id).html());
+        if(balance === "" || balance === null || balance === "NaN"){
+            balance = 0;
+        }
     	var objNA = {"enrollmentNo": getEnrollmentNo(), "studentNo": getStudentId(), "autoId": id,
-    	"assName": assName,"assessmentNo": assessmentNo, "balance": balance};
+    	"assName": assName,"assessmentNo": assessmentNo, "balance": parseFloat(balance), "assOrigAmnt": assOrigAmnt, "assCPayment": assCPayment};
     	$.ajax({
     		type: 'POST',
     		url: 'process/p_noadvanceAss.php',
     		data: objNA,
     		success: function(data){
-    			alert(data);
+    			console.log(data);
     		},
     		error: function(data){
     			alert("error in processing assessment NA =>"+data);
@@ -128,6 +150,22 @@ function computeTotalCPayment(id){
     	assAdvance = assCPayment - assAmount;
     	$('#advanceP'+id).html(assAdvance);
     	$('#assBalance'+id).html(assBalance);
+        //maybe there is a problem in changing advance payment..
+        alert(assAdvance);
+        var objHA = {"enrollmentNo": getEnrollmentNo(), "studentNo": getStudentId(), "autoId": id,
+            "assName": assName, "assessmentNo": assessmentNo, "assBalance": assBalance, "assAdvance": assAdvance, "assOrigAmnt": assOrigAmnt, "assCPayment" : assCPayment};
+
+        $.ajax({
+           type: 'POST',
+            url: 'process/p_hasadvance.php',
+            data: objHA,
+            success: function(data){
+                alert(data);
+            },
+            error: function(data){
+                alert("error in processing assessment HA =>"+data);
+            }
+        });
     }
     /*
     	NOTE: select the next payment
