@@ -114,9 +114,7 @@ include "connection.php";
         		//close connection
         		$this->closeCon();
         }
-
-         //HAS BALANCE
-//<<<<<<< HEAD
+	
          function p_hasadvance($enrollmentNO,$studentNo,$autoId,$assName,$assessmentNo,$assBalance,$assAdvance,$assOrigAmnt,$assCPayment){
              $con = $this->openCon();
              $newBal = $assOrigAmnt - $assCPayment;
