@@ -1,8 +1,10 @@
 /*-------------------------------------------------PAYMENT WRAPPER--------------------------------------------------*/
+/*-------------------------------------------------LEMUEL NUEVAREZ--------------------------------------------------*/
 #div_payment_wrapper{
     border: 1px solid silver;
     width: 800px;
     margin: 0 auto;
+    background-color: #fff;
     font-family: arial,monospace,serif,sans-serif;
 }
 
