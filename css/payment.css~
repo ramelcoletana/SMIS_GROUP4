@@ -17,12 +17,19 @@
 }
  button #btn_p_search_stud{
       margin-top: 5px;
+      margin-left: 5px;
  }
 
 /*----------------------------------------------------PAYMENT DATA---------------------------------------------------*/
 
 /*-------------------------------------EDITED BY: REGIE CADAYONG-----------------------------------------------------*/
-
+h2{
+    text-align: center;
+    background: yellow;
+    margin-top: -4px;
+    color: white;
+    border-radius-top-left: 20%;
+}
 #div_for_payment_data{
    /*border: 1px solid silver;*/
     width: 500px;
@@ -48,7 +55,7 @@
     float: right;
     background-color: #fff;
     /*border: 0 none;*/
-    margin-right: 16px;
+    margin-right: 17px;
     font: normal 15px "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;
     
 }
@@ -71,7 +78,7 @@
 }
 
 #div_for_line{
-    color: 
+  
 }
 
 /*-------------------------------------------END--------------------------------------------------------------------*/

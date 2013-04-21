@@ -360,6 +360,8 @@ class sqlfunction extends DB_Connect{
             }else if($row1[4]=="Semestral"){
                 $nextAss = number_format($row1[3]/2,2);
                 $toBepaid = 2;
+	    }
+	}
 
         while($row1 = mysql_fetch_array($result1)){
             if($row1[5]=="Monthly"){
@@ -425,4 +427,4 @@ class sqlfunction extends DB_Connect{
         mysql_query($sqlDelPA,$this->openCon());
        
     }
-}               
+}

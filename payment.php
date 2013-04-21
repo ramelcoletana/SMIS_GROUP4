@@ -17,7 +17,10 @@
     </head>
     
     <body>
+  
         <div id='div_payment_wrapper'>
+                <h2><p>PAYMENT FORM MANAGEMENT</p></h2>    
+        
             <div id='div_search'>
                 <br/>
             <input type='text' id='p_student_search'/><button id='btn_p_search_stud' class='btn btn-medium btn-primary'>Searchs</button>
