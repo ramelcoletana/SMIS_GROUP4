@@ -4,14 +4,19 @@
     border: 1px solid silver;
     width: 800px;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: #ccc;
     font-family: arial,monospace,serif,sans-serif;
+    box-shadow: 6px 4px 5px 5px #505050   ;
+}
+
+body{
+
 }
 
 /*-------------------------------------EDITED BY: REGIE CADAYONG---------------------------------------------------*/
 #div_search input[type="text"]{
     margin-top: 15px;
-    margin-left: 150px;
+    margin-left: 150px;box-shadow: 6px 4px 5px 5px #C8C8C8  ;
     text-align: center;
     font: normal 15px "Trebuchet MS",Verdana,Arial,Helvetica,sans-serif;
 }
@@ -25,7 +30,7 @@
 /*-------------------------------------EDITED BY: REGIE CADAYONG-----------------------------------------------------*/
 h2{
     text-align: center;
-    background: yellow;
+    background: black;
     margin-top: -4px;
     color: white;
     border-radius-top-left: 20%;

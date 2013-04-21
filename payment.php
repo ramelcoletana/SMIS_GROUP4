@@ -57,8 +57,8 @@
                 <table id='tbl_for_assessment'>
                     <thead>
                         <tr id="assPay">
-                            <th colspan=5>ASSESSMENT NO.: [-:&nbsp;&nbsp;<span id="assessment_no">
-                            </span>&nbsp;&nbsp;:-] | MODE OF PAYMENT [-:&nbsp;&nbsp;<span id="mode_of_payment"></span>&nbsp;&nbsp;:-]</th>
+                            <th colspan=5>ASSESSMENT NO. : &nbsp;&nbsp;<span id="assessment_no">
+                            </span>&nbsp;&nbsp;  MODE OF PAYMENT : &nbsp;&nbsp;<span id="mode_of_payment"></span>&nbsp;&nbsp;</th>
                         </tr>
                         <tr>
                             <th id="desc">DESCRIPTION</th>
