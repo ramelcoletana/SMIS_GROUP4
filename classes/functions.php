@@ -353,38 +353,40 @@ class sqlfunction extends DB_Connect{
         $nextAss = 0;
 
         $toBePaid = 0;
-        while($row1 = mysql_fetch_array($result1)){
+        /*while($row1 = mysql_fetch_array($result1)){
             if($row1[5]=="Monthly"){
                 $nextAss = number_format($row1[3]/10, 2);
-                $toBePaid = 10;
+                
             }else if($row1[4]=="Semestral"){
                 $nextAss = number_format($row1[3]/2,2);
-                $toBepaid = 2;
+                
 	    }
-	}
-
+	}*/
         while($row1 = mysql_fetch_array($result1)){
             if($row1[5]=="Monthly"){
                 $nextAss = number_format($row1[3]/10, 2);
+		$toBePaid = 10;
             }else if($row1[4]=="Semestral"){
                 $nextAss = number_format($row1[3]/2,2);
-
+		$toBepaid = 2;
             }
-             
-            $sql2 = "INSERT INTO tblpreparedAssessment (fldTransactionNo,fldEnrollmentNo,fldStudentNo,fldAssessmentName,fldOriginalAmount,fldOriginalBalance,fldAssessmentAmount,fldAdvancedPayment,fldAssessmentNo)
+             //Inserting data into table tblpreparedAssessment
+            /*$sql2 = "INSERT INTO tblpreparedAssessment (fldTransactionNo,fldEnrollmentNo,fldStudentNo,fldAssessmentName,fldOriginalAmount,fldOriginalBalance,fldAssessmentAmount,fldAdvancedPayment,fldAssessmentNo)
                 VALUES ('$transactionNo','$enrollmentNo','$studentNo','$row1[0]',$row1[1],$row1[3],$nextAss,$row1[4],$assessmentCounter)";
-            mysql_query($sql2,$this->openCon());
+            mysql_query($sql2,$this->openCon());*/
+	    
+	    //Inserting data to table tblnextAssessment
+	    $sql6 = "INSERT INTO tblnextassessment (fldTransactionNo,fldEnrollmentNo,fldStudentNo,fldAssessmentName,fldOriginalAmount,fldOriginalBalance,fldAssessmentAmount,fldAdvancedPayment,fldAssessmentNo)
+                VALUES ('$transactionNo','$enrollmentNo','$studentNo','$row1[0]',$row1[1],$row1[3],$nextAss,$row1[4],$assessmentCounter)";
+           mysql_query($sql6,$this->openCon());
+	    
 
-
-            //
+            //Inserting data into table tblamountPerAssessment
             $sql5 = "INSERT INTO tblamountPerAssessment (fldTransactionNo, fldEnrollmentNo, fldStudentNo, fldAssessmentName, fldOriginalAmount, fldOriginalBalance, fldAssessmentAmount, fldAdvancedPayment, fldToBePaid) VALUES 
             ('$transactionNo','$enrollmentNo', '$studentNo', '$row1[0]','$row1[1]','$row1[3]',$nextAss, $row1[4], $toBePaid)";
-            mysql_query($sql5, $this->openCon());
-
-
-            
+	    mysql_query($sql5, $this->openCon());
+	    
         }
-        
         //INSERT INTO ENROLLDATA
         $section = "NOT YET POH";
         $adviser = "WA PA";

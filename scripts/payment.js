@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $('#btn_p_search_stud').removeAttr('disabled');
     //delete from table assessment
-    $.ajax({
+    /*$.ajax({
         type: 'POST',
         url: 'process/p_deleteDNAss.php',
         success: function(data){
@@ -10,7 +10,7 @@ $(document).ready(function(){
         error: function(data){
             alert('error in deleting data from tblnextAssessment =>'+data);
         }
-    });
+    });*/
     //SEARCH STUDENT FOR ASSESSMENT
     $('#btn_p_search_stud').click(function(){
         searchStudent();
@@ -58,6 +58,7 @@ function searchStudent(){
                     url: 'process/p_getCurrentAssessment.php',
                     data: obj2,
                     success: function(data){
+			alert(data);
                         document.getElementById('tbody_for_tbl_assessment').innerHTML=data;
                         //SET MODE OF PAYMENT
                         $.ajax({
