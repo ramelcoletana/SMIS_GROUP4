@@ -61,7 +61,8 @@
                             <th colspan=5>ASSESSMENT NO. : &nbsp;&nbsp;<span id="assessment_no">
                             </span>&nbsp;&nbsp;  MODE OF PAYMENT : &nbsp;&nbsp;<span id="mode_of_payment"></span>&nbsp;&nbsp;</th>
                         </tr>
-                        <tr>
+                        <tr> 
+                           
                             <th id="desc">DESCRIPTION</th>
                             <th id="assess">ASSESSMENT AMOUNT</th>
                             <th id="assbal">ASSESSMENT BAL.</th>

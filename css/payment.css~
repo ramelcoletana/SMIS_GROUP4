@@ -9,9 +9,7 @@
     box-shadow: 6px 4px 5px 5px #505050   ;
 }
 
-body{
 
-}
 
 /*-------------------------------------EDITED BY: REGIE CADAYONG---------------------------------------------------*/
 #div_search input[type="text"]{
@@ -44,7 +42,7 @@ h2{
     margin-top: 10px;
     box-shadow: 6px 4px 5px 5px #C8C8C8  ;
     border-radius: 5px;
-    background: #993300   ;
+    background: 	#303030   ;
    
 }
 #div_for_payment_data label{
@@ -74,7 +72,7 @@ h2{
     /*border: 1px solid green;*/
     height: 160px;
     margin-top: 15px;
-    background-color: #666633;
+    background-color:	#303030;
 }     
 
 #date{
@@ -98,17 +96,17 @@ h2{
 }
 #tbl_for_assessment{border: 1px solid silver; margin: 0 auto; width: 100%;}
 #tbl_for_assessment th{border: 1px solid silver; height: 45px;}
-#tbl_for_assessment th #assessment_no, #tbl_for_assessment th #mode_of_payment{ color: blue; font-size: 13px;}
+#tbl_for_assessment th #assessment_no, #tbl_for_assessment th #mode_of_payment{ color: white; font-size: 13px;}
 #tbl_for_assessment #noAss{text-align: center;}
 /*#div_cash_tendered{border: 1px solid silver; width: 220px; margin-left: 300px; margin-top: -110px;} */
 
 /*--------------------------------------------------ALERT MESSAGES---------------------------------------------------*/
 #div_alert_msg_p{
-    background-color: green;
+    background-color: white;
     border: 1px solid silver;
 }
 #alert_msg_p:hover{
-    color:white;
+    color:black;
 }
 #alert_msg_p{
     font-size: 15px;
@@ -118,13 +116,13 @@ h2{
 
  /*-------------  Ruel's eddtited    date: 13/04/17   ------------ */
 
-#assPay{background-color:#00FA9A;font-family:Arial sans-serif;font-size:20px;color:red;}
-#desc{background-color:#FFFFE0;color:blue;}
-#assess{background-color:#FAFAD2;color:green;}
-#assbal{background-color:#FFFFE0;color:blue;}
-#payhere{background-color:#FAFAD2;color:green;}
-#advance{background-color:#FFFFE0;color:blue;}
-#div_bottom_cash_payment{background-color:#E6E6FA;}
+#assPay{background-color:	#484848 ;font-family:Arial sans-serif;font-size:20px;color:red;}
+#desc{background-color:	#00CCCC;color:blue; border-left: 2px solid black}
+#assess{background-color:	#00CCCC ;color:green;}
+#assbal{background-color:#00CCCC;color:blue;}
+#payhere{background-color:#00CCCC;color:green;}
+#advance{background-color:#00CCCC;color:blue;}
+#div_bottom_cash_payment{background-color:#00CCCC;}
 #div_button_cancel_done{margin-left:300px;margin-top:10px;}
 #btn_ass_payment_done:hover{color:yellow;}
 #btn_ass_payment_cancel:hover{color:red;}
