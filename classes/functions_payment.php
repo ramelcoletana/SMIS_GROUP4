@@ -38,14 +38,25 @@ include "connection.php";
             $result1 = mysql_query($sql1,$con);
             $row1 = mysql_fetch_array($result1);
             $assNo = $row1[0];
-            //
-	    $sql = "SELECT na.fldId, na.fldTransactionNo, na.fldEnrollmentNo, na.fldStudentNo, na.fldAssessmentName, na.fldOriginalAmount, na.fldOriginalBalance, na.fldAssessmentAmount, na.fldAdvancedPayment,
-	    na.fldAssessmentNo, aps.fldAssessmentAmount FROM tblnextassessment AS na, tblamountPerAssessment AS aps
-	    WHERE na.fldEnrollmentNo = '$enrollmentNo' AND na.fldStudentNo = '$studentNo' AND aps.fldEnrollmentNo = '$enrollmentNo'
-	    AND aps.fldStudentNo = '$studentNo' AND na.fldAssessmentName = aps.fldAssessmentName AND na.fldTransactionNo = aps.fldTransactionNo AND na.fldStudentNo = aps.fldStudentNo ";
-	    echo $sql;
+	    
+	    //getting data from table tblnextassessment
+	    $sqlGetNS = "SELECT fldId,fldTransactionNo,fldEnrollmentNo,fldStudentNo,fldAssessmentName,
+	    fldOriginalAmount,fldOriginalBalance,fldAssessmentAmount,fldAdcancedPayment,fldAssessmentNo FROM tblnextassessment WHERE fldEnrollmentNo = '$enrollmentNo' AND fldStudentNo = '$studentNo'";
+            
+	    
+	    //getting data from table tblallassessment and table tblamountPerAssessment
+	    $sql = "SELECT aa.fldId, aa.fldTransactionNo, aa.fldEnrollmentNo, aa.fldStudentNo, aa.fldAssessmentName, aa.fldOriginalAmount,
+	    aa.fldOriginalBalance, aa.fldAssessmentAmount, aa.fldAdvancedPayment,
+	    aa.fldAssessmentNo, aps.fldAssessmentAmount FROM tblallassessment AS aa, tblamountPerAssessment AS aps
+	    WHERE aa.fldEnrollmentNo = '$enrollmentNo' AND aa.fldStudentNo = '$studentNo' AND aps.fldEnrollmentNo = '$enrollmentNo'
+	    AND aps.fldStudentNo = '$studentNo' AND aa.fldAssessmentName = aps.fldAssessmentName AND aa.fldTransactionNo = aps.fldTransactionNo AND aa.fldStudentNo = aps.fldStudentNo ";
+	    $result2 = mysql_query($sql, $con);
+	    while($row2 = mysql_fetch_array($result2)){
+		echo $row2[0];
+	    }
+	    
 	    //Note: unfinished date: 01-23-1311:45:12 last edited
-	    //get the data and insert into tblpreparedassessment
+	    //get the data and insert into tblallassessment
 	    
             $sql2 = "SELECT fldId,fldTransactionNo,fldEnrollmentNo,fldStudentNo,fldAssessmentName, fldOriginalAmount,
             fldOriginalBalance, fldAssessmentAmount, fldAdvancedPayment FROM tblnextassessment 
@@ -117,7 +128,7 @@ include "connection.php";
              $con = $this->openCon();
              $newBal = $assOrigAmnt - $assCPayment;
 
-             $sqlUpdate1 = "UPDATe tblpreparedAssessment SET fldOriginalBalance = $newBal, fldfldAdvancedPayment = $assAdvance WHERE fldId = $autoId AND fldEnrollmentNO='$enrollmentNO'
+             $sqlUpdate1 = "UPDATe tblallAssessment SET fldOriginalBalance = $newBal, fldfldAdvancedPayment = $assAdvance WHERE fldId = $autoId AND fldEnrollmentNO='$enrollmentNO'
                             AND fldStudentNo='$studentNo'";
                             echo $sqlUpdate1;
              mysql_query($sqlUpdate1,$con);

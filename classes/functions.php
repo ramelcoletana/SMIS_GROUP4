@@ -20,7 +20,7 @@ class sqlfunction extends DB_Connect{
         $sql = "DELETE FROM tblassissment WHERE fldTransactionNo='$transactionNo'";
         mysql_query($sql,$this->openCon());
         
-        $sql1 = "DELETE FROM tblpreparedAssessment WHERE fldTransactionNo='$transactionNo'";
+        $sql1 = "DELETE FROM tblallAssessment WHERE fldTransactionNo='$transactionNo'";
         mysql_query($sql1,$this->openCon());
         
         echo 'successfully deleted';
@@ -173,7 +173,7 @@ class sqlfunction extends DB_Connect{
             //inserting data to table tblpreparderAssessment
             $advancep = 0;
             //$transactionNo = htmlintities($transactionNo);
-            $sql3 = "INSERT INTO tblpreparedAssessment (fldTransactionNo,fldEnrollmentNo,fldStudentNo,fldAssessmentName,fldOriginalAmount,fldOriginalBalance,fldAssessmentAmount,fldAdvancedPayment,fldAssessmentNo) 
+            $sql3 = "INSERT INTO tblallAssessment (fldTransactionNo,fldEnrollmentNo,fldStudentNo,fldAssessmentName,fldOriginalAmount,fldOriginalBalance,fldAssessmentAmount,fldAdvancedPayment,fldAssessmentNo) 
             VALUES ('$transactionNo','$enrollNo','$studentId','$row1[1]',$row1[2],$row1[2],$row1[2],$advancep,$assessmentCounter)";
             mysql_query($sql3,$this->openCon());
             $notFound = false;
@@ -370,8 +370,8 @@ class sqlfunction extends DB_Connect{
                 $nextAss = number_format($row1[3]/2,2);
 		$toBepaid = 2;
             }
-             //Inserting data into table tblpreparedAssessment
-            /*$sql2 = "INSERT INTO tblpreparedAssessment (fldTransactionNo,fldEnrollmentNo,fldStudentNo,fldAssessmentName,fldOriginalAmount,fldOriginalBalance,fldAssessmentAmount,fldAdvancedPayment,fldAssessmentNo)
+             //Inserting data into table tblallAssessment
+            /*$sql2 = "INSERT INTO tblallAssessment (fldTransactionNo,fldEnrollmentNo,fldStudentNo,fldAssessmentName,fldOriginalAmount,fldOriginalBalance,fldAssessmentAmount,fldAdvancedPayment,fldAssessmentNo)
                 VALUES ('$transactionNo','$enrollmentNo','$studentNo','$row1[0]',$row1[1],$row1[3],$nextAss,$row1[4],$assessmentCounter)";
             mysql_query($sql2,$this->openCon());*/
 	    
@@ -425,7 +425,7 @@ class sqlfunction extends DB_Connect{
         mysql_query($sqlDelED,$this->openCon());
         
         //delete all data from preparedassessment
-        $sqlDelPA = "DELETE FROM tblpreparedAssessment";
+        $sqlDelPA = "DELETE FROM tblallAssessment";
         mysql_query($sqlDelPA,$this->openCon());
        
     }

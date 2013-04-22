@@ -58,7 +58,7 @@ function searchStudent(){
                     url: 'process/p_getCurrentAssessment.php',
                     data: obj2,
                     success: function(data){
-			alert(data);
+			console.log(data);
                         document.getElementById('tbody_for_tbl_assessment').innerHTML=data;
                         //SET MODE OF PAYMENT
                         $.ajax({
