@@ -28,7 +28,7 @@
             <br/>
             <div id='div_for_payment_data'>
              <div id=''></div>
-                <span id="date">DATE  : </span>&nbsp;&nbsp;<span id='date_now' style="color: #500000 s">00000-00-00 00:00:00</span>
+                <span id="date">DATE  : </span>&nbsp;&nbsp;<span id='date_now' style="color: #00FFFF">00000-00-00 00:00:00</span>
                 <br/><br/>
                    <div id="div_for_show_records">
                    
