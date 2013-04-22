@@ -23,24 +23,25 @@
         
             <div id='div_search'>
                 <br/>
-            <input type='text' id='p_student_search'/><button id='btn_p_search_stud' class='btn btn-medium btn-primary'>Searchs</button>
+            <input type='text' id='p_student_search'/> <button id='btn_p_search_stud' class='btn btn-medium btn-primary'>Search</button>
             </div>
             <br/>
             <div id='div_for_payment_data'>
              <div id=''></div>
-                <span id="date">DATE  : </span>&nbsp;&nbsp;<span id='date_now'>00000-00-00 00:00:00</span>
+                <span id="date">DATE  : </span>&nbsp;&nbsp;<span id='date_now' style="color: #500000 s">00000-00-00 00:00:00</span>
                 <br/><br/>
                    <div id="div_for_show_records">
-                        <label>STUDENT ID</label>
+                   
+                        <label style="color: #00FFFF">STUDENT ID</label>
                             <input type="text" id='student_id' class='p_spn_right' readonly='readonly'/>
                         <br/>
-                        <label>STUDENT NAME</label>
+                        <label style="color: #00FFFF">STUDENT NAME</label>
                             <input type="text" id='student_name' class='p_spn_right' readonly='readonly'/>
                         <br/>
-                        <label>ENROLLMENT NO</label>
+                        <label style="color: #00FFFF">ENROLLMENT NO</label>
                             <input type="text" id='enrollment_no' class='p_spn_right' readonly='readonly'/>
                         <br/>
-                        <label>GRADE | YEAR LEVEL</label>
+                        <label style="color: #00FFFF">GRADE | YEAR LEVEL</label>
                             <input type="text" id='grade_year_level' class='p_spn_right' readonly='readonly'/>
                     </div> 
                  <br/>
@@ -57,8 +58,8 @@
                 <table id='tbl_for_assessment'>
                     <thead>
                         <tr id="assPay">
-                            <th colspan=5>ASSESSMENT NO.: [-:&nbsp;&nbsp;<span id="assessment_no">
-                            </span>&nbsp;&nbsp;:-] | MODE OF PAYMENT [-:&nbsp;&nbsp;<span id="mode_of_payment"></span>&nbsp;&nbsp;:-]</th>
+                            <th colspan=5>ASSESSMENT NO. : &nbsp;&nbsp;<span id="assessment_no">
+                            </span>&nbsp;&nbsp;  MODE OF PAYMENT : &nbsp;&nbsp;<span id="mode_of_payment"></span>&nbsp;&nbsp;</th>
                         </tr>
                         <tr>
                             <th id="desc">DESCRIPTION</th>
