@@ -44,7 +44,7 @@ h2{
     margin-top: 10px;
     box-shadow: 6px 4px 5px 5px #C8C8C8  ;
     border-radius: 5px;
-    background: #F8F8F8   ;
+    background: #993300   ;
    
 }
 #div_for_payment_data label{
@@ -74,6 +74,7 @@ h2{
     /*border: 1px solid green;*/
     height: 160px;
     margin-top: 15px;
+    background-color: #666633;
 }     
 
 #date{
