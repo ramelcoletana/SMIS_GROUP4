@@ -89,6 +89,7 @@
                     <div id="div_button_cancel_done">
                         <button id="btn_ass_payment_done" class="btn btn-medium btn-primary">DONE</button>
                         <button id="btn_ass_payment_cancel" class="btn btn-medium btn-default">CANCEL</button>
+                        <button id="btn_del_AS" class="btn btn-small btn-warning">XXXX</button>
                     </div><!-- END div_button_cancel_done -->
                     
                 </div><!-- -->

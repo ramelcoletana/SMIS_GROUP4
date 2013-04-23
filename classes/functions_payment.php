@@ -1,6 +1,13 @@
 <?php
 include "connection.php";
      class payment extends DB_Connect{
+	//DELETE FROM ALL ASSESSMENT
+	function delAS(){
+	    $sql = "Delete from tblallassessment where fldAssessmentNo = 2";
+	    mysql_query($sql,$this->openCon());
+	}
+	
+	
         //SEARCHING STUDENT
         function p_search_student($student_id){
             $con = $this->openCon();
@@ -41,62 +48,57 @@ include "connection.php";
 	    
 	    //getting data from table tblnextassessment
 	    $sqlGetNS = "SELECT fldId,fldTransactionNo,fldEnrollmentNo,fldStudentNo,fldAssessmentName,
-	    fldOriginalAmount,fldOriginalBalance,fldAssessmentAmount,fldAdcancedPayment,fldAssessmentNo FROM tblnextassessment WHERE fldEnrollmentNo = '$enrollmentNo' AND fldStudentNo = '$studentNo'";
-            
+	    fldOriginalAmount,fldOriginalBalance,fldAssessmentAmount,fldAdvancedPayment,fldAssessmentNo FROM tblnextassessment WHERE fldEnrollmentNo = '$enrollmentNo' AND fldStudentNo = '$studentNo'";
+            $result3 = mysql_query($sqlGetNS, $con);
+	    while($rowGNS = mysql_fetch_array($result3)){
+		$autoId = $rowGNS[0];$transNo = $rowGNS[1];$enrollNo = $rowGNS[2];$studentNo = $rowGNS[3];
+		$assName = $rowGNS[4];$assOrigAmnt = $rowGNS[5];$assOrigBal = $rowGNS[6];$assAmount = $rowGNS[7];
+		$assAdvance = $rowGNS[8];$assNo = $rowGNS[9];
+		
+		//inserting data into table tblallassessment
+		$sqlInAS = "INSERT INTO tblallAssessment (fldTransactionNo,fldEnrollmentNo,fldStudentNo,fldAssessmentName,
+		fldOriginalAmount,fldOriginalBalance,fldAssessmentAmount,fldAdvancedPayment,fldAssessmentNo)
+		VALUES ('$transNo','$enrollNo','$studentNo','$assName',$assOrigAmnt,$assOrigBal,$assAmount,$assAdvance,$assNo)";
+		mysql_query($sqlInAS, $con);
+		
+	    }
 	    
 	    //getting data from table tblallassessment and table tblamountPerAssessment
 	    $sql = "SELECT aa.fldId, aa.fldTransactionNo, aa.fldEnrollmentNo, aa.fldStudentNo, aa.fldAssessmentName, aa.fldOriginalAmount,
 	    aa.fldOriginalBalance, aa.fldAssessmentAmount, aa.fldAdvancedPayment,
 	    aa.fldAssessmentNo, aps.fldAssessmentAmount FROM tblallassessment AS aa, tblamountPerAssessment AS aps
-	    WHERE aa.fldEnrollmentNo = '$enrollmentNo' AND aa.fldStudentNo = '$studentNo' AND aps.fldEnrollmentNo = '$enrollmentNo'
+	    WHERE aa.fldAssessmentNo = $assNo AND aa.fldAssessmentAmount !=0 AND aa.fldEnrollmentNo = '$enrollmentNo' AND aa.fldStudentNo = '$studentNo' AND aps.fldEnrollmentNo = '$enrollmentNo'
 	    AND aps.fldStudentNo = '$studentNo' AND aa.fldAssessmentName = aps.fldAssessmentName AND aa.fldTransactionNo = aps.fldTransactionNo AND aa.fldStudentNo = aps.fldStudentNo ";
 	    $result2 = mysql_query($sql, $con);
+	    //echo $sql;
+	    $notFound = true;
 	    while($row2 = mysql_fetch_array($result2)){
-		echo $row2[0];
+		
+		$assAmount = $row2[7];
+		if($assAmount > $row2[6]){
+		    $assAmount = $row2[6];
+		}else{
+		    $assAmount = $row2[7];
+		}
+		
+		echo "<tr>";
+                echo "<td><span id=assName".$row2[0].">".$row2[4]."</span>
+		    <input type=hidden id=assOrigBal".$row2[0]." value = ".$row2[6]." />
+		    <input type=hidden id=amntPerAss".$row2[0]." value = ".$row2[10]." /></td>";
+                echo "<td><span id=assAmnt".$row2[0].">".$assAmount."</span></td>";
+                echo "<td><span id=assBalance".$row2[0].">".$row2[7]."</span></td>";
+                echo "<td><input type='text' id=c_payment".$row2[0]." onkeyup = 'computeTotalCPayment(".$row2[0].")' />
+		    <input type=hidden id=assNum value=".$row2[9]." />
+		    <input type=hidden id=assOrigAmnt".$row2[0]." value=".$row2[5]." /></td>";
+                echo "<td><span id=advanceP".$row2[0].">0</span></td>";
+                echo "</tr>";
+		$notFound = false;
+	    }
+	    if($notFound){
+		echo "<tr><td>No assessment found!!!!</td></tr>";
 	    }
 	    
-	    //Note: unfinished date: 01-23-1311:45:12 last edited
-	    //get the data and insert into tblallassessment
 	    
-            $sql2 = "SELECT fldId,fldTransactionNo,fldEnrollmentNo,fldStudentNo,fldAssessmentName, fldOriginalAmount,
-            fldOriginalBalance, fldAssessmentAmount, fldAdvancedPayment FROM tblnextassessment 
-            WHERE fldEnrollmentNo = '$enrollmentNo' AND fldStudentNo = '$studentNo' AND fldOriginalBalance 
-            !=0 AND fldAssessmentAmount !=0 AND fldAssessmentNo = $assNo ";
-            
-            $result2 = mysql_query($sql2, $con);
-            $notFound = true;
-            while($row2 = mysql_fetch_array($result2)){
-                /*echo "<tr>";
-                echo "<td><span id=assName".$row2[0].">".$row2[4]."</span></td>";
-                echo "<td><span id=assAmnt".$row2[0].">".$row2[7]."</span></td>";
-                echo "<td><span id=assBalance".$row2[0].">".$row2[7]."</span></td>";
-                echo "<td><input type='text' id=c_payment".$row2[0]." onkeyup = 'computeTotalCPayment(".$row2[0].")'/>
-                <input type='hidden' id=assNum value=".$assNo." /><input type='hidden' id=assOrigAmnt".$row2[0]." value=".$row2[6]." /></td>";
-                echo "<td><span id=advanceP".$row2[0].">0</span></td>";
-                echo "</tr>";*/
-                
-                
-            	//INSERT NEW ASSESSMENT
-            	$transNo = $row2[1];
-            	$enrollNo = $row2[2];
-            	$studentNo = $row2[3];
-            	$assName = $row2[4];
-            	$origAmount = $row2[5];
-            	$origBal = $row2[6];
-            	$assAmount = $row2[7];
-            	$advance = $row2[8];
-            	$assNum = $assNo + 1;
-		
-            	$sqlInsertA = "INSERT INTO tblprepareAssessment (fldTransactionNo,fldEnrollmentNo,fldStudentNo,fldAssessmentName,fldOriginalAmount,
-            	fldOriginalBalance,fldAssessmentAmount,fldAdvancedPayment,fldAssessmentNo) 
-            	VALUES ('$transNo','$enrollNo','$studentNo','$assName','$origAmount','$origBal','$assAmount','$advance','$assNum')";
-            	mysql_query($sqlInsertA,$con);
-               
-               $notFound = false;
-            }
-		if($notFound){
-		    echo "<tr><td>No assessment found!!!!</td></tr>";
-		}
             //close connection
             $this->closeCon();
         }

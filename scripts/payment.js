@@ -1,5 +1,17 @@
 $(document).ready(function(){
     $('#btn_p_search_stud').removeAttr('disabled');
+    $('#btn_del_AS').click(function(){
+	$.ajax({
+	   type: 'POST',
+	   url: 'process/delAS.php',
+	   success: function(data){
+		//alert(data);
+	   },
+	   error: function(data){
+		alert("error in deleting =>" +data);
+	   }
+	});
+    });
     //delete from table assessment
     /*$.ajax({
         type: 'POST',
@@ -39,6 +51,7 @@ function searchStudent(){
         success: function(data){
             if(data==="notEnrolled"){
                 alert("This student id is not enrolled.");
+		$('#btn_p_search_stud').removeAttr('disabled');
                 $('#tbody_for_tbl_assessment').html("<tr id='noAss'><td colspan=5>No assessment found!!!!</td></tr>");
             }else{
                 var objStudData = JSON.parse(data);
@@ -58,7 +71,7 @@ function searchStudent(){
                     url: 'process/p_getCurrentAssessment.php',
                     data: obj2,
                     success: function(data){
-			console.log(data);
+			//console.log(data);
                         document.getElementById('tbody_for_tbl_assessment').innerHTML=data;
                         //SET MODE OF PAYMENT
                         $.ajax({
@@ -96,82 +109,78 @@ function computeTotalCPayment(id){
     var inputCPaymentLength = inputCPayment.length;
     var lastInput = inputCPayment.substring(inputCPaymentLength-1,inputCPaymentLength);
     //
-    var assBalance = 0;
-    var assAdvance = 0;
-    var totalCurrentP = 0;
-    
-    //alert("lastInput--"+lastInput);
     
     if(!regexNum.test(lastInput)){
         var resP = inputCPayment.substring(0,inputCPaymentLength-1);
         $('#c_payment'+id).val(resP);
     }
-    var assessmentNo = $('#assessment_no').html();
     
+    var assAdvance = 0;
+    var totalCurrentP = parseFloat($('#t_current_pymnt').val());
+    var chckTC = $('#t_current_pymnt').val();
+    
+    var assBalance = 0;
+    var assHalfP = 0;
+    var assessmentNo = $('#assessment_no').html();
+    var assOrigBal = parseFloat($('#assOrigBal'+id).val());
+    var assOrigAmnt = parseFloat($('#assOrigAmnt'+id).val());
     var assAmount = parseFloat($('#assAmnt'+id).html());
+    var amntPerAss = parseFloat($('#amntPerAss'+id).val());
     var assCPayment = parseFloat($('#c_payment'+id).val());
     var assName = $('#assName'+id).html();
-    var assOrigAmnt = parseFloat($('#assOrigAmnt'+id).val());
     var chkCP = $('#c_payment'+id).val();
     //var chkOA = $('#assOrigAmnt'+id).val();
     if( chkCP === NaN  || chkCP === "" || chkCP === null ){
         assCPayment = 0;
     }
-    //if( chkOA === NaN || chkOA === "" || chkOA === null){
-        //assOrigAmnt = 0;
-    //}
-    //
-    //alert(assCPayment)
-    if(assCPayment <= assAmount){//NO ADVANCE PAYMENT || HAS A BALANCE
-    	assBalance = (assAmount - assCPayment);
-    	$('#assBalance'+id).html(assBalance);
-    	$('#advanceP'+id).html(assAdvance);
-    	//
-    	var balance = ($('#assBalance'+id).html());
-        if(balance === "" || balance === null || balance === "NaN"){
-            balance = 0;
-        }
-    	var objNA = {"enrollmentNo": getEnrollmentNo(), "studentNo": getStudentId(), "autoId": id,
-    	"assName": assName,"assessmentNo": assessmentNo, "balance": parseFloat(balance), "assOrigAmnt": assOrigAmnt, "assCPayment": assCPayment};
-    	$.ajax({
-    		type: 'POST',
-    		url: 'process/p_noadvanceAss.php',
-    		data: objNA,
-    		success: function(data){
-    			console.log(data);
-    		},
-    		error: function(data){
-    			alert("error in processing assessment NA =>"+data);
-    		}
-    	});
-    	
-    	
-    }else if(assCPayment > assAmount){//IT HAS ADVANCE PAYMENT
-    	assBalance = 0;
-    	assAdvance = assCPayment - assAmount;
-    	$('#advanceP'+id).html(assAdvance);
-    	$('#assBalance'+id).html(assBalance);
-        //maybe there is a problem in changing advance payment..
-        alert(assAdvance);
-        var objHA = {"enrollmentNo": getEnrollmentNo(), "studentNo": getStudentId(), "autoId": id,
-            "assName": assName, "assessmentNo": assessmentNo, "assBalance": assBalance, "assAdvance": assAdvance, "assOrigAmnt": assOrigAmnt, "assCPayment" : assCPayment};
-
-        $.ajax({
-           type: 'POST',
-            url: 'process/p_hasadvance.php',
-            data: objHA,
-            success: function(data){
-                alert(data);
-            },
-            error: function(data){
-                alert("error in processing assessment HA =>"+data);
-            }
-        });
+    if (chckTC === NaN || chckTC === "" || chckTC === null) {
+	totalCurrentP = 0;
     }
-    /*
-    	NOTE: select the next payment
-    */
-    //unfinished ..i'll be right back here..
+    if (assCPayment > assOrigBal) {
+	alert("not valid amount..current paymnt should not exceed from the original balance : "+assOrigBal);
+	assCPayment = inputCPayment.substring(0, inputCPaymentLength - 1);
+	$('#c_payment'+id).val(assCPayment);
+	assAdvance = assCPayment - assAmount;
+	assOrigBal = assOrigAmnt - assCPayment;
+	assHalfP = assAmount * .5;
+	if (assAdvance >= assAmount || assAdvance > assHalfP) {
+	    assAmount = assAmount;
+	}
+	if (assOrigBal < assAmount) {
+	    assAmount = assOrigBal;
+	}
+    }else{
+	assBalance = assAmount - assCPayment;
+	assOrigBal = assOrigBal - assCPayment;
+	if (assAmount <= assCPayment) {
+	    assBalance = 0;
+	    assAdvance = assCPayment - assAmount;
+	    assHalfP = assAmount * .5;
+	    if (assAdvance >= assAmount || assAdvance > assHalfP) {
+		assAmount = assAmount;
+	    }else{
+		assAmount = assAmount - assAdvance;
+	    }
+	    
+	    if (assOrigBal < assAmount) {
+		assAmount = assOrigBal;
+	    }
+	}else{
+	    assBalance = assBalance;
+	}
+	//if (test) {
+	    
+	//}
+    }
+    //Note://unfinished computation
+    alert(assCPayment)
+    totalCurrentP = totalCurrentP + assCPayment;
+    $('#t_current_pymnt').val(totalCurrentP);
+    $('#assBalance'+id).html(assBalance);
+    $('#advanceP'+id).html(assAdvance);
+    console.log("assOriginal amnt:"+assOrigAmnt +" assOrigBal:"+assOrigBal +" assessment name: "+assName+" assAmount :"+assAmount +
+		" CURRENT PAYMENT :" +assCPayment +" assessment Balance: "+assBalance +" assessment Advance: "+assAdvance
+		);
     
    console.log("balance.."+assBalance);
     
