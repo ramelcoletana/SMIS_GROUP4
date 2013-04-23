@@ -28,7 +28,7 @@
             <br/>
             <div id='div_for_payment_data'>
              <div id=''></div>
-                <span id="date">DATE  : </span>&nbsp;&nbsp;<span id='date_now' style="color: #500000 s">00000-00-00 00:00:00</span>
+                <span id="date">DATE  : </span>&nbsp;&nbsp;<span id='date_now' style="color: #00FFFF">00000-00-00 00:00:00</span>
                 <br/><br/>
                    <div id="div_for_show_records">
                    
@@ -61,7 +61,8 @@
                             <th colspan=5>ASSESSMENT NO. : &nbsp;&nbsp;<span id="assessment_no">
                             </span>&nbsp;&nbsp;  MODE OF PAYMENT : &nbsp;&nbsp;<span id="mode_of_payment"></span>&nbsp;&nbsp;</th>
                         </tr>
-                        <tr>
+                        <tr> 
+                           
                             <th id="desc">DESCRIPTION</th>
                             <th id="assess">ASSESSMENT AMOUNT</th>
                             <th id="assbal">ASSESSMENT BAL.</th>
