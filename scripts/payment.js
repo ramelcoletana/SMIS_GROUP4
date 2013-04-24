@@ -28,6 +28,9 @@ $(document).ready(function(){
         searchStudent();
         $(this).attr('disabled', 'disabled');
     });
+    $('#btn_ass_payment_cancel').click(function(){
+	cancelAssPayment();
+    });
     
 });
 
@@ -115,13 +118,15 @@ function computeTotalCPayment(id){
         $('#c_payment'+id).val(resP);
     }
     
+    var enrollmentNo = $('#enrollment_no').val();
+    var studentNo = $('#student_id').val();
     var assAdvance = 0;
     var totalCurrentP = parseFloat($('#t_current_pymnt').val());
     var chckTC = $('#t_current_pymnt').val();
-    
     var assBalance = 0;
     var assHalfP = 0;
     var assessmentNo = $('#assessment_no').html();
+    var nextAssNo = parseFloat($('#assessment_no').html()) + 1;
     var assOrigBal = parseFloat($('#assOrigBal'+id).val());
     var assOrigAmnt = parseFloat($('#assOrigAmnt'+id).val());
     var assAmount = parseFloat($('#assAmnt'+id).html());
@@ -173,7 +178,28 @@ function computeTotalCPayment(id){
 	//}
     }
     //Note://unfinished computation
-    alert(assCPayment)
+    //alert(totalCurrentP +"-." +assCPayment)
+    //edit the assBal ,original bal, advance of the current payment
+    //edit the assBal, assessmentAmount, original balance of the next assessment
+    var obj = {"enrollmentNo": enrollmentNo, "studentNo": studentNo, "curAssNo": assessmentNo, "nextAssNo": nextAssNo,
+		"assName": assName,"origBal": assOrigBal, "assAmount": assAmount, "assAdvance": assAdvance, "assBalance": assBalance};
+		
+    $.ajax({
+	type: 'POST',
+	url: 'process/p_setupCurNextAss.php',
+	data: obj,
+	success: function(data){
+	    alert(data);
+	},
+	error: function(data){
+	    alert("error in setupCurNextAss => "+data);
+	}
+    });
+    /*Note:
+     *1.finish the computation of the total current payment
+     *2.get the temporary total amount of the current assessment
+     *3.Compute the amount tender
+     */
     totalCurrentP = totalCurrentP + assCPayment;
     $('#t_current_pymnt').val(totalCurrentP);
     $('#assBalance'+id).html(assBalance);
@@ -183,6 +209,28 @@ function computeTotalCPayment(id){
 		);
     
    console.log("balance.."+assBalance);
-    
-    
+}
+
+function cancelAssPayment() {
+    var curAssNo = $('#assessment_no').html();
+    var nextAssNo = parseFloat($('#assessment_no').html()) + 1;
+    var enrollmentNo = $('#enrollment_no').val();
+    var studentNo = $('#student_id').val();
+    var obj = {"enrollmentNo": enrollmentNo, "studentNo": studentNo, "curAssNo" : curAssNo, "nextAssNo": nextAssNo};
+    $.ajax({
+	type: 'POST',
+	url: 'process/p_cancelAssPayment.php',
+	data: obj,
+	success: function(data){
+	    $('#p_student_search').val("");
+	    searchStudent();
+	    $('#btn_p_search_stud').removeAttr('disabled');
+	    $('#assessment_no').html("");
+	    $('#mode_of_payment').html("");
+	    console.log(data+" from p_canelAssPayment.php");
+	},
+	error: function(data){
+	    console.log("error in cancelAssPayment.php =>"+data);
+	}
+    });
 }

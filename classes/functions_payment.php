@@ -64,15 +64,18 @@ include "connection.php";
 	    }
 	    
 	    //getting data from table tblallassessment and table tblamountPerAssessment
-	    $sql = "SELECT aa.fldId, aa.fldTransactionNo, aa.fldEnrollmentNo, aa.fldStudentNo, aa.fldAssessmentName, aa.fldOriginalAmount,
-	    aa.fldOriginalBalance, aa.fldAssessmentAmount, aa.fldAdvancedPayment,
-	    aa.fldAssessmentNo, aps.fldAssessmentAmount FROM tblallassessment AS aa, tblamountPerAssessment AS aps
-	    WHERE aa.fldAssessmentNo = $assNo AND aa.fldAssessmentAmount !=0 AND aa.fldEnrollmentNo = '$enrollmentNo' AND aa.fldStudentNo = '$studentNo' AND aps.fldEnrollmentNo = '$enrollmentNo'
-	    AND aps.fldStudentNo = '$studentNo' AND aa.fldAssessmentName = aps.fldAssessmentName AND aa.fldTransactionNo = aps.fldTransactionNo AND aa.fldStudentNo = aps.fldStudentNo ";
+	    $sql = "SELECT aa.fldId, aa.fldTransactionNo, aa.fldEnrollmentNo, aa.fldStudentNo, aa.fldAssessmentName,
+	    aa.fldOriginalAmount, aa.fldOriginalBalance, aa.fldAssessmentAmount, aa.fldAdvancedPayment, aa.fldAssessmentNo, aps.fldAssessmentAmount FROM tblallassessment AS aa, tblamountPerAssessment AS aps WHERE aa.fldAssessmentNo = $assNo AND aa.fldAssessmentAmount !=0
+	    AND aps.fldAssessmentAmount !=0 AND aa.fldTransactionNo = aps.fldTransactionNo AND aa.fldStudentNo = aps.fldStudentNo AND aa.fldEnrollmentNo = '$enrollmentNo' AND aa.fldStudentNo = '$studentNo' AND aa.fldAssessmentName = aps.fldAssessmentName
+	    AND aa.fldTransactionNo = aps.fldTransactionNo AND aa.fldStudentNo = aps.fldStudentNo";
+	   
 	    $result2 = mysql_query($sql, $con);
 	    //echo $sql;
 	    $notFound = true;
 	    while($row2 = mysql_fetch_array($result2)){
+		$transNo = $row2[1];$enrollNo = $row2[2];$studentNo = $row2[3];
+		$assName = $row2[4];$assOrigAmnt = $row2[5];$assOrigBal = $row2[6];
+		$assAdvance = $row2[8];$assNo = $row2[9];
 		
 		$assAmount = $row2[7];
 		if($assAmount > $row2[6]){
@@ -92,6 +95,11 @@ include "connection.php";
 		    <input type=hidden id=assOrigAmnt".$row2[0]." value=".$row2[5]." /></td>";
                 echo "<td><span id=advanceP".$row2[0].">0</span></td>";
                 echo "</tr>";
+		
+		$sqlInN = "INSERT INTO tblnextAssessment (fldTransactionNo,fldEnrollmentNo,fldStudentNo,fldAssessmentName,
+		fldOriginalAmount,fldOriginalBalance,fldAssessmentAmount,fldAdvancedPayment,fldAssessmentNo)
+		VALUES ('$transNo','$enrollNo','$studentNo','$assName',$assOrigAmnt,$assOrigBal,$assAmount,$assAdvance,$assNo + 1)";
+		mysql_query($sqlInN, $con);
 		$notFound = false;
 	    }
 	    if($notFound){
@@ -111,34 +119,28 @@ include "connection.php";
             echo $row[0];
         }
         
-        //NO BALANCE
-        function p_noadvanceAss($enrollmentNo,$studentNo,$autoId,$assName,$assessmentNo,$balance,$assOrigAmnt,$assCPayment){
-            $con = $this->openCon();
-            $balanceFromDB = 0;
-            $newBal = $assOrigAmnt - $assCPayment;
-			 
-            $sqlUpdate1 = "UPDATE tblassissment SET fldBalance = $newBal WHERE fldEnrollmentNo = '$enrollmentNo' AND fldStudentNum = '$studentNo' 
-        	AND fldAssessmentName = '$assName'";
-             mysql_query($sqlUpdate1,$con);
-        		 
-        		 
-            //close connection
-            $this->closeCon();
-        }
+	//SETUP CURRENT ASSESSMENT AND NEXT ASSESSMENT
+	function p_setupCurNextAss($enrollmentNo, $studentNo, $curAssNo, $nextAssNo, $assName, $origBal, $assAmount, $assAdvance, $assBalance){
+	    $con = $this->openCon();
+	    $sqlUAs = "UPDATE tblallassessment SET fldOriginalBalance = $origBal, fldAdvancedPayment = $assAdvance
+		WHERE fldEnrollmentNo = '$enrollmentNo' AND fldStudentNo = '$studentNo' AND fldAssessmentName = '$assName' AND fldAssessmentNo = $curAssNo";
+	    mysql_query($sqlUAs, $con);
+	    
+	    $sqlUNA = "UPDATE tblnextassessment SET fldOriginalBalance = $origBal, fldAssessmentAmount = $assAmount, fldAdvancedPayment = 0
+		WHERE fldEnrollmentNo = '$enrollmentNo' AND fldStudentNo = '$studentNo' AND fldAssessmentName = '$assName' AND fldAssessmentNo = $nextAssNo";
+	    mysql_query($sqlUNA, $this->openCon());
+	}
 	
-         function p_hasadvance($enrollmentNO,$studentNo,$autoId,$assName,$assessmentNo,$assBalance,$assAdvance,$assOrigAmnt,$assCPayment){
-             $con = $this->openCon();
-             $newBal = $assOrigAmnt - $assCPayment;
-
-             $sqlUpdate1 = "UPDATe tblallAssessment SET fldOriginalBalance = $newBal, fldfldAdvancedPayment = $assAdvance WHERE fldId = $autoId AND fldEnrollmentNO='$enrollmentNO'
-                            AND fldStudentNo='$studentNo'";
-                            echo $sqlUpdate1;
-             mysql_query($sqlUpdate1,$con);
-
-             //Note: 04/15/2013 11: 25 AM
-             //UNFINISHED..updating...
-         }
-        
+	//CANCEL CURRENT ASSESSMENT
+	function p_cancelAssPayment($enrollmentNo, $studentNo, $curAssNo, $nextAssNo){
+	    $sqlDCA = "DELETE FROM tblallAssessment WHERE fldEnrollmentNo = '$enrollmentNo' AND fldStudentNo = '$studentNo'
+		AND fldAssessmentNo = $curAssNo";
+	    mysql_query($sqlDCA, $this->openCon());
+	    
+	    $sqlDNA = "DELETE FROM tblnextAssessment WHERE fldEnrollmentNo = '$enrollmentNo' AND fldStudentNo = '$studentNo'
+		AND fldAssessmentNo = $nextAssNo";
+	    mysql_query($sqlDNA,$this->openCon());
+	}
         //delete all data from tblnextAssessment
         /*function p_deleteDNAss(){
             $sql = "DELETE FROM tblnextAssessment";
