@@ -24,6 +24,9 @@ $(document).ready(function(){
         }
     });*/
     //SEARCH STUDENT FOR ASSESSMENT
+    $('#amount_ten').keyup(function(){
+    computeChange(); 
+    });
     $('#btn_p_search_stud').click(function(){
         searchStudent();
         $(this).attr('disabled', 'disabled');
@@ -54,8 +57,9 @@ function searchStudent(){
         success: function(data){
             if(data==="notEnrolled"){
                 alert("This student id is not enrolled.");
-		$('#btn_p_search_stud').removeAttr('disabled');
+		        $('#btn_p_search_stud').removeAttr('disabled');
                 $('#tbody_for_tbl_assessment').html("<tr id='noAss'><td colspan=5>No assessment found!!!!</td></tr>");
+                $('#t_amount_ass').val(0);
             }else{
                 var objStudData = JSON.parse(data);
                 var studentId = objStudData.studentNo;
@@ -77,6 +81,17 @@ function searchStudent(){
 			//console.log(data);
                         document.getElementById('tbody_for_tbl_assessment').innerHTML=data;
                         //SET MODE OF PAYMENT
+                        var tbody = document.getElementById('tbody_for_tbl_assessment');
+                            var tr = tbody.getElementsByTagName('tr');
+                            var totalAssAmnt = 0;
+                            for(var ctr = 0; ctr<tr.length;ctr++){
+                                var tdVal = tr[ctr].getElementsByTagName('td')[1].getElementsByTagName('span')[0].innerHTML;
+                                var tp = parseFloat(tdVal);
+                                totalAssAmnt = totalAssAmnt + tp;
+                            }
+                            $('#t_amount_ass').val(totalAssAmnt);
+                            console.log(totalAssAmnt);
+
                         $.ajax({
                             type: 'POST',
                             url: 'process/p_setModePayment.php',
@@ -142,45 +157,38 @@ function computeTotalCPayment(id){
 	totalCurrentP = 0;
     }
     if (assCPayment > assOrigBal) {
-	alert("not valid amount..current paymnt should not exceed from the original balance : "+assOrigBal);
-	assCPayment = inputCPayment.substring(0, inputCPaymentLength - 1);
-	$('#c_payment'+id).val(assCPayment);
-	assAdvance = assCPayment - assAmount;
-	assOrigBal = assOrigAmnt - assCPayment;
-	assHalfP = assAmount * .5;
-	if (assAdvance >= assAmount || assAdvance > assHalfP) {
-	    assAmount = assAmount;
-	}
-	if (assOrigBal < assAmount) {
-	    assAmount = assOrigBal;
-	}
+    	alert("not valid amount..current paymnt should not exceed from the original balance : "+assOrigBal);
+    	assCPayment = inputCPayment.substring(0, inputCPaymentLength - 1);
+    	$('#c_payment'+id).val(assCPayment);
+    	assAdvance = assCPayment - assAmount;
+    	assOrigBal = assOrigAmnt - assCPayment;
+    	assHalfP = assAmount * .5;
+    	if (assAdvance >= assAmount || assAdvance > assHalfP) {
+    	    assAmount = assAmount;
+    	}
+    	if (assOrigBal < assAmount) {
+    	    assAmount = assOrigBal;
+    	}
     }else{
-	assBalance = assAmount - assCPayment;
-	assOrigBal = assOrigBal - assCPayment;
-	if (assAmount <= assCPayment) {
-	    assBalance = 0;
-	    assAdvance = assCPayment - assAmount;
-	    assHalfP = assAmount * .5;
-	    if (assAdvance >= assAmount || assAdvance > assHalfP) {
-		assAmount = assAmount;
-	    }else{
-		assAmount = assAmount - assAdvance;
-	    }
-	    
-	    if (assOrigBal < assAmount) {
-		assAmount = assOrigBal;
-	    }
-	}else{
-	    assBalance = assBalance;
-	}
-	//if (test) {
-	    
-	//}
+    	assBalance = assAmount - assCPayment;
+    	assOrigBal = assOrigBal - assCPayment;
+    	if (assAmount <= assCPayment) {
+    	    assBalance = 0;
+    	    assAdvance = assCPayment - assAmount;
+    	    assHalfP = assAmount * .5;
+    	    if (assAdvance >= assAmount || assAdvance > assHalfP) {
+    		assAmount = assAmount;
+    	    }else{
+    		assAmount = assAmount - assAdvance;
+    	    }
+    	    
+    	    if (assOrigBal < assAmount) {
+    		assAmount = assOrigBal;
+    	    }
+    	}else{
+    	    assBalance = assBalance;
+    	}
     }
-    //Note://unfinished computation
-    //alert(totalCurrentP +"-." +assCPayment)
-    //edit the assBal ,original bal, advance of the current payment
-    //edit the assBal, assessmentAmount, original balance of the next assessment
     var obj = {"enrollmentNo": enrollmentNo, "studentNo": studentNo, "curAssNo": assessmentNo, "nextAssNo": nextAssNo,
 		"assName": assName,"origBal": assOrigBal, "assAmount": assAmount, "assAdvance": assAdvance, "assBalance": assBalance};
 		
@@ -189,19 +197,31 @@ function computeTotalCPayment(id){
 	url: 'process/p_setupCurNextAss.php',
 	data: obj,
 	success: function(data){
-	    alert(data);
+	    //lert(data);
 	},
 	error: function(data){
 	    alert("error in setupCurNextAss => "+data);
 	}
     });
+    var tbody = document.getElementById('tbody_for_tbl_assessment');
+    var tr = tbody.getElementsByTagName('tr');
+    var totalCP = 0;
+    for(var ctr = 0; ctr<tr.length;ctr++){
+        var tdIn = tr[ctr].getElementsByTagName('td')[3].getElementsByTagName('input')[0].value;
+            if(tdIn === NaN || tdIn === "" || tdIn === null){
+                tdIn = 0;
+            }
+        var cp = parseFloat(tdIn);
+        totalCP = totalCP + cp;
+    }
+    console.log(totalCP);
+    $('#t_current_pymnt').val(totalCP);
     /*Note:
-     *1.finish the computation of the total current payment
+     *1.
      *2.get the temporary total amount of the current assessment
      *3.Compute the amount tender
      */
-    totalCurrentP = totalCurrentP + assCPayment;
-    $('#t_current_pymnt').val(totalCurrentP);
+    
     $('#assBalance'+id).html(assBalance);
     $('#advanceP'+id).html(assAdvance);
     console.log("assOriginal amnt:"+assOrigAmnt +" assOrigBal:"+assOrigBal +" assessment name: "+assName+" assAmount :"+assAmount +
@@ -209,6 +229,23 @@ function computeTotalCPayment(id){
 		);
     
    console.log("balance.."+assBalance);
+}
+
+//COMPUTE THE CHANGE
+function computeChange(){
+    var change = 0;
+    var ad = $('#amount_ten').val();
+    if(ad === NaN || ad === "" || ad === null){
+        ad = 0;
+    }
+    var amntTend = parseFloat(ad);
+    var tCP = parseFloat($('#t_current_pymnt').val());
+    if(amntTend >= tCP){
+        change = amntTend - tCP;
+    }else{
+        change = 0;
+    }
+    $('#change').val(parseFloat(change));
 }
 
 function cancelAssPayment() {
@@ -233,4 +270,8 @@ function cancelAssPayment() {
 	    console.log("error in cancelAssPayment.php =>"+data);
 	}
     });
+
+    /*
+    *Note: unfinished done assessment (last edited 04/24/2013 10:44:01 A.M)
+    */
 }

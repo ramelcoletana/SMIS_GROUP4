@@ -90,10 +90,9 @@ include "connection.php";
 		             <input type=hidden id=amntPerAss".$row2[0]." value = ".$row2[10]." /></td>";
                 echo "<td><span id=assAmnt".$row2[0].">".$assAmount."</span></td>";
                 echo "<td><span id=assBalance".$row2[0].">".$row2[7]."</span></td>";
-                echo "<td><input type='text' id=c_payment".$row2[0]." onkeyup = 'computeTotalCPayment(".$row2[0].")' />
-		    <input type=hidden id=assNum value=".$row2[9]." />
+                echo "<td><input type='text' id=c_payment".$row2[0]." onkeyup = 'computeTotalCPayment(".$row2[0].")' /></td>";
+                echo "<td><span id=advanceP".$row2[0].">0</span><input type=hidden id=assNum value=".$row2[9]." />
 		    <input type=hidden id=assOrigAmnt".$row2[0]." value=".$row2[5]." /></td>";
-                echo "<td><span id=advanceP".$row2[0].">0</span></td>";
                 echo "</tr>";
 		
 		$sqlInN = "INSERT INTO tblnextAssessment (fldTransactionNo,fldEnrollmentNo,fldStudentNo,fldAssessmentName,
@@ -130,7 +129,7 @@ include "connection.php";
 		WHERE fldEnrollmentNo = '$enrollmentNo' AND fldStudentNo = '$studentNo' AND fldAssessmentName = '$assName' AND fldAssessmentNo = $nextAssNo";
 	    mysql_query($sqlUNA, $this->openCon());
 	}
-	
+
 	//CANCEL CURRENT ASSESSMENT
 	function p_cancelAssPayment($enrollmentNo, $studentNo, $curAssNo, $nextAssNo){
 	    $sqlDCA = "DELETE FROM tblallAssessment WHERE fldEnrollmentNo = '$enrollmentNo' AND fldStudentNo = '$studentNo'
