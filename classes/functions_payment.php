@@ -86,8 +86,8 @@ include "connection.php";
 		
 		echo "<tr>";
                 echo "<td><span id=assName".$row2[0].">".$row2[4]."</span>
-		    <input type=hidden id=assOrigBal".$row2[0]." value = ".$row2[6]." />
-		    <input type=hidden id=amntPerAss".$row2[0]." value = ".$row2[10]." /></td>";
+		            <input type=hidden id=assOrigBal".$row2[0]." value = ".$row2[6]." />
+		             <input type=hidden id=amntPerAss".$row2[0]." value = ".$row2[10]." /></td>";
                 echo "<td><span id=assAmnt".$row2[0].">".$assAmount."</span></td>";
                 echo "<td><span id=assBalance".$row2[0].">".$row2[7]."</span></td>";
                 echo "<td><input type='text' id=c_payment".$row2[0]." onkeyup = 'computeTotalCPayment(".$row2[0].")' />
