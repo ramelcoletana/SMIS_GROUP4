@@ -1,12 +1,20 @@
 <?php
 include "connection.php";
      class payment extends DB_Connect{
-	//DELETE FROM ALL ASSESSMENT
-	function delAS(){
-	    $sql = "Delete from tblallassessment where fldAssessmentNo = 2";
-	    mysql_query($sql,$this->openCon());
-	}
-	
+		//DELETE FROM ALL ASSESSMENT
+		function delAS(){
+	    	$sql = "Delete from tblallassessment where fldAssessmentNo = 2";
+	   	 mysql_query($sql,$this->openCon());
+		}
+		//SET TRANSACTION NO
+		function p_setTransaction(){
+			$con = $this->openCon();
+			$sqlGTN = "SELECT max(fldId) FROM tblpaymentCashFlow";
+			$resTN = mysql_query($sqlGTN, $con);
+			$rowTN = mysql_fetch_array($resTN);
+			$TN = $rowTN[0] + 1;
+			echo $TN;
+		}
 	
         //SEARCHING STUDENT
         function p_search_student($student_id){
@@ -128,6 +136,37 @@ include "connection.php";
 	    $sqlUNA = "UPDATE tblnextassessment SET fldOriginalBalance = $origBal, fldAssessmentAmount = $assAmount, fldAdvancedPayment = 0
 		WHERE fldEnrollmentNo = '$enrollmentNo' AND fldStudentNo = '$studentNo' AND fldAssessmentName = '$assName' AND fldAssessmentNo = $nextAssNo";
 	    mysql_query($sqlUNA, $this->openCon());
+	}
+
+	//DONE PAYMENT OF ASSESSMENT
+	function p_doneAssPayment($transactionNo, $enrollmentNo, $studentNo, $totalCP, $amountT, $curAssNo, $today){
+		$con = $this->openCon();
+		$type = "Cash";
+
+		$sqlSCA = "SELECT fldAssessmentName, fldOriginalAmount, fldOriginalBalance FROM tblallAssessment
+		WHERE fldEnrollmentNo = '$enrollmentNo' AND fldStudentNo = '$studentNo' AND fldAssessmentNo = $curAssNo";
+		$res = mysql_query($sqlSCA, $con);
+		while($row1 = mysql_fetch_array($res)){
+			$assPaid = $row1[1] - $row1[2];
+			$assName = $row1[0];$assOrigAmount = $row1[1];$assOrigBal = $row1[2];
+			echo $assName."-assessment paid ".$assPaid ."- assOrigBal";
+			$sqlUA = "UPDATE tblassissment SET fldAssessmentPaid = $assPaid, fldBalance = $assOrigBal, 
+			fldAssessmentCounter = $curAssNo WHERE fldEnrollmentNo = '$enrollmentNo' AND fldStudentNum = '$studentNo'";
+			mysql_query($sqlUA, $con);
+
+		}
+
+		$sqlIPCF = "INSERT INTO tblpaymentCashFlow (fldTransactionNo, fldStudentNum, fldDate, 
+		fldTotalAmount, fldAmountTendered, fldType) VALUES ('$transactionNo', '$studentNo', '$today', $totalCP, $amountT,
+		'$type')";
+		mysql_query($sqlIPCF, $con);
+	}
+
+	function p_inToPBdown($transactionNo, $enrollmentNo, $studentNo, $assName, $amountP){
+		$sqlIPB = "INSERT INTO tblpaymentBreakdown (fldTransactionNo, fldStudentNum, fldFeeName, fldAmountPaid) 
+			VALUES ('$transactionNo','$studentNo', '$assName', $amountP)";
+			//echo $sqlIPB;
+			mysql_query($sqlIPB, $this->openCon());
 	}
 
 	//CANCEL CURRENT ASSESSMENT

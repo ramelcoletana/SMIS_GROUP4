@@ -1,7 +1,5 @@
 <?php
-
 include "../classes/functions_payment.php";
-$del = new payment();
-$del -> delAS();
-
+$set = new payment();
+$set -> p_setTransaction();
 ?>

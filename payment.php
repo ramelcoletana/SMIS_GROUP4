@@ -28,12 +28,13 @@
             <br/>
             <div id='div_for_payment_data'>
              <div id=''></div>
-                <span id="date">DATE  : </span>&nbsp;&nbsp;<span id='date_now' style="color: #500000 s">00000-00-00 00:00:00</span>
+                <span id="date">DATE  : </span>&nbsp;&nbsp;<span id='date_now' style="color: #500000 ">00000-00-00 00:00:00</span>
                 <br/><br/>
                    <div id="div_for_show_records">
                    
                         <label style="color: #00FFFF">STUDENT ID</label>
                             <input type="text" id='student_id' class='p_spn_right' readonly='readonly'/>
+                            <input type='hidden' id='transactionNo'/>
                         <br/>
                         <label style="color: #00FFFF">STUDENT NAME</label>
                             <input type="text" id='student_name' class='p_spn_right' readonly='readonly'/>
@@ -89,7 +90,7 @@
                     <div id="div_button_cancel_done">
                         <button id="btn_ass_payment_done" class="btn btn-medium btn-primary">DONE</button>
                         <button id="btn_ass_payment_cancel" class="btn btn-medium btn-default">CANCEL</button>
-                        <button id="btn_del_AS" class="btn btn-small btn-warning">XXXX</button>
+                        <button id="btn_new_AS" class="btn btn-small btn-success">NEW</button>
                     </div><!-- END div_button_cancel_done -->
                     
                 </div><!-- -->

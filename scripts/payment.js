@@ -1,28 +1,12 @@
 $(document).ready(function(){
+    $('#btn_ass_payment_done').removeAttr('disabled');
+    $('#btn_ass_payment_cancel').removeAttr('disabled');
+    $('#btn_new_AS').attr('disabled','disabled');
     $('#btn_p_search_stud').removeAttr('disabled');
-    $('#btn_del_AS').click(function(){
-	$.ajax({
-	   type: 'POST',
-	   url: 'process/delAS.php',
-	   success: function(data){
-		//alert(data);
-	   },
-	   error: function(data){
-		alert("error in deleting =>" +data);
-	   }
-	});
+    $('#btn_new_AS').click(function(){
+	   newPaymentAss();
     });
-    //delete from table assessment
-    /*$.ajax({
-        type: 'POST',
-        url: 'process/p_deleteDNAss.php',
-        success: function(data){
-            //alert(data);
-        },
-        error: function(data){
-            alert('error in deleting data from tblnextAssessment =>'+data);
-        }
-    });*/
+    setTransactionNo();
     //SEARCH STUDENT FOR ASSESSMENT
     $('#amount_ten').keyup(function(){
     computeChange(); 
@@ -31,6 +15,16 @@ $(document).ready(function(){
         searchStudent();
         $(this).attr('disabled', 'disabled');
     });
+
+    //done payment of assessment
+    $('#btn_ass_payment_done').click(function(){
+        var cf = confirm("Finish this assessment...\n\nAre you sure?");
+        if(cf){
+            doneAssPayment();
+        }
+        
+    });
+
     $('#btn_ass_payment_cancel').click(function(){
 	cancelAssPayment();
     });
@@ -38,6 +32,27 @@ $(document).ready(function(){
 });
 
 //=================================================F U N C T I O N S====================================================//
+//SET TRANSACTION NO
+function setTransactionNo(){
+    var year = new Date;
+    var curYear = year.getFullYear();
+    var nextYear = curYear + 1;
+    var tnformat = "TN-"+curYear+"-"+nextYear+"-";
+    $.ajax({
+        type: 'POST',
+        url: 'process/p_setTransaction.php',
+        success: function(data){
+            $('#transactionNo').val(tnformat+data);
+        },
+        error: function(data){
+            console.log("error in p_setTransactionNo.php => "+data);
+        }
+    });
+}
+//GET TRANSACTION NO
+function getTransactionNo(){
+    return $('#transactionNo').val();
+}
 //GET STUDENT ID
 function getStudentId(){
     return $('#p_student_search').val();
@@ -216,11 +231,6 @@ function computeTotalCPayment(id){
     }
     console.log(totalCP);
     $('#t_current_pymnt').val(totalCP);
-    /*Note:
-     *1.
-     *2.get the temporary total amount of the current assessment
-     *3.Compute the amount tender
-     */
     
     $('#assBalance'+id).html(assBalance);
     $('#advanceP'+id).html(assAdvance);
@@ -248,6 +258,63 @@ function computeChange(){
     $('#change').val(parseFloat(change));
 }
 
+//DONE PAYMENT OF ASSESSMENT
+function doneAssPayment(){
+    var d = new Date;
+    var today = d.getMonth() +"/"+d.getDate()+"/"+d.getFullYear();
+    var transactionNo = getTransactionNo();
+    var enrollmentNo = getEnrollmentNo();
+    var studentNo = getStudentId();
+    var totalCP = $('#t_current_pymnt').val();
+    var amountT = $('#amount_ten').val();
+    var curAssNo = $('#assessment_no').html();
+
+    var obj = {"transactionNo": transactionNo, "enrollmentNo": enrollmentNo, "studentNo": studentNo, 
+    "totalCP": totalCP, "amountT": amountT, "curAssNo": curAssNo, "today": today};
+    $.ajax({
+        type: 'POST',
+        url: 'process/p_doneAssPayment.php',
+        data: obj,
+        success: function(data){
+            console.log("from p_doneAssPayment.php "+data);
+        },
+        error: function(data){
+            console.log("error in p_doneAssPayment.php => "+data);
+        }
+    });
+
+    var tbody = document.getElementById('tbody_for_tbl_assessment');
+    var tr = tbody.getElementsByTagName('tr');
+    for(var ctr=0;ctr<tr.length;ctr++){
+        var assName = tr[ctr].getElementsByTagName('td')[0].getElementsByTagName('span')[0].innerHTML;
+        var amountP = tr[ctr].getElementsByTagName('td')[3].getElementsByTagName('input')[0].value;
+        if(amountP === NaN || amountP === "" || amountP === null){
+            amountP = 0;
+        }
+        //console.log(amountP);
+        var obj = {"transactionNo": transactionNo, "enrollmentNo": enrollmentNo, "studentNo": studentNo, "assName": assName, "amountP" : amountP};
+        $.ajax({
+            type: 'POST',
+            url: 'process/p_inToPBdown.php',
+            data: obj,
+            success: function(data){
+                console.log("from p_inToPBdown.php "+data);
+            },
+            error: function(data){
+                console.log("error in p_inToPBdown.php");
+            }
+        });
+        console.log("assessment name: "+assName+" amount paid: "+amountP);
+    }
+    /*
+    *Note: fix the Done assessment
+    */
+   // resetData();
+    //$('#btn_ass_payment_done').attr('disabled','disabled');
+    //$('#btn_new_AS').removeAttr('disabled');
+    //$('#btn_ass_payment_cancel').attr('disabled','disabled');
+}
+
 function cancelAssPayment() {
     var curAssNo = $('#assessment_no').html();
     var nextAssNo = parseFloat($('#assessment_no').html()) + 1;
@@ -270,8 +337,30 @@ function cancelAssPayment() {
 	    console.log("error in cancelAssPayment.php =>"+data);
 	}
     });
+    $('#btn_new_AS').attr('disabled','disabled');
+}
 
-    /*
-    *Note: unfinished done assessment (last edited 04/24/2013 10:44:01 A.M)
-    */
+function resetData(){
+    $('#p_student_searc').val("");
+    $('#student_id').val("");
+    $('#student_name').val("");
+    $('#enrollment_no').val("");
+    $('#grade_year_level').val("");
+    $('#assessment_no').html("");
+    $('#mode_of_payment').val("");
+    $('#t_amount_ass').val("");
+    $('#t_current_pymnt').val("");
+    $('#amount_ten').val("");
+    $('#change').val("");
+     searchStudent();
+}
+//NEW PAYMENT ASSESSMENT
+function newPaymentAss(){
+    //searchStudent();
+    $('#p_student_search').val("");
+    resetData();
+    $('#btn_new_AS').attr('disabled','disabled');
+    $('#btn_p_search_stud').removeAttr('disabled');
+    $('#btn_ass_payment_done').removeAttr('disabled');
+    $('#btn_ass_payment_cancel').removeAttr('disabled');
 }
