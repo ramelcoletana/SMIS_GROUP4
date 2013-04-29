@@ -99,4 +99,4 @@
         </div>
         <!-- /PAYEMENT WRAPPER/ -->
     </body>
-</htmL>
+</html>

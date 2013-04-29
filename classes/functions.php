@@ -64,7 +64,7 @@ class sqlfunction extends DB_Connect{
     
     function searchStudent($studentId){
         $con = $this->openCon();
-        $sql = "Select fldStudent_No,fldStud_FirstName,fldStud_MiddleName,fldStud_LastName,fldStudent_Status from tblstudentrecord 
+        $sql = "Select fldStudent_No,fldStud_FirstName,fldStud_MiddleName,fldStud_LastName,fldStudent_Status,fldProfile_Pic from tblstudentrecord 
 		where fldStudent_No='".$studentId."'";
 		$result = mysql_query($sql,$con);
 		$row = mysql_fetch_array($result);
@@ -78,6 +78,7 @@ class sqlfunction extends DB_Connect{
 		if($row[0]=="" || $row[0]==null){
 			echo "not_reg";
 		}else{
+            $_SESSION;
 			$json_data = array('studentId'=>$row[0],'firstname'=>$row[1],'middlename'=>$row[2],'lastname'=>$row[3],'balance'=>$balance);
 			$json_string = json_encode($json_data);
 			echo $json_string;

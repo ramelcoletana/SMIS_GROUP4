@@ -188,10 +188,5 @@ include "connection.php";
 		AND fldAssessmentNo = $nextAssNo";
 	    mysql_query($sqlDNA,$this->openCon());
 	}
-        //delete all data from tblnextAssessment
-        /*function p_deleteDNAss(){
-            $sql = "DELETE FROM tblnextAssessment";
-            mysql_query($sql, $this->openCon());
-        }*/
      }
 ?>

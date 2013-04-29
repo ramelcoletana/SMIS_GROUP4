@@ -31,7 +31,15 @@
                 <div id='div-primary-info'>
                     <div id='div-float-left'>
                         <div id='div-for-pic'>
+                            <div class="div-image">
+                                <img src="
+                                    <?php
+                                        echo "images/default-user-image.gif";
+                                    ?>
 
+                                "/>
+                            </div>
+                            <a class="label_change_pic">&nbsp;&nbsp;<i class="icon-pencil"></i>&nbsp;&nbsp;Change Picture</a>
                         </div><!-- end div-for-pic -->
                         <br/><br/>
                         &nbsp;<label class='labelForStudId'>STUDENT ID NO.:</label><br/>&nbsp;&nbsp;<small id='studentId'></small>

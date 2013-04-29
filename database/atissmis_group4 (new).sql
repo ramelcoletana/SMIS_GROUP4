@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 29, 2013 at 12:22 PM
+-- Generation Time: Apr 29, 2013 at 03:17 PM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.1
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `tblallassessment` (
   `fldAssessmentNo` int(11) NOT NULL,
   PRIMARY KEY (`fldId`),
   UNIQUE KEY `fldId` (`fldId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1642 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1650 ;
 
 --
 -- Dumping data for table `tblallassessment`
@@ -86,7 +86,15 @@ INSERT INTO `tblallassessment` (`fldId`, `fldTransactionNo`, `fldEnrollmentNo`, 
 (1638, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Books', 1000, 409, 100, 0, 10),
 (1639, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'BSP/GSP', 50, 15, 5, 0, 10),
 (1640, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Laboratory', 1000, 700, 100, 0, 10),
-(1641, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Graduation fee', 500, 400, 50, 0, 10);
+(1641, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Graduation fee', 500, 400, 50, 0, 10),
+(1642, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Graduation fee', 500, 350, 50, 0, 11),
+(1643, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Laboratory', 1000, 600, 100, 0, 11),
+(1644, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'BSP/GSP', 50, 10, 5, 0, 11),
+(1645, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Books', 1000, 309, 100, 0, 11),
+(1646, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Graduation fee', 500, 350, 50, 0, 12),
+(1647, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Laboratory', 1000, 600, 100, 0, 12),
+(1648, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'BSP/GSP', 50, 10, 5, 0, 12),
+(1649, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Books', 1000, 309, 100, 0, 12);
 
 -- --------------------------------------------------------
 
@@ -178,10 +186,10 @@ CREATE TABLE IF NOT EXISTS `tblassissment` (
 
 INSERT INTO `tblassissment` (`fldId`, `fldTransactionNo`, `fldEnrollmentNo`, `fldStudentNum`, `fldAssessmentName`, `fldOriginalAmount`, `fldAssessmentPaid`, `fldBalance`, `fldAdvancedPayment`, `fldAssessmentCounter`, `fldModeOfPayment`) VALUES
 (1045, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Entrance', 2000, 2000, 0, 0, 2, 'Monthly'),
-(1046, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Books', 1000, 591, 409, 0, 10, 'Monthly'),
-(1047, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'BSP/GSP', 50, 35, 15, 0, 10, 'Monthly'),
-(1048, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Laboratory', 1000, 300, 700, 0, 10, 'Monthly'),
-(1050, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Graduation fee', 500, 100, 400, 0, 10, 'Monthly');
+(1046, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Books', 1000, 691, 309, 0, 11, 'Monthly'),
+(1047, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'BSP/GSP', 50, 40, 10, 0, 11, 'Monthly'),
+(1048, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Laboratory', 1000, 400, 600, 0, 11, 'Monthly'),
+(1050, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Graduation fee', 500, 150, 350, 0, 11, 'Monthly');
 
 -- --------------------------------------------------------
 
@@ -270,17 +278,21 @@ CREATE TABLE IF NOT EXISTS `tblnextassessment` (
   `fldAdvancedPayment` double NOT NULL,
   `fldAssessmentNo` int(11) NOT NULL,
   PRIMARY KEY (`fldId`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=708 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=716 ;
 
 --
 -- Dumping data for table `tblnextassessment`
 --
 
 INSERT INTO `tblnextassessment` (`fldId`, `fldTransactionNo`, `fldEnrollmentNo`, `fldStudentNo`, `fldAssessmentName`, `fldOriginalAmount`, `fldOriginalBalance`, `fldAssessmentAmount`, `fldAdvancedPayment`, `fldAssessmentNo`) VALUES
-(707, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Graduation fee', 500, 400, 50, 0, 11),
-(706, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Laboratory', 1000, 700, 100, 0, 11),
-(705, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'BSP/GSP', 50, 15, 5, 0, 11),
-(704, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Books', 1000, 409, 100, 0, 11);
+(708, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Graduation fee', 500, 350, 50, 0, 12),
+(709, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Laboratory', 1000, 600, 100, 0, 12),
+(710, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'BSP/GSP', 50, 10, 5, 0, 12),
+(711, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Books', 1000, 309, 100, 0, 12),
+(715, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Books', 1000, 309, 100, 0, 13),
+(714, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'BSP/GSP', 50, 10, 5, 0, 13),
+(713, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Laboratory', 1000, 600, 100, 0, 13),
+(712, 'TN-2013-2014-1', 'EN-2013-2014-1', '2013-0003', 'Graduation fee', 500, 350, 50, 0, 13);
 
 -- --------------------------------------------------------
 
@@ -295,7 +307,7 @@ CREATE TABLE IF NOT EXISTS `tblpaymentbreakdown` (
   `fldFeeName` varchar(100) NOT NULL,
   `fldAmountPaid` double NOT NULL,
   PRIMARY KEY (`fldId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=316 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=320 ;
 
 --
 -- Dumping data for table `tblpaymentbreakdown`
@@ -347,7 +359,11 @@ INSERT INTO `tblpaymentbreakdown` (`fldId`, `fldTransactionNo`, `fldStudentNum`,
 (312, 'TN-2013-2014-67', '2013-0003', 'Books', 100),
 (313, 'TN-2013-2014-67', '2013-0003', 'Laboratory', 100),
 (314, 'TN-2013-2014-67', '2013-0003', 'BSP/GSP', 5),
-(315, 'TN-2013-2014-67', '2013-0003', 'Graduation fee', 50);
+(315, 'TN-2013-2014-67', '2013-0003', 'Graduation fee', 50),
+(316, 'TN-2013-2014-69', '2013-0003', 'Graduation fee', 50),
+(317, 'TN-2013-2014-69', '2013-0003', 'Laboratory', 100),
+(318, 'TN-2013-2014-69', '2013-0003', 'Books', 100),
+(319, 'TN-2013-2014-69', '2013-0003', 'BSP/GSP', 5);
 
 -- --------------------------------------------------------
 
@@ -364,7 +380,7 @@ CREATE TABLE IF NOT EXISTS `tblpaymentcashflow` (
   `fldAmountTendered` double NOT NULL,
   `fldType` varchar(20) NOT NULL,
   PRIMARY KEY (`fldId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=69 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=70 ;
 
 --
 -- Dumping data for table `tblpaymentcashflow`
@@ -381,7 +397,8 @@ INSERT INTO `tblpaymentcashflow` (`fldId`, `fldTransactionNo`, `fldStudentNum`, 
 (65, 'TN-2013-2014-65', '2013-0003', '3/29/2013', 255, 255, 'Cash'),
 (66, 'TN-2013-2014-66', '2013-0003', '3/29/2013', 255, 255, 'Cash'),
 (67, 'TN-2013-2014-67', '2013-0003', '3/29/2013', 255, 255, 'Cash'),
-(68, 'TN-2013-2014-67', '2013-0003', '3/29/2013', 255, 255, 'Cash');
+(68, 'TN-2013-2014-67', '2013-0003', '3/29/2013', 255, 255, 'Cash'),
+(69, 'TN-2013-2014-69', '2013-0003', '3/29/2013', 255, 255, 'Cash');
 
 -- --------------------------------------------------------
 
@@ -408,17 +425,17 @@ CREATE TABLE IF NOT EXISTS `tblstudentrecord` (
   `fldDate_Created` varchar(100) NOT NULL,
   `fldBy_Whom` varchar(100) NOT NULL,
   `fldStudent_Status` varchar(100) NOT NULL,
-  PRIMARY KEY (`fldID`),
-  UNIQUE KEY `fldStudent_No` (`fldStudent_No`)
+  `fldProfile_Pic` varchar(255) NOT NULL,
+  PRIMARY KEY (`fldID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `tblstudentrecord`
 --
 
-INSERT INTO `tblstudentrecord` (`fldID`, `fldStudent_No`, `fldStud_FirstName`, `fldStud_MiddleName`, `fldStud_LastName`, `fldBirthDate`, `fldBirthPlace`, `fldGender`, `fldAddress`, `fldZipCode`, `fldContact_No`, `fldSY_Entered`, `fldGrade_Year_Lvl_Entered`, `fldGeneral_Average`, `fldParent_Guardian`, `fldDate_Created`, `fldBy_Whom`, `fldStudent_Status`) VALUES
-(1, '2013-0003', 'Ramel', 'Relampagos', 'Coletana', '1996-04-23', 'Merida, Leyte', 'male', 'Capasanan, San Isidro, Merida,Leyte', '6540', '09091289827', '2013-2014', 'First Year', 65, 'Ramonito Colitana', '2013-01-23', 'Ramel Coletana', 'enrolled'),
-(2, '1000', 'dfdfdfd', 'dfd', 'dfdd', '0000-00-00', '', '', '', '', '', '', '', 0, '', '', '', '');
+INSERT INTO `tblstudentrecord` (`fldID`, `fldStudent_No`, `fldStud_FirstName`, `fldStud_MiddleName`, `fldStud_LastName`, `fldBirthDate`, `fldBirthPlace`, `fldGender`, `fldAddress`, `fldZipCode`, `fldContact_No`, `fldSY_Entered`, `fldGrade_Year_Lvl_Entered`, `fldGeneral_Average`, `fldParent_Guardian`, `fldDate_Created`, `fldBy_Whom`, `fldStudent_Status`, `fldProfile_Pic`) VALUES
+(1, '2013-0003', 'Ramel', 'Relampagos', 'Coletana', '1996-04-23', 'Merida, Leyte', 'male', 'Capasanan, San Isidro, Merida,Leyte', '6540', '09091289827', '2013-2014', 'First Year', 65, 'Ramonito Colitana', '2013-01-23', 'Ramel Coletana', 'enrolled', ''),
+(2, '', 'dfdfdfd', 'dfd', 'dfdd', '0000-00-00', '', '', '', '', '', '', '', 0, '', '', '', '', '');
 
 -- --------------------------------------------------------
 
