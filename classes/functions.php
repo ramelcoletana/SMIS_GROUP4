@@ -392,6 +392,7 @@ class sqlfunction extends DB_Connect{
         $adviser = "WA PA";
         $sql3 = "INSERT INTO tblenrolldata (fld_Enrollment_Id,fld_Student_Num,fld_School_Year,fld_Grade_Year_Level,fld_Section,fld_Adviser) 
             VALUES ('$enrollmentNo','$studentNo','$schoolYear','$grade_Year','$section','$adviser')";
+        
         mysql_query($sql3,$this->openCon());
        
 

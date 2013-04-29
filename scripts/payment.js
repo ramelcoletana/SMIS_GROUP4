@@ -71,7 +71,7 @@ function searchStudent(){
         data: obj,
         success: function(data){
             if(data==="notEnrolled"){
-                alert("This student id is not enrolled.");
+                //alert("This student id is not enrolled.");
 		        $('#btn_p_search_stud').removeAttr('disabled');
                 $('#tbody_for_tbl_assessment').html("<tr id='noAss'><td colspan=5>No assessment found!!!!</td></tr>");
                 $('#t_amount_ass').val(0);
@@ -268,51 +268,63 @@ function doneAssPayment(){
     var totalCP = $('#t_current_pymnt').val();
     var amountT = $('#amount_ten').val();
     var curAssNo = $('#assessment_no').html();
-
-    var obj = {"transactionNo": transactionNo, "enrollmentNo": enrollmentNo, "studentNo": studentNo, 
-    "totalCP": totalCP, "amountT": amountT, "curAssNo": curAssNo, "today": today};
-    $.ajax({
-        type: 'POST',
-        url: 'process/p_doneAssPayment.php',
-        data: obj,
-        success: function(data){
-            console.log("from p_doneAssPayment.php "+data);
-        },
-        error: function(data){
-            console.log("error in p_doneAssPayment.php => "+data);
-        }
-    });
-
-    var tbody = document.getElementById('tbody_for_tbl_assessment');
-    var tr = tbody.getElementsByTagName('tr');
-    for(var ctr=0;ctr<tr.length;ctr++){
-        var assName = tr[ctr].getElementsByTagName('td')[0].getElementsByTagName('span')[0].innerHTML;
-        var amountP = tr[ctr].getElementsByTagName('td')[3].getElementsByTagName('input')[0].value;
-        if(amountP === NaN || amountP === "" || amountP === null){
-            amountP = 0;
-        }
-        //console.log(amountP);
-        var obj = {"transactionNo": transactionNo, "enrollmentNo": enrollmentNo, "studentNo": studentNo, "assName": assName, "amountP" : amountP};
+    if(transactionNo === "" || transactionNo === null || enrollmentNo === "" || enrollmentNo === null
+    || studentNo === "" || studentNo === null){
+        alert("OPZ!!!INVALID ASSESSMENT...");
+    }else if(parseFloat(amountT) < parseFloat(curAssNo)){
+        alert("The system found out that the amount tendered is less than the total curent payment!! Change the amount tendered!!");
+    }else{
+        var obj = {"transactionNo": transactionNo, "enrollmentNo": enrollmentNo, "studentNo": studentNo, 
+        "totalCP": totalCP, "amountT": amountT, "curAssNo": curAssNo, "today": today};
         $.ajax({
             type: 'POST',
-            url: 'process/p_inToPBdown.php',
+            url: 'process/p_doneAssPayment.php',
             data: obj,
             success: function(data){
-                console.log("from p_inToPBdown.php "+data);
+                console.log("from p_doneAssPayment.php "+data);
             },
             error: function(data){
-                console.log("error in p_inToPBdown.php");
+                console.log("error in p_doneAssPayment.php => "+data);
             }
         });
-        console.log("assessment name: "+assName+" amount paid: "+amountP);
+
+        var tbody = document.getElementById('tbody_for_tbl_assessment');
+        var tr = tbody.getElementsByTagName('tr');
+        for(var ctr=0;ctr<tr.length;ctr++){
+            var assName = tr[ctr].getElementsByTagName('td')[0].getElementsByTagName('span')[0].innerHTML;
+            var amountP = tr[ctr].getElementsByTagName('td')[3].getElementsByTagName('input')[0].value;
+            if(amountP === NaN || amountP === "" || amountP === null){
+                amountP = 0;
+            }
+            //console.log(amountP);
+            var obj = {"transactionNo": transactionNo, "enrollmentNo": enrollmentNo, "studentNo": studentNo, "assName": assName, "amountP" : amountP};
+            $.ajax({
+                type: 'POST',
+                url: 'process/p_inToPBdown.php',
+                data: obj,
+                success: function(data){
+                    console.log("from p_inToPBdown.php "+data);
+                },
+                error: function(data){
+                    console.log("error in p_inToPBdown.php");
+                }
+            });
+            $('#btn_ass_payment_cancel').attr('disabled','disabled');
+            $('#btn_new_AS').removeAttr('disabled');
+            $('#btn_ass_payment_done').attr('disabled','disabled');
+            //$('#p_student_search').val("");
+            //$('#student_id').val("");
+           // $('#student_name').val("");
+            //$('#enrollment_no').val("");
+            //$('#grade_year_level').val("");
+            //$('#assessment_no').html("");
+           // $('#mode_of_payment').val("");
+            //$('#t_amount_ass').val("");
+            //$('#t_current_pymnt').val("");
+            //$('#amount_ten').val("");
+            //$('#change').val("");
+        }
     }
-    /*
-    *Note: fix the Done assessment
-    */
-   // resetData();
-    //$('#btn_ass_payment_done').attr('disabled','disabled');
-    //$('#btn_new_AS').removeAttr('disabled');
-    //$('#btn_ass_payment_cancel').attr('disabled','disabled');
 }
 
 function cancelAssPayment() {
@@ -327,11 +339,13 @@ function cancelAssPayment() {
 	data: obj,
 	success: function(data){
 	    $('#p_student_search').val("");
-	    searchStudent();
+	    //searchStudent();
+        resetData();
 	    $('#btn_p_search_stud').removeAttr('disabled');
 	    $('#assessment_no').html("");
 	    $('#mode_of_payment').html("");
 	    console.log(data+" from p_canelAssPayment.php");
+        resetData();
 	},
 	error: function(data){
 	    console.log("error in cancelAssPayment.php =>"+data);
@@ -352,7 +366,8 @@ function resetData(){
     $('#t_current_pymnt').val("");
     $('#amount_ten').val("");
     $('#change').val("");
-     searchStudent();
+    $('#tbody_for_tbl_assessment').html("");
+     //searchStudent();
 }
 //NEW PAYMENT ASSESSMENT
 function newPaymentAss(){
