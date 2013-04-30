@@ -1,7 +1,8 @@
 <?php
     include "classes/functions.php";
     $_SESSION['studentt_id'];
-    echo $_SESSION['student_id'];
+
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,9 +16,9 @@
         <link rel='stylesheet' type='text/css' href='css/assessment.css'/>
         <link rel='stylesheet' type='text/css' href='themes/base/jquery.ui.all.css'/>
 
-        <script  src="scripts/jquery-1.8.2.min.js"></script>
+        <script  src="scripts/jquery.min.js"></script>
         <script src="js-ui/jquery-ui-darkhive.js"></script>
-        <!--script type="text/javascript" src="bootstrap/js/bootstrap.js"></script-->
+        <script type="text/javascript" src="scripts/file_uploads.js"></script>
         <script src="scripts/assessmnt.js"></script>
     </head>
     <body>
@@ -286,13 +287,20 @@
             </div>
         </div><!-- end div-assessment-wrapper -->
         <div class="div-overlay-upload-wrapp">
-            <div class="div-overlay-upload-cont">
-                <form enctype='multipart/form-data' id='form_upload' action="" method="POST">
-                    <label>Upload File</label>
-                    <input type='file' name='image_up'/>
-                    <input type='submit' value='upload' id='upload'/>
-                </form>
-            </div><!-- end div-overlay-upload-cont -->
+            <div id='photo_upload_status' align='center'>
+
+            </div>
+            <center>
+            <div style="width: 350px; margin-left: 20px;" align="center">
+            <form id="form_upload_pic" method="post" enctype="multipart/form-data" action="javascript:void(0);" autocomplete="off">
+            <div class='browse_label' align="left">Browse Photo</div>
+            <div class='attach_file_wrapp' align="left">
+            <div class='attach_file'><input type='file' name='photo_upload' id='photo_upload'/></div>
+            <input type='hidden' name='h_student_id' id='h_student_id' />
+            </div><br clear="all">
+            </form>
+            </div>
+            </center>
         </div><!-- end div-overlay-upload-wrapp -->
     </body>
 </html>

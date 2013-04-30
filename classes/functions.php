@@ -93,6 +93,19 @@ class sqlfunction extends DB_Connect{
         return $row[0];
     }
 
+    /*CHECK IF THERE IS A PROFILE PIC*/
+    function check($image_name, $student_id){
+        //$sqlC = "SELECT fldProfile_Pic FROM tblstudentrecord WHERE fldStudent_No = '$student_id'";
+        //$res = mysql_query($sqlC, $this->openCon());
+        //$row = mysql_fetch_array($res);
+        //if($row[0] == "" || $row[0] == null)
+        //{
+            //$sqlI = "";
+        //}
+        $sqlU = "UPDATE tblstudentrecord SET fldProfile_Pic = '$image_name' WHERE fldStudent_No = '$student_id'";
+        mysql_query($sqlU,$this->openCon());
+    }
+
     /*SETTING ENROLLMENT NO.*/
     function setEnrollmentNo(){
          $sql = "SELECT MAX(fldId) from tblenrolldata";

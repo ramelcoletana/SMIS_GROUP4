@@ -70,7 +70,23 @@ $(document).ready(function(){
             alert("hi");
         }
     });
+    $('#photo_upload').live('change', function(){
+        $('#form_upload_pic').vPB({
+            url: 'process/file_upload.php',
+            beforeSubmit: function()
+            {
+                $('#photo_upload_status').show();
+                $('#photo_upload_status').html('');
+                $('#photo_upload_status').html('<div style="font-family: Verdana, Geneva, sans-serif; font-size:12px; color:black;" align="center">Upload <img src="images/loadings.gif" align="absmiddle" alt="Upload...." title="Upload...."/></div><br clear="all">');
+            },
+            success:function(response)
+            {
+                $('#photo_upload_status').hide().fadeIn('slow').html(response);
+            }
+        }).submit();
+    });
     //end (change profile picture)//
+
     //===============================choose what department================================//
     $('#radioElemDept').click(function(){
         $('#grade').removeAttr('disabled');
@@ -392,6 +408,7 @@ function getEnrollmentNo(){
 }
 //SEARCH STUDENTS
 function searchStudent(studentId){
+    $('#h_student_id').val(studentId);
     var obj = {'studentId':studentId};
     $.ajax({
         type: 'POST',
@@ -424,8 +441,10 @@ function searchStudent(studentId){
                 if(profilepic === "" || profilepic === null){
                     $('.div-image').html("<img src=images/default-user-image.gif />");
                 }else{
-                    $('.div-image').html("<img src="+profilepic+ " />");
+                    $('.div-image').html("<img src=upload_pic/"+profilepic+ " />");
                 }
+
+                //create a function that will get only the profile pic of the student
             }
         },
         error: function(data){
