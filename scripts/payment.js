@@ -93,7 +93,7 @@ function searchStudent(){
                     url: 'process/p_getCurrentAssessment.php',
                     data: obj2,
                     success: function(data){
-			//console.log(data);
+			console.log(data);
                         document.getElementById('tbody_for_tbl_assessment').innerHTML=data;
                         //SET MODE OF PAYMENT
                         var tbody = document.getElementById('tbody_for_tbl_assessment');

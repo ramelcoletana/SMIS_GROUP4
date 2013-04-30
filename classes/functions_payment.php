@@ -73,10 +73,9 @@ include "connection.php";
 		    
 		    //getting data from table tblallassessment and table tblamountPerAssessment
 		    $sql = "SELECT aa.fldId, aa.fldTransactionNo, aa.fldEnrollmentNo, aa.fldStudentNo, aa.fldAssessmentName,
-		    aa.fldOriginalAmount, aa.fldOriginalBalance, aa.fldAssessmentAmount, aa.fldAdvancedPayment, aa.fldAssessmentNo, aps.fldAssessmentAmount FROM tblallassessment AS aa, tblamountPerAssessment AS aps WHERE aa.fldAssessmentNo = $assNo AND aa.fldAssessmentAmount !=0
+		    aa.fldOriginalAmount, aa.fldOriginalBalance, aa.fldAssessmentAmount, aa.fldAdvancedPayment, aa.fldAssessmentNo, aps.fldAssessmentAmount FROM tblallassessment AS aa, tblamountperassessment AS aps WHERE aa.fldAssessmentNo = $assNo AND aa.fldAssessmentAmount !=0
 		    AND aps.fldAssessmentAmount !=0 AND aa.fldTransactionNo = aps.fldTransactionNo AND aa.fldStudentNo = aps.fldStudentNo AND aa.fldEnrollmentNo = '$enrollmentNo' AND aa.fldStudentNo = '$studentNo' AND aa.fldAssessmentName = aps.fldAssessmentName
 		    AND aa.fldTransactionNo = aps.fldTransactionNo AND aa.fldStudentNo = aps.fldStudentNo";
-		   
 		    $result2 = mysql_query($sql, $con);
 		    //echo $sql;
 		    $notFound = true;

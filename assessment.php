@@ -1,6 +1,6 @@
 <?php
     include "classes/functions.php";
-    $_SESSION['studentt_id'];
+    //$_SESSION['student_id'];
 
     
 ?>
