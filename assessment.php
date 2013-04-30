@@ -1,3 +1,8 @@
+<?php
+    include "classes/functions.php";
+    $_SESSION['studentt_id'];
+    echo $_SESSION['student_id'];
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,24 +27,18 @@
                     <span class='span-alert-msg'></span>
                 </div>
             </div><!-- end div-overlay-alert-msg -->
-            
-            <div id='div-search'>
-                <input type='text' name='searchStudId' id='searchStudId' class='input-small'/><button id='btn-search-stud' class='btn btn-medium btn-primary'>Search</button>
-            </div>
+                <div id='div-search'>
+                    <input type='text' name='searchStudId' id='searchStudId' class='input-small'/><button id='btn-search-stud' class='btn btn-medium btn-primary'>Search</button>
+                </div>
             
             <div id='div-stud-info'>
                 <div id='div-primary-info'>
                     <div id='div-float-left'>
                         <div id='div-for-pic'>
                             <div class="div-image">
-                                <img src="
-                                    <?php
-                                        echo "images/default-user-image.gif";
-                                    ?>
 
-                                "/>
-                            </div>
-                            <a class="label_change_pic">&nbsp;&nbsp;<i class="icon-pencil"></i>&nbsp;&nbsp;Change Picture</a>
+                            </div><!-- end div-ima -->
+                            <span id = "label_change_pic">&nbsp;&nbsp;<i class="icon-pencil"></i>&nbsp;&nbsp;Change Picture</span>
                         </div><!-- end div-for-pic -->
                         <br/><br/>
                         &nbsp;<label class='labelForStudId'>STUDENT ID NO.:</label><br/>&nbsp;&nbsp;<small id='studentId'></small>
@@ -286,5 +285,14 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='labelData'>Do you want to proceed?</span>
             </div>
         </div><!-- end div-assessment-wrapper -->
+        <div class="div-overlay-upload-wrapp">
+            <div class="div-overlay-upload-cont">
+                <form enctype='multipart/form-data' id='form_upload' action="" method="POST">
+                    <label>Upload File</label>
+                    <input type='file' name='image_up'/>
+                    <input type='submit' value='upload' id='upload'/>
+                </form>
+            </div><!-- end div-overlay-upload-cont -->
+        </div><!-- end div-overlay-upload-wrapp -->
     </body>
 </html>

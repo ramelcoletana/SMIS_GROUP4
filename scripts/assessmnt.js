@@ -3,6 +3,8 @@
  * and open the template in the editor.
  */
 $(document).ready(function(){
+    //$('#label_change_pic').removeClass('label_change_pic');
+    $('.div-image').html("<img src=images/default-user-image.gif />");
     $('#grade').attr('disabled','disabled');
     $('#yrLevel').attr('disabled','disabled');
 
@@ -50,7 +52,7 @@ $(document).ready(function(){
         $('#radioFullPaymnt').attr('disabled','disabled');
         $('#radioSemestralPaymnt').attr('disabled','disabled');
         $('#radioMonthlyPaymnt').attr('disabled','disabled');
-        //
+        
         hideSubjectsForm();
         hideFullPaymentFormTF();
         hideMSPaymentFormTF();
@@ -59,7 +61,16 @@ $(document).ready(function(){
         
     });
     //==================================end search student=================================//
-    
+
+    //change profile picture//
+    $('#label_change_pic').click(function(){
+        if(getStudentId() === "" || getStudentId() === null){
+            //alert("hi");
+        }else{
+            alert("hi");
+        }
+    });
+    //end (change profile picture)//
     //===============================choose what department================================//
     $('#radioElemDept').click(function(){
         $('#grade').removeAttr('disabled');
@@ -381,7 +392,6 @@ function getEnrollmentNo(){
 }
 //SEARCH STUDENTS
 function searchStudent(studentId){
-
     var obj = {'studentId':studentId};
     $.ajax({
         type: 'POST',
@@ -394,6 +404,7 @@ function searchStudent(studentId){
                 $('#div-overlay-alert-msg').show().fadeIn(2000);
                 $('#div-overlay-alert-msg').show().fadeOut(5000);
             }else{
+                $('#label_change_pic').addClass('label_change_pic');
                 var objStudData = JSON.parse(data);
 
                 var studentId = objStudData.studentId;
@@ -401,6 +412,7 @@ function searchStudent(studentId){
                 var mName = objStudData.middlename;
                 var lName = objStudData.lastname;
                 var balance = objStudData.balance;
+                var profilepic = objStudData.profilepic;
                 if(balance===0 || balance==="" || balance===null){
                     balance = 0;
                 }
@@ -409,6 +421,11 @@ function searchStudent(studentId){
                 $('#studentName').html(name);
                 $('#recentBal').val(balance);
                 $('#btn-sub-fees').removeAttr('disabled');
+                if(profilepic === "" || profilepic === null){
+                    $('.div-image').html("<img src=images/default-user-image.gif />");
+                }else{
+                    $('.div-image').html("<img src="+profilepic+ " />");
+                }
             }
         },
         error: function(data){

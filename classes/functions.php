@@ -78,12 +78,19 @@ class sqlfunction extends DB_Connect{
 		if($row[0]=="" || $row[0]==null){
 			echo "not_reg";
 		}else{
-            $_SESSION;
-			$json_data = array('studentId'=>$row[0],'firstname'=>$row[1],'middlename'=>$row[2],'lastname'=>$row[3],'balance'=>$balance);
+			$json_data = array('studentId'=>$row[0],'firstname'=>$row[1],'middlename'=>$row[2],'lastname'=>$row[3],'balance'=>$balance,'profilepic'=>$row[5]);
 			$json_string = json_encode($json_data);
 			echo $json_string;
 		}
        	$this->closeCon();
+    }
+
+    /*GET THE PROFILE PICTURE*/
+    function get_profile_pic($student_id){
+        $sql = "SELECT fldProfile_Pic FROM tblstudentrecord WHERE fldStudent_No = '$student_id'";
+        $result = mysql_query($sql, $this->openCon());
+        $row = mysql_fetch_array($result);
+        return $row[0];
     }
 
     /*SETTING ENROLLMENT NO.*/
