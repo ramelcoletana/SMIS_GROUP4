@@ -27,8 +27,6 @@
                         if(move_uploaded_file($_FILES['photo_upload']['tmp_name'], $upload_location.$actual_image_name))
                         {
                             //Run your SQL Query here to insert the new image file named $actual_image_name if you deem it necessary
-                            echo $actual_image_name;
-                            echo $_SESSION['student_id'];
 
                             $save = new sqlfunction();
                             $save->check($actual_image_name, $_SESSION['student_id']);

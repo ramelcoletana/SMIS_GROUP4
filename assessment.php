@@ -29,18 +29,20 @@
                 </div>
             </div><!-- end div-overlay-alert-msg -->
                 <div id='div-search'>
-                    <input type='text' name='searchStudId' id='searchStudId' class='input-small'/><button id='btn-search-stud' class='btn btn-medium btn-primary'>Search</button>
+                    <div id='control-search'>
+                        <input type='text' name='searchStudId' id='searchStudId' /><button id='btn-search-stud' class='btn btn- medium btn-primary'>Search</button>
+                    </div>
                 </div>
             
             <div id='div-stud-info'>
                 <div id='div-primary-info'>
-                    <div id='div-float-left'>
-                        <div id='div-for-pic'>
-                            <div class="div-image">
+                     <div id='div-for-pic'>
+                        <div class="div-image">
 
-                            </div><!-- end div-ima -->
-                            <span id = "label_change_pic">&nbsp;&nbsp;<i class="icon-pencil"></i>&nbsp;&nbsp;Change Picture</span>
-                        </div><!-- end div-for-pic -->
+                        </div><!-- end div-image -->
+                        <span id = "label_change_pic">&nbsp;&nbsp;<i class="icon-pencil"></i>&nbsp;&nbsp;Change Picture</span>
+                    </div><!-- end div-for-pic -->
+                    <div id='div-float-left'>
                         <br/><br/>
                         &nbsp;<label class='labelForStudId'>STUDENT ID NO.:</label><br/>&nbsp;&nbsp;<small id='studentId'></small>
                             <br/>
@@ -286,21 +288,26 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='labelData'>Do you want to proceed?</span>
             </div>
         </div><!-- end div-assessment-wrapper -->
-        <div class="div-overlay-upload-wrapp">
+        <div class='div-overlay-upload-wrapp'>
+        <div class="div-overlay-upload">
             <div id='photo_upload_status' align='center'>
 
+            </div>
+            <div id='close_upload'>
+                <i class='icon-remove'></i>
             </div>
             <center>
             <div style="width: 350px; margin-left: 20px;" align="center">
             <form id="form_upload_pic" method="post" enctype="multipart/form-data" action="javascript:void(0);" autocomplete="off">
-            <div class='browse_label' align="left">Browse Photo</div>
-            <div class='attach_file_wrapp' align="left">
-            <div class='attach_file'><input type='file' name='photo_upload' id='photo_upload'/></div>
-            <input type='hidden' name='h_student_id' id='h_student_id' />
-            </div><br clear="all">
+                <div class='browse_label' align="left">Browse Photo</div>
+                <div class='attach_file_wrapp' align="left">
+                    <div class='attach_file'><input type='file' name='photo_upload' id='photo_upload'/></div>
+                    <input type='hidden' name='h_student_id' id='h_student_id' />
+                </div><br clear="all">
             </form>
             </div>
             </center>
-        </div><!-- end div-overlay-upload-wrapp -->
+        </div><!-- end div-overlay-upload -->
+        </div><!-- end div-overlay-upload-wrapp-->
     </body>
 </html>

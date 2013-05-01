@@ -93,6 +93,13 @@ class sqlfunction extends DB_Connect{
         return $row[0];
     }
 
+    function setProfilePic($student_id){
+        $sql = "SELECT fldProfile_Pic FROM tblstudentrecord WHERE fldStudent_No = '$student_id'";
+        $result = mysql_query($sql, $this->openCon());
+        $row = mysql_fetch_array($result);
+        echo $row[0];
+    }
+
     /*CHECK IF THERE IS A PROFILE PIC*/
     function check($image_name, $student_id){
         //$sqlC = "SELECT fldProfile_Pic FROM tblstudentrecord WHERE fldStudent_No = '$student_id'";

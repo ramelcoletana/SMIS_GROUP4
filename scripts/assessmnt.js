@@ -4,7 +4,7 @@
  */
 $(document).ready(function(){
     //$('#label_change_pic').removeClass('label_change_pic');
-    $('.div-image').html("<img src=images/default-user-image.gif />");
+    $('.div-image').html("<img src=upload_pic/default-user-image.jpg />");
     $('#grade').attr('disabled','disabled');
     $('#yrLevel').attr('disabled','disabled');
 
@@ -67,7 +67,7 @@ $(document).ready(function(){
         if(getStudentId() === "" || getStudentId() === null){
             //alert("hi");
         }else{
-            alert("hi");
+            $('.div-overlay-upload-wrapp').show();
         }
     });
     $('#photo_upload').live('change', function(){
@@ -82,8 +82,13 @@ $(document).ready(function(){
             success:function(response)
             {
                 $('#photo_upload_status').hide().fadeIn('slow').html(response);
+                setProfilePic();
+                $('.div-overlay-upload-wrapp').hide().fadeOut('slow');
             }
         }).submit();
+    });
+    $('#close_upload').click(function(){
+        $('.div-overlay-upload-wrapp').hide();
     });
     //end (change profile picture)//
 
@@ -418,9 +423,9 @@ function searchStudent(studentId){
             
             if(data==="not_reg"){
                 $('.span-alert-msg').html("STUDENT ID YOU'VE ENTERED IS NOT REGISTERED!");
-                $('#div-overlay-alert-msg').show().fadeIn(2000);
-                $('#div-overlay-alert-msg').show().fadeOut(5000);
+                $('#div-overlay-alert-msg').show();
             }else{
+                $('#div-overlay-alert-msg').hide();
                 $('#label_change_pic').addClass('label_change_pic');
                 var objStudData = JSON.parse(data);
 
@@ -439,7 +444,7 @@ function searchStudent(studentId){
                 $('#recentBal').val(balance);
                 $('#btn-sub-fees').removeAttr('disabled');
                 if(profilepic === "" || profilepic === null){
-                    $('.div-image').html("<img src=images/default-user-image.gif />");
+                    $('.div-image').html("<img src=upload_pic/default-user-image.jpg />");
                 }else{
                     $('.div-image').html("<img src=upload_pic/"+profilepic+ " />");
                 }
@@ -449,6 +454,29 @@ function searchStudent(studentId){
         },
         error: function(data){
             alert('error in searcing student ->'+data);
+        }
+    });
+}
+
+//SET PROFILE PICTURE
+function setProfilePic(){
+    var student_id = getStudentId();
+    var obj = {"student_id":student_id};
+    $.ajax({
+        type: 'POST',
+        data: obj,
+        url: 'process/setProfilePic.php',
+        success: function(data){
+            console.log(data);
+            var profilepic = data;
+            if(profilepic === "" || profilepic === null){
+                    $('.div-image').html("<img src=upload_pic/default-user-image.jpg />");
+                }else{
+                    $('.div-image').html("<img src=upload_pic/"+profilepic+ " />");
+                }
+        },
+        error: function(data){
+            console.log("error in setting profile pic -..-"+data);
         }
     });
 }
@@ -466,7 +494,7 @@ function setEnrollmentNo(){
             $('#enrollmntId').val(enrollmentNo);
         },
         error: function(data){
-            alert('error setting enrollment no->'+data);
+            console.log('error setting enrollment no->'+data);
         }
     });
 }
@@ -482,7 +510,7 @@ function setTransactionNo(){
             $('#transactionNo').val(transactionNo);
         },
         error: function(data){
-            alert("error while setting transaction no. please check your code-->"+data);
+            console.log("error while setting transaction no. please check your code-->"+data);
         }
     });
 }
