@@ -1,0 +1,338 @@
+commit 6c894283c1294aa832caa23e55a1b5d70f9c6fd8
+Author: daylin <delacruz2_daylin@yahoo.com>
+Date:   Tue May 7 09:42:32 2013 +0800
+
+    Changing some files
+
+commit eafa68a95559b80fc8274e1d606a21853d9aebbf
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Tue Apr 30 17:01:17 2013 -0800
+
+    Finished changing profile pic in assessment
+
+commit b18a7bf5d4827fed87073d99b8b2d6c0fa76bc7e
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Tue Apr 30 12:26:28 2013 -0800
+
+    Update assessment (Changing profile pic)
+
+commit 58fb17b520caa3429d9634e860bdb32ca56d9ee8
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Mon Apr 29 17:14:35 2013 -0800
+
+    Update assessment (Changing profile pic)
+
+commit 32e93f126f0e7bde4efa65fb0c7e324b2c3a1ac2
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Mon Apr 29 14:20:41 2013 -0800
+
+    Updated assessmenta
+
+commit 736cb9b372c887c2ef8aa13c311cc314513d6f9a
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Mon Apr 29 11:26:56 2013 -0800
+
+    Adding the latest database
+
+commit 46b0275f0eff8ca7011c21a606d0bdc570e4b93b
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Mon Apr 29 10:22:48 2013 -0800
+
+    Finished functionality of payment feature
+
+commit 25dc903df0baa7eb64aa4f3faf790d1b0accb542
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Wed Apr 24 17:09:25 2013 -0800
+
+    Updated payment feature (Done assessment)
+
+commit b02f40a3c905d897def62cdaa69d590481a2cb5c
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Wed Apr 24 10:47:17 2013 -0800
+
+    Updated payment functionalities
+
+commit 95435c84b1f5ef5540f578088a5dab70a592513e
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Tue Apr 23 16:49:52 2013 -0800
+
+    Adding .idea to .gitignore
+
+commit c8e759e4a7e131f80b77241755efe1903ec7f817
+Merge: 3885c01 403a44e
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Tue Apr 23 16:30:14 2013 -0800
+
+    Merge branch 'master' of http://git.e2ps.org/ramzsweet16/group4_smis
+
+commit 3885c01378beeba314ee4d860bb35c0c17449daf
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Tue Apr 23 16:27:59 2013 -0800
+
+    Updated payment feature
+
+commit a17cf7bad5f189bf3f352ea89857243535a51282
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Tue Apr 23 10:51:09 2013 -0800
+
+    Updated payment.php
+
+commit 403a44ef57b95314d9bc59fd74c1b18990e08288
+Author: ucads <jhon_cads@yahoo.com>
+Date:   Tue Apr 23 15:06:32 2013 +1000
+
+    Own eddited
+
+commit 3172c9affec552448525174059e6baa1d7426fee
+Merge: 92a88db 11e8743
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Mon Apr 22 17:08:17 2013 -0800
+
+    Merge branch 'master' of http://git.e2ps.org/ramzsweet16/group4_smis
+
+commit 92a88db4a7644a0fdb349fee99f8d654875fa805
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Mon Apr 22 17:01:55 2013 -0800
+
+    Updated payment feature (unfinished)
+
+commit a67df9026d76522335903d7b5f8d1ec6bc74b906
+Merge: 7a06e1b f42c0e8
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Mon Apr 22 13:28:56 2013 -0800
+
+    Merge branch 'master' of http://git.e2ps.org/ramzsweet16/group4_smis
+
+commit 7a06e1bfc5912a26d7faa0a953fd27646f751a3f
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Mon Apr 22 13:28:09 2013 -0800
+
+    Updated payment
+
+commit eda4398a52a1434cf6903cedc0ff37ece3659c3d
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Mon Apr 22 11:50:31 2013 -0800
+
+    Updated payment.js, functions_payment.php, functions.php
+
+commit 11e8743667d602130031e3e684cac5398f5979b9
+Author: weelDao <weelDaw@gmail.com>
+Date:   Mon Apr 22 11:28:07 2013 +0800
+
+    Edited payment.php and payment.css
+
+commit 01849dd5aa5f271cbc24976ac98a96a269189b83
+Author: weelDao <weelDaw@gmail.com>
+Date:   Mon Apr 22 10:19:09 2013 +0800
+
+    Edited payment.php & css
+
+commit f42c0e862192bd1207b62f4068b1c05f4273046a
+Author: weelDao <weelDaw@gmail.com>
+Date:   Mon Apr 22 08:05:42 2013 +0800
+
+    Edited in peyement.css
+
+commit 1d3d5c67249500397b5120616b09b2cb198755e6
+Merge: 4c51d5e 8050545
+Author: ucads <jhon_cads@yahoo.com>
+Date:   Mon Apr 22 10:03:02 2013 +1000
+
+    Merge branch 'master' of http://git.e2ps.org/ramzsweet16/group4_smis
+
+commit 805054546304c267d3b1080a8075cf319d434fd2
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Mon Apr 22 09:49:24 2013 -0800
+
+    Fixed errors on assessment.php
+
+commit 4c51d5e9f30f859d622f85878c53813b8a0f0791
+Author: ucads <jhon_cads@yahoo.com>
+Date:   Mon Apr 22 09:56:59 2013 +1000
+
+    Edit something on payment.css
+
+commit 97819dbc9d8248711bb3e355dd24f6e9c24cf33d
+Author: weelDao <weelDaw@gmail.com>
+Date:   Mon Apr 22 05:44:34 2013 +0800
+
+    Edit in payment.css and in payment.php
+
+commit 7319d560dc621fe9b0037f7f276e8fbacb76d3c3
+Merge: f10d3bf 1d3d5c6
+Author: weelDao <weelDaw@gmail.com>
+Date:   Mon Apr 22 05:06:30 2013 +0800
+
+    Merge branch 'master' of http://git.e2ps.org/ramzsweet16/group4_smis
+
+commit f10d3bfa5b9309525315c4b3add0841c63e3fd3b
+Author: weelDao <weelDaw@gmail.com>
+Date:   Mon Apr 22 05:05:20 2013 +0800
+
+    my commit
+
+commit 10e1595a101efb5941a879a09ef3011725a41b04
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Sat Apr 20 16:30:27 2013 +0800
+
+    Fix errors for processs.p_hasadvance.php
+
+commit 95f641ec52bda54e026f72c7cc3da4fb3bc26510
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Sat Apr 20 15:22:29 2013 +0800
+
+    Update functions_payment
+
+commit eb96b5d374578e45fcb5005aa1628eb1ebfca818
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Sat Apr 20 14:44:45 2013 +0800
+
+    Fix some errors
+
+commit cd0482af1fb2a67ab6a7860009d9388032e94546
+Author: ucads <jhon_cads@yahoo.com>
+Date:   Wed Apr 17 17:07:35 2013 +1000
+
+    Eddited
+
+commit 1095a54c84f743f45fe0911e209a557ff85839f0
+Merge: 4146e6d fac311f
+Author: ucads <jhon_cads@yahoo.com>
+Date:   Wed Apr 17 17:00:54 2013 +1000
+
+    Merge branch 'master' of http://gitlab.icotpict.org:1024/ramzsweet16/group4_smis
+
+commit fac311f4e82df382e2daa78cfff28cab0d9fcfab
+Merge: 73087db c1e68d5
+Author: Ruel Costob <weelDaw@gmail.com>
+Date:   Wed Apr 17 16:47:05 2013 +0800
+
+    Ruel's editted on payments.css
+
+commit 73087db0f5fc2d74e5d96fde11d567427c090a10
+Author: Ruel Costob <weelDaw@gmail.com>
+Date:   Wed Apr 17 16:37:45 2013 +0800
+
+    Ruel editted payment.css
+
+commit 4146e6d688fff2d87f8b76721e6878db42fc4793
+Author: ucads <jhon_cads@yahoo.com>
+Date:   Wed Apr 17 16:59:07 2013 +1000
+
+    Getting file that was eddited by ruel
+
+commit c1e68d527a7b8d22a03ca54dab03bcc80798c5c9
+Author: ucads <jhon_cads@yahoo.com>
+Date:   Wed Apr 17 16:43:18 2013 +1000
+
+    Edit of payment data
+
+commit 421071c3777127189541db6586e63c7e6f6d21e6
+Author: ucads <jhon_cads@yahoo.com>
+Date:   Wed Apr 17 14:57:05 2013 +1000
+
+    Add new file
+
+commit ee621ef5d538308b316a223983be810388520e5f
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Wed Apr 17 14:57:45 2013 -0800
+
+    Edit on line 130
+
+commit b9fb152a4fcedf069c245c2099a4b033531c6f8c
+Author: ucads <jhon_cads@yahoo.com>
+Date:   Wed Apr 17 14:42:53 2013 +1000
+
+    edit something
+
+commit f504e84cd287b0cf8bceb6f136dfd77d9f06ae6f
+Author: lemuelnuevarez <lemuel@yahoo.com>
+Date:   Wed Apr 17 12:34:35 2013 +0800
+
+    remove my name
+
+commit 7c1a8e281f3aa67ef8bc53eca7c3a6fbae5b3d28
+Author: ucads <jhon_cads@yahoo.com>
+Date:   Wed Apr 17 14:27:51 2013 +1000
+
+    Adding my name
+
+commit 1e27ea8cb4b59c30c198f63b460dcbc3dbc223f1
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Wed Apr 17 14:21:36 2013 -0800
+
+    Remove third line
+
+commit 23fd598b6113170c5c983fbae33423a6f58e940a
+Author: Ruel Costob <weelDaw@gmail.com>
+Date:   Wed Apr 17 14:06:53 2013 +0800
+
+    Deleting 1st two lines
+
+commit 865c70af0cb6c02cc059263ea929b5bb27e4f836
+Author: Ruel Costob <weelDaw@gmail.com>
+Date:   Wed Apr 17 14:02:27 2013 +0800
+
+    Adding Lemuel and Mary Joy's name
+
+commit b5bc8fd416a2d9913bf28e19cf8f60128069881a
+Author: Ruel Costob <weelDaw@gmail.com>
+Date:   Wed Apr 17 13:46:24 2013 +0800
+
+    Adding ate jinky's name
+
+commit 0bbb1c62688379b9d201d75556bfd0f849444ef5
+Author: Ruel Costob <weelDaw@gmail.com>
+Date:   Wed Apr 17 11:28:31 2013 +0800
+
+    Adding my name to README.txt
+
+commit 40a6748de20631b0ed0843bf6d677a55a1fd7920
+Author: regie cadayong <jhon_cads@yahoo.com>
+Date:   Wed Apr 17 11:13:42 2013 +1000
+
+    Adding .gitignore file
+
+commit 7f76ac66b58cb458bdec0a83a2938f082ea4b726
+Merge: ae3b540 aebbf17
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Wed Apr 17 09:40:13 2013 -0800
+
+    Pushing files to the server;
+
+commit ae3b54068d8a68c6538551aadf230e75abb4bb37
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Tue Apr 16 17:48:19 2013 -0800
+
+    Update bookmarks
+
+commit face5e4f12292d2eb97cbfb1a24c265add26a07c
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Tue Apr 16 17:40:46 2013 -0800
+
+    Adding my name to README.txt
+
+commit 14a8263429870e7bcfbb9a0c26d75117793b4fee
+Merge: 222646c 4e781a2
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Tue Apr 16 17:34:31 2013 -0800
+
+    Merge branch 'master' of https://github.com/ramzsweet16/SMIS_GROUP4
+
+commit 222646c8cdf8e92c1551c56a89cdcd5e4a1bafc1
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Tue Apr 16 16:49:51 2013 -0800
+
+    First commit lates files
+
+commit 4e781a29826eabc704cdc82442be9cbc6a0ce5d0
+Author: ramzsweet16 <ramzsweet16@gmail.com>
+Date:   Tue Apr 16 01:44:32 2013 -0700
+
+    Initial commit
+
+commit aebbf17b2ff1bff9270d7153bc356d3daa6a08b2
+Author: Ramel Coletana <ramzsweet16@gmail.com>
+Date:   Wed Apr 10 14:25:12 2013 -0800
+
+    PROJECT_SMIS_GROUP4

@@ -16,7 +16,7 @@
         <script src="scripts/payment.js"></script>
     </head>
     
-    <body>
+    <body><br />
   
         <div id='div_payment_wrapper'>
                 <h2><p>PAYMENT FORM MANAGEMENT</p></h2>    
@@ -28,7 +28,7 @@
             <br/>
             <div id='div_for_payment_data'>
              <div id=''></div>
-                <span id="date">DATE  : </span>&nbsp;&nbsp;<span id='date_now' style="color: #500000 ">00000-00-00 00:00:00</span>
+                <span id="date">DATE  : </span>&nbsp;&nbsp;<span id='date_now' style="color: #00FFFF ">00000-00-00 00:00:00</span>
                 <br/><br/>
                    <div id="div_for_show_records">
                    
@@ -50,19 +50,20 @@
             </div>
             <br/>
             <!-- /PAYMENT DATAS/ -->
-            
+	      <hr style="background: red">
+             <div id='div_alert_msg_p'>
+                    <!--<span class="ui-icon ui-icon-notice" style="float: left; margin: 0 7px 20px 0;"></span>-->
+                 <span id='alert_msg_p'>Note: The existed amount of your current payment is automatically saved to advance payment.</span>
+             </div><!-- end div-alert-msg-F -->
+	      <hr style="background: red">
             <div id='div_assessment_data'>
-                <div id='div_alert_msg_p'>
-                    <span class="ui-icon ui-icon-notice" style="float: left; margin: 0 7px 20px 0;"></span>
-                 <span id='alert_msg_p'>Note: The exist amount your current payment is automatically saved to advance payment.</span>
-                </div><!-- end div-alert-msg-F -->
-                <table id='tbl_for_assessment'>
+                <table id='tbl_for_assessment' style="border-color:black">
                     <thead>
                         <tr id="assPay">
                             <th colspan=5>ASSESSMENT NO. : &nbsp;&nbsp;<span id="assessment_no">
                             </span>&nbsp;&nbsp;  MODE OF PAYMENT : &nbsp;&nbsp;<span id="mode_of_payment"></span>&nbsp;&nbsp;</th>
                         </tr>
-                        <tr>
+                        <tr id="des">
                             <th id="desc">DESCRIPTION</th>
                             <th id="assess">ASSESSMENT AMOUNT</th>
                             <th id="assbal">ASSESSMENT BAL.</th>
@@ -76,27 +77,31 @@
                 </table><!-- END tbl_for_assessment -->
                 <div id="div_bottom_cash_payment">
                     <br/>
-                    <label >TOTAL AMOUNT FOR THIS Ass. : </label><input type="text" id="t_amount_ass"/>
-                    <p>
-                    <label id="tcp">TOTAL CURRENT PAYMENT : </label><input type="text" id="t_current_pymnt"/>
-                    <p>
-                    <div id="div_cash_tendered">
-                        <label>AMOUNT TENDER : </label><input type="text" id="amount_ten"/>
-                        <p>
-                        <label id="change2">CHANGE : </label><input type="text" id="change" />
-                        <p>
-                    </div>
-                    
+		    <br />
+                    <label style="color: #00FFFF" id="label_1" class="label_1">&nbsp;&nbsp;&nbsp;TOTAL AMOUNT :
+			&nbsp;&nbsp;&nbsp;<input type="text" id="payment"/> </label>
+           		 
+                    <label style="color: #00FFFF" id="tcp" class="label_1">&nbsp;&nbsp;&nbsp;TOTAL CURRENT : 
+			&nbsp;<input type="text" id="payment" class="payment_2"/></label>
+                    <!--div  id="div_cash_tendered"-->
+                        <label style="color: #00FFFF" class="label_1">&nbsp;&nbsp;&nbsp;AMOUNT TENDER :
+			<input type="text" id="payment" class="payment_2"/> </label>
+               		
+                        <label style="color: #00FFFF" id="change2" class="label_1">CHANGE : 
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="payment" /></label>
+              		
+                    <!--/div-->
+                   </div> 
                     <div id="div_button_cancel_done">
                         <button id="btn_ass_payment_done" class="btn btn-medium btn-primary">DONE</button>
                         <button id="btn_ass_payment_cancel" class="btn btn-medium btn-default">CANCEL</button>
                         <button id="btn_new_AS" class="btn btn-small btn-success">NEW</button>
                     </div><!-- END div_button_cancel_done -->
-                    
-                </div><!-- -->
+                 
+                <!-- -->
             </div>
             <!-- /ASSESSMENT DATA/ -->
-        </div>
+        </div><br />
         <!-- /PAYEMENT WRAPPER/ -->
     </body>
 </html>
