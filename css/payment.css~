@@ -4,12 +4,10 @@
     border: 1px solid silver;
     width: 800px;
     margin: 0 auto;
-    background-color: #ccc;
+    background-color: #D8E9ED;
     font-family: arial,monospace,serif,sans-serif;
-    box-shadow: 6px 4px 5px 5px #505050   ;
+    box-shadow: 6px 4px 5px 5px lightgray   ;
 }
-
-
 
 /*-------------------------------------EDITED BY: REGIE CADAYONG---------------------------------------------------*/
 #div_search input[type="text"]{
@@ -28,10 +26,11 @@
 /*-------------------------------------EDITED BY: REGIE CADAYONG-----------------------------------------------------*/
 h2{
     text-align: center;
-    background: black;
+    background: lightskyblue;
     margin-top: -4px;
     color: white;
     border-radius-top-left: 20%;
+    text-shadow: 5px 5px 5px tangelo;
 }
 #div_for_payment_data{
    /*border: 1px solid silver;*/
@@ -106,18 +105,20 @@ h2{
     border: 1px solid silver;
 }
 #alert_msg_p:hover{
-    color:black;
+    color:black ;
+    
 }
 #alert_msg_p{
     font-size: 15px;
-    color: #00ff00;
+    color:#00ff00;
     font-weight: bold;
+    
 }
 
  /*-------------  Ruel's eddtited    date: 13/04/17   ------------ */
 
 #assPay{background-color:	#484848 ;font-family:Arial sans-serif;font-size:20px;color:red;}
-#desc{background-color:	#00CCCC;color:blue; border-left: 2px solid black}
+#desc{background-color:	#00CCCC;color:blue;}
 #assess{background-color:	#00CCCC ;color:green;}
 #assbal{background-color:#00CCCC;color:blue;}
 #payhere{background-color:#00CCCC;color:green;}
