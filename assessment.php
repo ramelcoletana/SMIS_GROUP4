@@ -23,14 +23,14 @@
     </head>
     <body>
         <div id='div-assessment-wrapper'>
-            <div id='div-overlay-alert-msg'>
+            <div class="alert alert-error" id="div-overlay-alert-msg">
                 <div id='div-alert-msg-content'>
                     <span class='span-alert-msg'></span>
                 </div>
             </div><!-- end div-overlay-alert-msg -->
                 <div id='div-search'>
                     <div id='control-search'>
-                        <input type='text' name='searchStudId' id='searchStudId' /><button id='btn-search-stud' class='btn btn- medium btn-primary'>Search</button>
+                        <input type='text' name='searchStudId' id='searchStudId' placeholder="ENTER STUDENT ID HERE" required><button id='btn-search-stud' class='btn btn- medium btn-primary'>Search</button>
                     </div>
                 </div>
             
@@ -43,10 +43,16 @@
                         <span id = "label_change_pic">&nbsp;&nbsp;<i class="icon-pencil"></i>&nbsp;&nbsp;Change Picture</span>
                     </div><!-- end div-for-pic -->
                     <div id='div-float-left'>
-                        <br/><br/>
-                        &nbsp;<label class='labelForStudId'>STUDENT ID NO.:</label><br/>&nbsp;&nbsp;<small id='studentId'></small>
+                        <div class="control-group">
+                            <label class="control-label">STUDENT ID NO.:</label>
+                            <div class="controls">
+                                <span class="label label-info" id='studentId'></span>
+                            </div>
+                        </div>
+                        <!--br/><br/>
+                        &nbsp;<label class='labelForStudId'>STUDENT ID NO.:</label><br/>&nbsp;&nbsp;<small id='studentId'></small-->
                             <br/>
-                            &nbsp;<small id='studentName'/></small><br/>
+                            &nbsp;<small id='studentName'  /></small><br/>
                             &nbsp;<small class='studNameLabel'>FIRST NAME</small>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small class='studNameLabel'>MIDDLE NAME</small>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small class='studNameLabel'>LAST NAME</small>
@@ -260,8 +266,8 @@
             </div><!-- end div-btn-done-cancel -->
             
             
-            <div id="dialog-confirm" title="Do you want to proceed?">
-                <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Are you sure?</p>
+            <div id="dialog-confirm" title="Proceed....">
+                <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Proceed to subjects..<br/>Are you sure?</p>
             </div><!-- end dialog-confirm -->
             <div id="dialog-cancel-ass" title='Cancel this transaction..'>
                 <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>All saved data in this transaction will permanently deleted. Continue anyway?</p>

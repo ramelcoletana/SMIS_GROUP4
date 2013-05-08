@@ -85,6 +85,7 @@ $(document).ready(function(){
                 $('#photo_upload_status').hide().fadeIn('slow').html(response);
                 console.log(response);
                 setProfilePic();
+                //problem in uploading file
                 $('.div-overlay-upload-wrapp').hide().fadeOut('slow');
             }
         }).submit();
@@ -198,15 +199,14 @@ $(document).ready(function(){
             resizable: false,
             height: 140,
             modal: true,
-            position: [290,200],
             buttons:{
-                "Proceed to subjects":function(){
+                Yes:function(){
                     saveDataFullPayment();
                     $('#btn-sub-next').removeAttr('disabled');
                     $('#btn-sub-back').removeAttr('disabled');
                     $(this).dialog("close");
                 },
-                 Cancel: function(){
+                 No: function(){
                     $(this).dialog("close");
                  }
             }
@@ -229,13 +229,12 @@ $(document).ready(function(){
            resizable: false,
            height: 140,
            modal: true,
-           position: [240,200],
            buttons:{
-               "Proceed to subjects?":function(){
+               Yes:function(){
                    paymentMSProcess();
                    $(this).dialog("close");
                },
-               Cancel: function(){
+               No: function(){
                    $(this).dialog("close");
                }
            }
@@ -298,9 +297,8 @@ $(document).ready(function(){
                 resizable: false,
                 height: 140,
                 modal: true,
-                position: [290,200],
                 buttons: {
-                    "Yes": function(){
+                    Yes: function(){
                         hideSubjectsForm();
                         deleteCurrentFullPayment();
                         deleteTemporySubjects();
@@ -310,7 +308,7 @@ $(document).ready(function(){
                         $('#btn-sub-next').removeAttr('disabled');
                         $(this).dialog("close");
                     },
-                    "No": function(){
+                    No: function(){
                         $(this).dialog("close");
                     }
                 }
@@ -321,9 +319,8 @@ $(document).ready(function(){
                 resizable: false,
                 height: 140,
                 modal: true,
-                position: [240,230],
                 buttons: {
-                    "Yes": function(){
+                    Yes: function(){
                         deleteTemporySubjects();
                         deleteCurrentMSAssessment();
                         deleteCurrentMSPayment();
@@ -333,7 +330,7 @@ $(document).ready(function(){
                         cancelMSAssessment();
                         $(this).dialog("close");
                     },
-                    "No": function(){
+                    No: function(){
                         $(this).dialog("close");
                     }
                 }
@@ -342,7 +339,7 @@ $(document).ready(function(){
     });
     
     $('#btn-reset-all-assmnt').click(function(){
-        var conF = confirm("Reset all assessment data?");
+        var conF = confirm("Reset all assessment data from database?");
         if(conF){
             resetAllAssessment();
             renewAllData();
@@ -424,7 +421,7 @@ function searchStudent(studentId){
         success: function(data){
             
             if(data==="not_reg"){
-                $('.span-alert-msg').html("STUDENT ID YOU'VE ENTERED IS NOT REGISTERED!");
+                $('#div-overlay-alert-msg').html("<i class='icon-exclamation-sign'></i>&nbsp;&nbsp;STUDENT ID YOU'VE ENTERED IS NOT YET REGISTERED!");
                 $('#div-overlay-alert-msg').show();
             }else{
                 $('#div-overlay-alert-msg').hide();

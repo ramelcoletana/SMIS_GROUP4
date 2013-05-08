@@ -454,8 +454,19 @@ class sqlfunction extends DB_Connect{
         mysql_query($sqlDelED,$this->openCon());
         
         //delete all data from preparedassessment
-        $sqlDelPA = "DELETE FROM tblallAssessment";
+        $sqlDelPA = "DELETE FROM tblallassessment";
         mysql_query($sqlDelPA,$this->openCon());
+
+        $sqlDel = "DELETE FROM tblamountperassessment";
+        mysql_query($sqlDel, $this->openCon());
+
+        $sqlDel = "DELETE FROM tblassissment";
+        mysql_query($sqlDel, $this->openCon());
+
+        $sqlDel = "DELETE FROM tblnextassessment";
+        mysql_query($sqlDel, $this->openCon());
+
+        $this->closeCon();
        
     }
 }

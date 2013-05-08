@@ -79,7 +79,7 @@ a{
 }
 /*-------------------div-float-left-------------------*/
 #div-float-left{
-    border: 0 none;
+    border: 1px solid #000;
     width: 440px;
     padding-top: 12px;
     
@@ -120,8 +120,8 @@ a{
     font-family: monospace,arial,serif,sans-serif;
 }
 #studentId{
-    font-family: monospace,arial,serif,sans-serif;
-    color: blue;
+    /*font-family: monospace,arial,serif,sans-serif;
+    color: blue;*/
 }
 #studentName{
     background-color: #fff;
@@ -421,24 +421,24 @@ a{
 /*------------------div-overlay-alert-msg------------------*/
 #div-overlay-alert-msg{
     display: none;
-    border: 0 none;
+    /*border: 0 none;
     border-radius: 2px;
     width: 100%;
     background-color: #000;
     padding-top: 5px;
-    padding-bottom: 10px;
+    padding-bottom: 10px;*/
 }
 #div-alert-msg-content{
-    text-align: center;
+    /*text-align: center;
     border: 0 none;
     margin: 0 auto;
     position: static;
-    height: 15px;
+    height: 15px;*/
 }
 .span-alert-msg{
-    font-family: arial,helvitica,fantasy,serif,sans-serif;
+    /*font-family: arial,helvitica,fantasy,serif,sans-serif;
     color: red;
-    font-size: 15px;
+    font-size: 15px;*/
 }
 /*------------------end div-overlay-alert-msg----------------*/
 
