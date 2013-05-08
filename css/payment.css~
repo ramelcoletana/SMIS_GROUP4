@@ -4,9 +4,9 @@
     border: 1px solid silver;
     width: 800px;
     margin: 0 auto;
-    background-color: #ccc;
+    background-color: #D8E9ED;
     font-family: arial,monospace,serif,sans-serif;
-    box-shadow: 6px 4px 5px 5px #505050   ;
+    box-shadow: 6px 4px 5px 5px lightgray   ;
 }
 
 
@@ -28,10 +28,11 @@
 /*-------------------------------------EDITED BY: REGIE CADAYONG-----------------------------------------------------*/
 h2{
     text-align: center;
-    background: black;
+    background: lightskyblue;
     margin-top: -4px;
     color: white;
     border-radius-top-left: 20%;
+    text-shadow: 5px 5px 5px black;
 }
 #div_for_payment_data{
    /*border: 1px solid silver;*/
@@ -81,9 +82,7 @@ h2{
      margin-top: 10px;
 }
 
-#div_for_line{
-  
-}
+
 
 /*-------------------------------------------END--------------------------------------------------------------------*/
 
@@ -104,34 +103,52 @@ h2{
 #div_alert_msg_p{
     background-color: white;
     border: 1px solid silver;
+   /* margin: 0 0px 20px 0; */
+   /* float: left;*/
+    text-align: center;
+    overflow: hidden;
+    font-family: bold;
 }
 #alert_msg_p:hover{
-    color:black;
+    color:green ;
+    
 }
 #alert_msg_p{
     font-size: 15px;
-    color: #00ff00;
+    color:#00ff00;
     font-weight: bold;
+    
 }
 
  /*-------------  Ruel's eddtited    date: 13/04/17   ------------ */
 
-#assPay{background-color:	#484848 ;font-family:Arial sans-serif;font-size:20px;color:red;}
-#desc{background-color:	#00CCCC;color:blue; border-left: 2px solid black}
-#assess{background-color:	#00CCCC ;color:green;}
-#assbal{background-color:#00CCCC;color:blue;}
-#payhere{background-color:#00CCCC;color:green;}
-#advance{background-color:#00CCCC;color:blue;}
-#div_bottom_cash_payment{background-color:#00CCCC;}
+#assPay{background-color: ;font-family:Arial sans-serif; font-size:20px; color:red;}
+#desc{background-color:	lightskyblue; color:#303030; padding:1px;}
+#des{font-size:13px;}
+#assess{background-color: lightskyblue; color:#303030;}
+#assbal{background-color: lightskyblue; color:#303030;}
+#payhere{background-color: lightskyblue; color:#303030;}
+#advance{background-color: lightskyblue; color:#303030;}
+#div_bottom_cash_payment{
+	background-color:#303030 ;
+}
+#div_bottom_cash_payment input[type='text']{
+   /* float: right;*/
+    margin-right: 50px;
+	width: 200px;
+}
+.label_1{margin-left: 60px; text-align: center; }
+#payment{margin-left: 160px; }
+/*#label_1{margin-left: 40px;}*/
 #div_button_cancel_done{margin-left:300px;margin-top:10px;}
 #btn_ass_payment_done:hover{color:yellow;}
 #btn_ass_payment_cancel:hover{color:red;}
-#div_cash_tendered{width: 220px; margin-left:420px;margin-top:-110px;}
-#amount_ten{margin-left:150px;width:100px;}
-#change{margin-left:150px;width:100px;}
+/*#div_cash_tendered{width: 220px; margin-left:420px;margin-top:-110px;}*/
+/*#amount_ten{margin-left:150px;width:100px;}*/
+/*#change{margin-left:150px;width:100px;}*/
 #change2{margin-left:70px;}
-#t_amount_ass{width:100px;margin-left:250px;}
-#t_current_pymnt{width:100px;margin-left:250px;}
-#tcp{margin-left:20px;}
+/*#t_amount_ass{width:100px;margin-left:250px;}*/
+/*#t_current_pymnt{width:100px;margin-left:250px;}*/
+/*#tcp{margin-left:20px;}*/
 
 /*------------------------ End  -------------------------------------- */
