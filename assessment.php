@@ -302,7 +302,7 @@
                 <div class='browse_label' align="left">Browse Photo</div>
                 <div class='attach_file_wrapp' align="left">
                     <div class='attach_file'><input type='file' name='photo_upload' id='photo_upload'/></div>
-                    <input type='hidden' name='h_student_id' id='h_student_id' />
+                    <input type='hidden' name='h_student_id' id='h_student_id' " />
                 </div><br clear="all">
             </form>
             </div>

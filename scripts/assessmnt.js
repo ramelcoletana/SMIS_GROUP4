@@ -71,6 +71,7 @@ $(document).ready(function(){
         }
     });
     $('#photo_upload').live('change', function(){
+        alert("hiihihdfdfdfd");
         $('#form_upload_pic').vPB({
             url: 'process/file_upload.php',
             beforeSubmit: function()
@@ -82,6 +83,7 @@ $(document).ready(function(){
             success:function(response)
             {
                 $('#photo_upload_status').hide().fadeIn('slow').html(response);
+                console.log(response);
                 setProfilePic();
                 $('.div-overlay-upload-wrapp').hide().fadeOut('slow');
             }
@@ -443,6 +445,7 @@ function searchStudent(studentId){
                 $('#studentName').html(name);
                 $('#recentBal').val(balance);
                 $('#btn-sub-fees').removeAttr('disabled');
+                $('#h_student_id').val(studentId);
                 if(profilepic === "" || profilepic === null){
                     $('.div-image').html("<img src=upload_pic/default-user-image.jpg />");
                 }else{
