@@ -29,19 +29,17 @@
             <div id='div-stud-info'>
                 <div id='div-primary-info'>
                      <div id='div-for-pic'>
-                        <div class="div-image">
-
-                        </div><!-- end div-image -->
+                        <div class="div-image"></div><!-- end div-image -->
                         <span id = "label_change_pic">&nbsp;&nbsp;<i class="icon-pencil"></i>&nbsp;&nbsp;Change Picture</span>
                     </div><!-- end div-for-pic -->
                     <div id='div-float-left'>
                         <div class="control-group">
-
-                            <label class="control-label">STUDENT ID NO</label>
                             <div class="controls">
                                 <span id='studentId'></span>
                                 <input type='hidden' id='currentGYL' />
                             </div>
+                            <label class="control-label">STUDENT ID NO</label>
+
 
                         </div>
                         <!--br/><br/>

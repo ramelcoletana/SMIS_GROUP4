@@ -283,7 +283,6 @@ class sqlfunction extends DB_Connect{
             $sql3 = "INSERT INTO tblpaymentbreakdown (fldTransactionNo,fldStudentNum,fldFeeName,fldAmountPaid) 
                 VALUES ('$transactionNo','$studentNum','$row[0]',$row[1])";
             mysql_query($sql3,$this->openCon());
-            echo $sql3;
         }
         
         //inserting data into tblpaymentcashflow
@@ -291,7 +290,7 @@ class sqlfunction extends DB_Connect{
         $sql4 = "INSERT INTO tblpaymentcashflow (fldTransactionNo,fldStudentNum,fldDate,fldTotalAmount,fldAmountTendered,fldType) 
             VALUES ('$transactionNo','$studentNum','$date',$tAmount,$amountT,'$type')";
         mysql_query($sql4,$this->openCon());
-        
+        echo "";
         
         $this->closeCon();
     }

@@ -3,8 +3,8 @@
  * and open the template in the editor.
  */
 $(document).ready(function(){
-    $('input[name=radioPaymnt]:checked').removeAttr('checked');
-    $('input[name=radioDepartment]:checked').removeAttr('checked');
+    $('input[name=radioPaymnt]').prop('checked', false);
+    $('input[name=radioDepartment]').prop('checked', false);
     //
 
     $('#div-alert-success').hide();
@@ -44,7 +44,6 @@ $(document).ready(function(){
     //===================================search student====================================//
     $('#btn-search-stud').click(function(){
         $('#div-alert-success').hide('blind',1000);
-        $('#div-alert-success').hide('blind',1000);
         $('#div-overlay-alert-msg').hide('blind',1000);
         var studentId = document.getElementById('searchStudId').value;
         //
@@ -68,6 +67,7 @@ $(document).ready(function(){
     //==================================end search student=================================//
 
     //change profile picture//
+
     $('#label_change_pic').click(function(){
         if(getStudentId() === "" || getStudentId() === null){
             //alert("hi");
@@ -905,8 +905,35 @@ function doneAssessmentModeFP(){
                    data: obj,
                    success: function(data){
                        $('#div-alert-success').html("<i class='icon-check'></i>&nbsp;&nbsp;Assessment successfully created..");
-                       $('#div-alert-success').show();
-                        renewAllData();
+                       $('#div-alert-success').show('blind',1000);
+                       clearFPTotalAmount();
+                       clearFPCPayment();
+                       clearMSTotalAmount();
+                       clearMSCPayment();
+                       $('#searchStudId').val("");
+                       $('#studentId').html("");
+                       $('#studentName').html("");
+                       $('#age').val("");
+                       $('#syEntered').val("");
+                       $('#genAverage').val("");
+                       $('#recentBal').val("");
+                       $('input[name=radioPaymnt]').attr('disabled','disabled');
+                       $('#btn-sub-back').removeAttr('disabled');
+                       $('#btn-sub-next').removeAttr('disabled');
+                       $('#cashAmount').removeAttr('readonly');
+                       $('#cashAmount').val("");
+                       $('#cashAmountF').removeAttr('readonly');
+                       $('#cashAmountF').val("");
+                       setEnabledBT();
+                       hideSubjectsForm();
+                       hideMSPaymentFormTF();
+                       hideFullPaymentFormTF();
+                       setEnrollmentNo();
+                       setTransactionNo();
+
+                       $('input[name=radioPaymnt]').prop('checked', false);
+                       $('input[name=radioDepartment]').prop('checked', false);
+                        //renewAllData();
                    },
                    error: function(data){
                         alert("error in processing assessment=>"+data);
@@ -1231,8 +1258,6 @@ function doneMSAssesssment(){
                             $('#syEntered').val("");
                             $('#genAverage').val("");
                             $('#recentBal').val("");
-                            $('input[name=radioPaymnt]').removeAttr('checked');
-                            $('input[name=radioDepartment]').removeAttr('checked');
                             $('input[name=radioPaymnt]').attr('disabled','disabled');
                             $('#btn-sub-back').removeAttr('disabled');
                             $('#btn-sub-next').removeAttr('disabled');
@@ -1246,6 +1271,9 @@ function doneMSAssesssment(){
                             hideFullPaymentFormTF();
                             setEnrollmentNo();
                             setTransactionNo();
+
+                            $('input[name=radioPaymnt]').prop('checked', false);
+                            $('input[name=radioDepartment]').prop('checked', false);
                         },
                         error: function(data){
                             alert("error in processing assessment=>"+data);
@@ -1282,8 +1310,6 @@ function renewAllData(){
     $('#syEntered').val("");
     $('#genAverage').val("");
     $('#recentBal').val("");
-    $('input[name=radioPaymnt]:checked').removeAttr('checked');
-    $('input[name=radioDepartment]:checked').removeAttr('checked');
     $('#div-for-full').show();
     $('#cashAmount').removeAttr('readonly');
     $('#cashAmount').val("");
@@ -1303,12 +1329,20 @@ function resetAllAssessment(){
        type: 'POST',
        url: 'process/resetAllAssessment.php',
        success: function(data){
+           $('input[name=radioPaymnt]').prop('checked', false);
+           $('input[name=radioDepartment]').prop('checked', false);
            $('input[name=radioPaymnt]').attr('disabled','disabled');
            $('input[name=radioPaymnt]').removeAttr('checked');
            clearFPTotalAmount();
            clearFPCPayment();
            clearMSTotalAmount();
            clearMSCPayment();
+           setEnabledBT();
+           hideSubjectsForm();
+           hideMSPaymentFormTF();
+           hideFullPaymentFormTF();
+           setEnrollmentNo();
+           setTransactionNo();
            $('#searchStudId').val("");
            $('#studentId').html("");
            $('#studentName').html("");
@@ -1316,19 +1350,18 @@ function resetAllAssessment(){
            $('#syEntered').val("");
            $('#genAverage').val("");
            $('#recentBal').val("");
-           $('input[name=radioDepartment]:checked').removeAttr('checked');
+           $('#yrlevel').removeAttr('disabled');
+           $('#grade').removeAttr('disabled');
            $('#btn-sub-back').removeAttr('disabled');
            $('#btn-sub-next').removeAttr('disabled');
            $('#cashAmount').removeAttr('readonly');
            $('#cashAmount').val("");
            $('#cashAmountF').removeAttr('readonly');
            $('#cashAmountF').val("");
-           setEnabledBT();
-           hideSubjectsForm();
-           hideMSPaymentFormTF();
-           hideFullPaymentFormTF();
-           setEnrollmentNo();
-           setTransactionNo();
+
+           $('#div-alert-success').hide('blind',1000);
+
+           setProfilePic();
 
            //renewAllData();
        },
@@ -1337,7 +1370,3 @@ function resetAllAssessment(){
        }
     });
 }
-//Note: 
-/*
-*if the table has no data..there is an error especially for monthy and semestral assessment 
-*/
