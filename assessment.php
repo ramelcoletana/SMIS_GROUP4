@@ -89,6 +89,7 @@
                                     <option value='Grade 6'>VI</option>
                                 </select>
                              <br/><br/>
+                             
                              <label class='labelF'>YEAR LVL.</label>
                                 <select id='yrLevel'>
                                     <option value='First Year'>FIRST YEAR</option>
