@@ -64,7 +64,7 @@ include "connection.php";
 			$assAdvance = $rowGNS[8];$assNo = $rowGNS[9];
 			
 			//inserting data into table tblallassessment
-			$sqlInAS = "INSERT INTO tblallAssessment (fldTransactionNo,fldEnrollmentNo,fldStudentNo,fldAssessmentName,
+			$sqlInAS = "INSERT INTO tblallassessment (fldTransactionNo,fldEnrollmentNo,fldStudentNo,fldAssessmentName,
 			fldOriginalAmount,fldOriginalBalance,fldAssessmentAmount,fldAdvancedPayment,fldAssessmentNo)
 			VALUES ('$transNo','$enrollNo','$studentNo','$assName',$assOrigAmnt,$assOrigBal,$assAmount,$assAdvance,$assNo)";
 			mysql_query($sqlInAS, $con);

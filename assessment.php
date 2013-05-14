@@ -28,6 +28,7 @@
                     <span class='span-alert-msg'></span>
                 </div>
             </div><!-- end div-overlay-alert-msg -->
+            <div id="div-alert-success" class="alert alert-success"></div>
                 <div id='div-search'>
                     <div id='control-search'>
                         <input type='text' name='searchStudId' id='searchStudId' placeholder="ENTER STUDENT ID HERE" required><button id='btn-search-stud' class='btn btn- medium btn-primary'>Search</button>
@@ -44,10 +45,13 @@
                     </div><!-- end div-for-pic -->
                     <div id='div-float-left'>
                         <div class="control-group">
-                            <label class="control-label">STUDENT ID NO.:</label>
+
+                            <label class="control-label">STUDENT ID NO</label>
                             <div class="controls">
-                                <span class="label label-info" id='studentId'></span>
+                                <span id='studentId'></span>
+                                <input type='hidden' id='currentGYL' />
                             </div>
+
                         </div>
                         <!--br/><br/>
                         &nbsp;<label class='labelForStudId'>STUDENT ID NO.:</label><br/>&nbsp;&nbsp;<small id='studentId'></small-->
@@ -146,14 +150,7 @@
                                 </tbody>
                             </table><!-- end tbl-for-full -->
                             
-                            <div id='div-alert-msg-F'>
-                                <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
-                                <span id='alert-msg-F'>Hello</span>
-                            </div><!-- end div-alert-msg-F -->
-                            <div id='div-warning-msg-F'>
-                                <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
-                                <span id='warning-msg-F'>Hello</span>
-                            </div><!-- end div-warning-msg -->
+                            <div id='div-alert-msg-F' class="alert alert-error"></div><!-- end div-alert-msg-F -->
                         </div><!-- end div-for-table-full-pymnt -->
                             <br/>
                             <div id='div-foot-full' class='div-foot-full-partial'>
@@ -195,14 +192,7 @@
                                     
                                 </tbody>
                             </table>
-                            <div id='div-alert-msg-MS'>
-                                <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
-                                <span id='alert-msg-MS'>Hello</span>
-                            </div><!-- end div-alert-msg -->
-                            <div id='div-warning-msg-MS'>
-                                <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
-                                <span id='warning-msg-MS'>Hello</span>
-                            </div><!-- end div-warning-msg -->
+                            <div id='div-alert-msg-MS' class="alert alert-error"></div><!-- end div-alert-msg -->
                             <!--button class='btn btn-medium btn-primary' id='tempDelete' title='This is just a temporary button to delete current transaction'>Delete</button-->
                         </div><!-- end div-for-table-monthly-pymnt -->
                         

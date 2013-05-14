@@ -75,10 +75,18 @@ class sqlfunction extends DB_Connect{
 	    while($row2 = mysql_fetch_array($result2)){
 	        $balance = $balance + $row2[0];
 	    }
+
+        $sql = "SELECT max(fldId) FROM tblenrolldata WHERE fld_Student_Num = '$studentId' ";
+        $res1 = mysql_query($sql, $con);
+        $rw = mysql_fetch_array($res1);
+        $sql = "SELECT fld_Grade_Year_Level FROM tblenrolldata WHERE fldId = $rw[0] AND fld_Student_Num = '$studentId'";
+        $res2 = mysql_query($sql,$con);
+        $rww = mysql_fetch_array($res2);
+        $gyl = $rww[0];
 		if($row[0]=="" || $row[0]==null){
 			echo "not_reg";
 		}else{
-			$json_data = array('studentId'=>$row[0],'firstname'=>$row[1],'middlename'=>$row[2],'lastname'=>$row[3],'balance'=>$balance,'profilepic'=>$row[5]);
+			$json_data = array('studentId'=>$row[0],'firstname'=>$row[1],'middlename'=>$row[2],'lastname'=>$row[3],'balance'=>$balance,'profilepic'=>$row[5],'gyl'=>$gyl);
 			$json_string = json_encode($json_data);
 			echo $json_string;
 		}
@@ -139,7 +147,6 @@ class sqlfunction extends DB_Connect{
     	$result = mysql_query($sql,$this->openCon());
         $notFound = true;
         $zebra = 0;
-        $zebraClass1 ="";
     	while($row = mysql_fetch_array($result)){
             if($zebra%2==0){
                 $zebraClass1 = "even";
@@ -156,7 +163,8 @@ class sqlfunction extends DB_Connect{
             $zebra++;
     	}
         if($notFound){
-            echo "<tr><td colspan=3 ><No tuition fees found for ".$category."<input type='hidden' id='fp_null' value='null'/></td></tr>";
+            //echo "<tr><td colspan=3><No tuition fees found for ".$category."<input type='hidden' id='fp_null' value='null'/></td></tr>";
+            echo "<tr class='alertMsg'><td colspan=5 >No tuition fees found for ".$category."<input type='hidden' id='fp_null' value='null'/></td></tr>";
         }
     	
     	$this->closeCon();
@@ -175,7 +183,6 @@ class sqlfunction extends DB_Connect{
         $advancedPayment = 0;
         $assessmentCounter = 1;
         $zebraCounter = 0;
-        $zebraClass2 = "";
         $notFound = true;
         $sql1 = "SELECT fldFeeId,fldFeeDescription,fldFeeAmount FROM tblfor_fees WHERE fldFeeCategory='$category'";
         $result2 = mysql_query($sql1,$this->openCon());
@@ -381,15 +388,6 @@ class sqlfunction extends DB_Connect{
         $nextAss = 0;
 
         $toBePaid = 0;
-        /*while($row1 = mysql_fetch_array($result1)){
-            if($row1[5]=="Monthly"){
-                $nextAss = number_format($row1[3]/10, 2);
-                
-            }else if($row1[4]=="Semestral"){
-                $nextAss = number_format($row1[3]/2,2);
-                
-	    }
-	}*/
         while($row1 = mysql_fetch_array($result1)){
             if($row1[5]=="Monthly"){
                 $nextAss = number_format($row1[3]/10, 2);

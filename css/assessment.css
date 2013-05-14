@@ -79,7 +79,7 @@ a{
 }
 /*-------------------div-float-left-------------------*/
 #div-float-left{
-    border: 1px solid #000;
+    border: 0 none;
     width: 440px;
     padding-top: 12px;
     
@@ -120,8 +120,8 @@ a{
     font-family: monospace,arial,serif,sans-serif;
 }
 #studentId{
-    /*font-family: monospace,arial,serif,sans-serif;
-    color: blue;*/
+    font-family: monospace,arial,serif,sans-serif;
+    color: blue;
 }
 #studentName{
     background-color: #fff;
@@ -133,7 +133,7 @@ a{
     border-bottom: 1px solid #c0c0c0;
     text-align: center;
 }
-.studNameLabel{
+.studNameLabel, .control-label{
     font-family: arial,helvitica,serif,sans-serif;
     color: #060200;
     font-size: 10px;
@@ -296,24 +296,14 @@ a{
     height: 360px;
 }
 #div-alert-msg-MS,#div-alert-msg-F{
-    color: #f00;
-    font-size: 10px;
     display: none;
-    border: 1px solid red;
-    border-radius: 0px;
-    height: 20px;
-    background-color: #ff9999;
-    padding-left: 10px;
+    font-family: arial,serif,sans-serif;
+    font-size: 13px;
 }
 #div-warning-msg-MS,#div-warning-msg-F{
-    color: orange;
-    font-size: 10px;
     display: none;
-    border: 1px solid orange;
-    border-radius: 0px;
-    height: 20px;
-    background-color: #e0e0e0;
-    padding-left: 10px;
+    font-family: arial,serif,sans-serif;
+    font-size: 13px;
 }
 
 #div-bottom-full-pymnt{
@@ -327,7 +317,7 @@ a{
     border-radius: 0px;
     margin-top: 5px;
 }
-#totalAmountMS,#cPaymentMS{
+#totalAmountMS,#cPaymentMS,#totalAmountFull,#cPaymentFull{
     border: 0 none;
     border-bottom: 1px solid #505050;
     border-radius: 0px;
@@ -421,24 +411,9 @@ a{
 /*------------------div-overlay-alert-msg------------------*/
 #div-overlay-alert-msg{
     display: none;
-    /*border: 0 none;
-    border-radius: 2px;
-    width: 100%;
-    background-color: #000;
-    padding-top: 5px;
-    padding-bottom: 10px;*/
 }
-#div-alert-msg-content{
-    /*text-align: center;
-    border: 0 none;
-    margin: 0 auto;
-    position: static;
-    height: 15px;*/
-}
-.span-alert-msg{
-    /*font-family: arial,helvitica,fantasy,serif,sans-serif;
-    color: red;
-    font-size: 15px;*/
+#div-alert-success{
+    display: none;
 }
 /*------------------end div-overlay-alert-msg----------------*/
 
@@ -539,7 +514,7 @@ a{
     font-weight: bold;
 }
 #dialog-confirm-done-MS-assessment small{
-    color: blue;
+    color: #00ffff;
 }
 
 /*UPLOADING PROFILE PIC*/
