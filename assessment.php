@@ -5,7 +5,7 @@
     
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Accounts &raquo; Assessment</title>
@@ -23,11 +23,7 @@
     </head>
     <body>
         <div id='div-assessment-wrapper'>
-            <div class="alert alert-error" id="div-overlay-alert-msg">
-                <div id='div-alert-msg-content'>
-                    <span class='span-alert-msg'></span>
-                </div>
-            </div><!-- end div-overlay-alert-msg -->
+            <div class="alert alert-error" id="div-overlay-alert-msg"></div><!-- end div-overlay-alert-msg -->
             <div id="div-alert-success" class="alert alert-success"></div>
                 <div id='div-search'>
                     <div id='control-search'>
@@ -149,7 +145,7 @@
 
                                 </tbody>
                             </table><!-- end tbl-for-full -->
-                            
+                            <br/>
                             <div id='div-alert-msg-F' class="alert alert-error"></div><!-- end div-alert-msg-F -->
                         </div><!-- end div-for-table-full-pymnt -->
                             <br/>
@@ -192,6 +188,7 @@
                                     
                                 </tbody>
                             </table>
+                            <br/>
                             <div id='div-alert-msg-MS' class="alert alert-error"></div><!-- end div-alert-msg -->
                             <!--button class='btn btn-medium btn-primary' id='tempDelete' title='This is just a temporary button to delete current transaction'>Delete</button-->
                         </div><!-- end div-for-table-monthly-pymnt -->

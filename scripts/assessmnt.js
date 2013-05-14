@@ -3,7 +3,8 @@
  * and open the template in the editor.
  */
 $(document).ready(function(){
-    //$('#label_change_pic').removeClass('label_change_pic');
+    $('input[name=radioPaymnt]:checked').removeAttr('checked');
+    $('input[name=radioDepartment]:checked').removeAttr('checked');
     //
 
     $('#div-alert-success').hide();
@@ -11,9 +12,6 @@ $(document).ready(function(){
     $('.div-image').html("<img src=upload_pic/default-user-image.jpg />");
     $('#grade').attr('disabled','disabled');
     $('#yrLevel').attr('disabled','disabled');
-
-    $('input[name=radioDepartment]:checked').removeAttr('checked');
-
     //======================end showing div-please-select,div-for-full======================//
 
     //=============disabling buttons,textboxes,divs,etc.. while opening the form============//
@@ -45,7 +43,9 @@ $(document).ready(function(){
     
     //===================================search student====================================//
     $('#btn-search-stud').click(function(){
-        $('#div-alert-success').hide();
+        $('#div-alert-success').hide('blind',1000);
+        $('#div-alert-success').hide('blind',1000);
+        $('#div-overlay-alert-msg').hide('blind',1000);
         var studentId = document.getElementById('searchStudId').value;
         //
         deleteCurrentMSAssessment();//delete current MS assessment
@@ -347,9 +347,11 @@ $(document).ready(function(){
         if(conF){
             resetAllAssessment();
             renewAllData();
-            alert("MySQL returned an empty result set (i.e. zero rows).Succesfully reset!");
+            $('#div-overlay-alert-msg').html("<i class='icon-warning-sign'></i>&nbsp;&nbsp;MySQL returned an empty result set (i.e. zero rows).Succesfully reset!");
+            $('#div-overlay-alert-msg').show('blind',1000);
         }else{
-            alert("wa na reset");
+            $('#div-overlay-alert-msg').html("<i class='icon-warning-sign'></i>&nbsp;&nbsp;wa na reset");
+            $('#div-overlay-alert-msg').show('blind',1000);
         }
         
     });
@@ -426,9 +428,9 @@ function searchStudent(studentId){
             
             if(data==="not_reg"){
                 $('#div-overlay-alert-msg').html("<i class='icon-exclamation-sign'></i>&nbsp;&nbsp;STUDENT ID YOU'VE ENTERED IS NOT YET REGISTERED!");
-                $('#div-overlay-alert-msg').show();
+                $('#div-overlay-alert-msg').show('blind',1000);
             }else{
-                $('#div-overlay-alert-msg').hide();
+                $('#div-overlay-alert-msg').hide('blind',1000);
                 $('#label_change_pic').addClass('label_change_pic');
                 var objStudData = JSON.parse(data);
 
@@ -540,10 +542,10 @@ function setFeesSubjects(){
     
     if($('#studentId').html()==="" || $('#studentName').html()===""){
         $('#div-overlay-alert-msg').html("<i class='icon-exclamation-sign'></i>&nbsp;&nbsp;Enter student ID on the search textbox!");
-        $('#div-overlay-alert-msg').show();
+        $('#div-overlay-alert-msg').show('blind',1000);
     }else if($('#age').val()===""){
         $('#div-overlay-alert-msg').html("<i class='icon-exclamation-sign'></i>&nbsp;&nbsp;Please enter age!");
-        $('#div-overlay-alert-msg').show();
+        $('#div-overlay-alert-msg').show('blind',1000);
         $('#age').css({border: '1px solid red'});
         $('#syEntered').css({border: '1px solid #c0c0c0'});
         $('#genAverage').css({border: '1px solid #c0c0c0'});
@@ -551,22 +553,22 @@ function setFeesSubjects(){
         var resultSchYear = schYear.substring(0,schYearLength-1);
         $('#syEntered').val(resultSchYear);
         $('#div-overlay-alert-msg').html("<i class='icon-exclamation-sign'></i>&nbsp;&nbsp;Please enter school year correctly.");
-        $('#div-overlay-alert-msg').show();
+        $('#div-overlay-alert-msg').show('blind',1000);
         $('#syEntered').css({border: '1px solid red'});
         $('#age').css({border: '1px solid #c0c0c0'});
         $('#genAverage').css({border: '1px solid #c0c0c0'});
     }else if($('#genAverage').val()===""){
         $('#div-overlay-alert-msg').html("<i class='icon-exclamation-sign'></i>&nbsp;&nbsp;Please enter gen average!");
-        $('#div-overlay-alert-msg').show();
+        $('#div-overlay-alert-msg').show('blind',1000);
         $('#genAverage').css({border: '1px solid red'});
         $('#syEntered').css({border: '1px solid #c0c0c0'});
         $('#age').css({border: '1px solid #c0c0c0'});
 
     }else if(selectedGYL === gyl){
         $('#div-overlay-alert-msg').html("<i class='icon-exclamation-sign'></i>&nbsp;&nbsp;You are currently enrolled in "+selectedGYL);
-        $('#div-overlay-alert-msg').show();
+        $('#div-overlay-alert-msg').show('blind',1000);
     }else{
-        $('#div-overlay-alert-msg').hide();
+        $('#div-overlay-alert-msg').hide('blind',1000);
         $('#genAverage').css({border: '1px solid #c0c0c0'});
         $('#syEntered').css({border: '1px solid #c0c0c0'});
         $('#age').css({border: '1px solid #c0c0c0'});
@@ -589,7 +591,7 @@ function setFeesSubjects(){
             $('#btn-sub-fees').attr('disabled','disabled');
         }else{
             $('#div-overlay-alert-msg').html("<i class='icon-exclamation-sign'></i>&nbsp;&nbsp;Please choose what department!");
-            $('#div-overlay-alert-msg').show();
+            $('#div-overlay-alert-msg').show('blind',1000);
             disabledMode();
             $('#btn-sub-fees').removeAttr('disabled');
         }
@@ -606,9 +608,9 @@ function specifyAge(age){
         var resultAge = age.substring(0,ageLength-1);
         $('#age').val(resultAge);
         $('#div-overlay-alert-msg').html("<i class='icon-exclamation-sign'></i>&nbsp;&nbsp;Please enter age correctly.");
-        $('#div-overlay-alert-msg').show();
+        $('#div-overlay-alert-msg').show('blind',1000);
     }else{
-        $('#div-overlay-alert-msg').hide();
+        $('#div-overlay-alert-msg').hide('blind',1000);
     }
 }
 function noSpacingOnSY(schYear){
@@ -619,9 +621,9 @@ function noSpacingOnSY(schYear){
         var resultSchYear = schYear.substring(0,schYearLength-1);
         $('#syEntered').val(resultSchYear);
         $('#div-overlay-alert-msg').html("<i class='icon-exclamation-sign'></i>&nbsp;&nbsp;Please enter school year correctly.");
-        $('#div-overlay-alert-msg').show();
+        $('#div-overlay-alert-msg').show('blind',1000);
     }else{
-        $('#div-overlay-alert-msg').hide();
+        $('#div-overlay-alert-msg').hide('blind',1000);
     }
 }
 function specifyAve(genAverage){
@@ -632,24 +634,24 @@ function specifyAve(genAverage){
         var resultGenAve = genAverage.substring(0,genAverageLength-1);
         $('#genAverage').val(resultGenAve);
         $('#div-overlay-alert-msg').html("<i class='icon-exclamation-sign'></i>&nbsp;&nbsp;Opzz! Invalid grade.Check it!");
-        $('#div-overlay-alert-msg').show();
+        $('#div-overlay-alert-msg').show('blind',1000);
     }else{
-        $('#div-overlay-alert-msg').hide();
+        $('#div-overlay-alert-msg').hide('blind',1000);
     }
 }
 
 //SHOW AND HIDE TUITION FEES FORM [FULL PAYMENT] or [MONTHLY PAYMENT] and SUBJECTS
 function showFullPaymentFormTF(){
-    $('#div-for-full').fadeIn("slow");
+    $('#div-for-full').show('blind',1000);
 }
 function showMSPaymentFormTF(){
-    $('#div-for-MS').fadeIn("slow");
+    $('#div-for-MS').show('blind',1000);
 }
 function showSubjectsForm(){
     $('#div-for-subject').show('blind',1000);
 }
 function hideSubjectsForm(){
-    $('#div-for-subject').hide('blind',1000);
+    $('#div-for-subject').hide();
 }
 function hideFullPaymentFormTF(){
     $('#div-for-full').hide();
@@ -892,13 +894,13 @@ function doneAssessmentModeFP(){
         resizable: false,
         modal: true,
         buttons:{
-            "Yes":function(){
+            Yes:function(){
                 $.ajax({
                    type: 'POST',
                    url: 'process/doneAssessmentModeFP.php',
                    data: obj,
                    success: function(data){
-                       $('#div-alert-success').html("<i class='icon-exclamation-sign'></i>&nbsp;&nbsp;Assessment successfully created..");
+                       $('#div-alert-success').html("<i class='icon-check'></i>&nbsp;&nbsp;Assessment successfully created..");
                        $('#div-alert-success').show();
                         renewAllData();
                    },
@@ -908,7 +910,7 @@ function doneAssessmentModeFP(){
                 });
                 $(this).dialog("close");
             },
-            "No":function(){
+            No:function(){
                 $('#btn-cancel-assmnt').removeAttr('disabled');
                 $(this).dialog("close");
             }
@@ -994,12 +996,13 @@ function keyupCurrPayment(id,amount){
     }
     balance = amount - payment;
     if(payment>amount){
-        $('#alert-msg-MS').html("1 Error found: Maximum amount accepted: "+amount+" but you entered: "+currPayment+".But don't worry, the system will automatically fixed this error.");
-        $('#div-alert-msg-MS').show('blind',500).fadeOut(3000);
+        $('#div-alert-msg-MS').html("<i class='icon-warning-sign'></i>&nbsp;&nbsp;1 Error found: Only "+amount+" maximum amount to be accepted but you entered: "+currPayment+".But don't worry, this error is automatically fixed by the system. It is just an alert!");
+        $('#div-alert-msg-MS').show('blind',500);
         resCurrPayment = currPayment.substring(0,currPaymentLength-1);
         $('#curr'+id).val(resCurrPayment);
         
     }else{
+        $('#div-alert-msg-MS').hide('blind',500)
         var transactionNo = getTransactionNo();
         var enrollmentNo = getEnrollmentNo();
         var studentNo = getStudentId();
@@ -1044,14 +1047,14 @@ function validateCashAmountF(){
    var cashTendered = parseFloat($('#cashAmountF').val());
    if(cashTendered<currentPayment){
        $('#div-alert-msg-F').html("<i class='icon-warning-sign'></i>&nbsp;&nbsp;Warning!!!...Insuficient amount tendered!");
-       $('#div-alert-msg-F').show();
+       $('#div-alert-msg-F').show('blind',1000);
        $('#cashChangeF').val(change);
    }else if($('#cashAmountF').val() === "" || $('#cashAmountF').val() ===null){
        $('#div-alert-msg-F').html("<i class='icon-warning-sign'></i>&nbsp;&nbsp;Warning!!!...No amount entered!");
-       $('#div-alert-msg-F').show();
+       $('#div-alert-msg-F').show('blind',1000);
        $('#cashChangeF').val(change);
    }else{
-       $('#div-alert-msg-F').hide();
+       $('#div-alert-msg-F').hide('blind',1000);
        change = parseFloat(cashTendered) - parseFloat(currentPayment);
        $('#cashChangeF').val(change);
    }
@@ -1068,15 +1071,18 @@ function validateCashAmount(){
        resCash = cashEntered.substring(0,cashEnteredLength-1);
        $('#cashAmount').val(resCash);
    }
-    alert(cashEntered);
+    console.log(cashEntered);
    
-   var cashTendered = parseFloat($('#cashAmount').val());
-   if(cashTendered<currentPayment){
-       $('#div-alert-msg-MS').html("<i class='icon-exclamation-sign'></i>&nbsp;&nbsp;Warning!!!...Insuficient amount tendered!");
-       $('#div-alert-msg-MS').show();
+   var cashTendered = ($('#cashAmount').val());
+    if(cashTendered === "" || cashTendered === null || cashTendered === NaN){
+        cashTendered = 0;
+    }
+   if(parseFloat(cashTendered) < parseFloat(currentPayment)){
+       $('#div-alert-msg-MS').html("<i class='icon-warning-sign'></i>&nbsp;&nbsp;Warning!!!...Insuficient amount tendered!");
+       $('#div-alert-msg-MS').show('blind',1000);
        $('#cashChange').val(change);
    }else{
-       $('#div-alert-msg-MS').hide();
+       $('#div-alert-msg-MS').hide('blind',1000);
        change = parseFloat(cashTendered) - parseFloat(currentPayment);
        $('#cashChange').val(change);
    }
@@ -1095,16 +1101,16 @@ function paymentMSProcess(){
     var obj = {"dateNow": dateNow,"transactionNo": transactionNo,"enrollmentNo": enrollmentNo,"studentNo": studentNo,"totalAmountPaid": totalAmountPaid,"amountTendered": amountTendered};
     
     if(obj.totalAmountPaid <=0){
-        $('#div-alert-msg-MS').html("It seems that you don't have a current payment to be paid!");
-        $('#div-alert-msg-MS').show();
+        $('#div-alert-msg-MS').html("<i class='icon-warning-sign'></i>&nbsp;&nbsp;It seems that you don't have a current payment to be paid!");
+        $('#div-alert-msg-MS').show('blind',1000);
     }else if(amountTendered < totalAmountPaid){
-        $('#div-alert-msg-MS').html("Insuficient amount tendered!");
-        $('#div-alert-msg-MS').show();
+        $('#div-alert-msg-MS').html("<i class='icon-warning-sign'></i>&nbsp;&nbsp;Insuficient amount tendered!");
+        $('#div-alert-msg-MS').show('blind',1000);
     }else if($('#cashAmount').val() === "" || $('#cashAmount').val() === null) {
-        $('#div-alert-msg-MS').html("Pay first!");
-        $('#div-alert-msg-MS').show();
+        $('#div-alert-msg-MS').html("<i class='icon-warning-sign'></i>&nbsp;&nbsp;Pay first!");
+        $('#div-alert-msg-MS').show('blind',1000);
     }else{
-        $('#div-alert-msg-MS').hide();
+        $('#div-alert-msg-MS').hide('blind',1000);
         $.ajax({
             type: 'POST',
             url: 'process/paymentMSProcess.php',
@@ -1196,32 +1202,61 @@ function doneMSAssesssment(){
     $('#small-generalAve').html(genAverage);
     
     var obj = {"transactionNo": transaction,"enrollmentNo": enrollmentNo,"studentNo": studentNo,"schoolYear": schoolYear,"gy": gy};
-    $('#dialog-confirm-done-MS-assessment').dialog({
-        resizable: false,
-        modal: true,
-        buttons:{
-            "Yes":function(){
-                $.ajax({
-                   type: 'POST',
-                   url: 'process/doneMSAssessment.php',
-                   data: obj,
-                   success: function(data){
-                       $('#div-alert-success').html("<i class='icon-exclamation-sign'></i>&nbsp;&nbsp;Assessment successfully created..");
-                       $('#div-alert-success').show();
-                        renewAllData();
-                   },
-                   error: function(data){
-                        alert("error in processing assessment=>"+data);
-                   }
-                });
-                $(this).dialog("close");
-            },
-            "No":function(){
-                $('#btn-cancel-assmnt').removeAttr('disabled');
-                $(this).dialog("close");
+    if(studentNo === "" || studentNo === null || studentNo === NaN){
+    }else{
+        $('#dialog-confirm-done-MS-assessment').dialog({
+            resizable: false,
+            modal: true,
+            buttons:{
+                Yes:function(){
+                    $.ajax({
+                        type: 'POST',
+                        url: 'process/doneMSAssessment.php',
+                        data: obj,
+                        success: function(data){
+                            $('#div-alert-success').html("<i class='icon-check'></i>&nbsp;&nbsp;Assessment successfully created..");
+                            $('#div-alert-success').show('blind',1000);
+                            clearFPTotalAmount();
+                            clearFPCPayment();
+                            clearMSTotalAmount();
+                            clearMSCPayment();
+                            $('#searchStudId').val("");
+                            $('#studentId').html("");
+                            $('#studentName').html("");
+                            $('#age').val("");
+                            $('#syEntered').val("");
+                            $('#genAverage').val("");
+                            $('#recentBal').val("");
+                            $('input[name=radioPaymnt]').removeAttr('checked');
+                            $('input[name=radioDepartment]').removeAttr('checked');
+                            $('input[name=radioPaymnt]').attr('disabled','disabled');
+                            $('#btn-sub-back').removeAttr('disabled');
+                            $('#btn-sub-next').removeAttr('disabled');
+                            $('#cashAmount').removeAttr('readonly');
+                            $('#cashAmount').val("");
+                            $('#cashAmountF').removeAttr('readonly');
+                            $('#cashAmountF').val("");
+                            setEnabledBT();
+                            hideSubjectsForm();
+                            hideMSPaymentFormTF();
+                            hideFullPaymentFormTF();
+                            setEnrollmentNo();
+                            setTransactionNo();
+                        },
+                        error: function(data){
+                            alert("error in processing assessment=>"+data);
+                        }
+                    });
+                    $(this).dialog("close");
+                },
+                No:function(){
+                    $('#btn-cancel-assmnt').removeAttr('disabled');
+                    $(this).dialog("close");
+                }
             }
-        }
-    });
+        });
+    }
+
 }
 
 //CANCEL ASSESSMENT FOR MONTHLY AND SEMESTRAL MODE OF PAYMENT
@@ -1263,8 +1298,34 @@ function resetAllAssessment(){
     $.ajax({
        type: 'POST',
        url: 'process/resetAllAssessment.php',
-       sucess: function(data){
-           console.log(data);
+       success: function(data){
+           $('input[name=radioPaymnt]').attr('disabled','disabled');
+           $('input[name=radioPaymnt]').removeAttr('checked');
+           clearFPTotalAmount();
+           clearFPCPayment();
+           clearMSTotalAmount();
+           clearMSCPayment();
+           $('#searchStudId').val("");
+           $('#studentId').html("");
+           $('#studentName').html("");
+           $('#age').val("");
+           $('#syEntered').val("");
+           $('#genAverage').val("");
+           $('#recentBal').val("");
+           $('input[name=radioDepartment]:checked').removeAttr('checked');
+           $('#btn-sub-back').removeAttr('disabled');
+           $('#btn-sub-next').removeAttr('disabled');
+           $('#cashAmount').removeAttr('readonly');
+           $('#cashAmount').val("");
+           $('#cashAmountF').removeAttr('readonly');
+           $('#cashAmountF').val("");
+           setEnabledBT();
+           hideSubjectsForm();
+           hideMSPaymentFormTF();
+           hideFullPaymentFormTF();
+           setEnrollmentNo();
+           setTransactionNo();
+
            //renewAllData();
        },
        error: function(data){

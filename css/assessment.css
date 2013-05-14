@@ -293,7 +293,6 @@ a{
 }
 #div-for-table-subject{
     border: 0 none;
-    height: 360px;
 }
 #div-alert-msg-MS,#div-alert-msg-F{
     display: none;
@@ -411,9 +410,11 @@ a{
 /*------------------div-overlay-alert-msg------------------*/
 #div-overlay-alert-msg{
     display: none;
+    font-family: arial,serif,sans-serif;
 }
 #div-alert-success{
     display: none;
+    font-family: arial,serif,sans-serif;
 }
 /*------------------end div-overlay-alert-msg----------------*/
 
@@ -514,7 +515,7 @@ a{
     font-weight: bold;
 }
 #dialog-confirm-done-MS-assessment small{
-    color: #00ffff;
+    color: blue;
 }
 
 /*UPLOADING PROFILE PIC*/
