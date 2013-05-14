@@ -76,7 +76,6 @@ $(document).ready(function(){
         }
     });
     $('#photo_upload').live('change', function(){
-        alert("hiihihdfdfdfd");
         $('#form_upload_pic').vPB({
             url: 'process/file_upload.php',
             beforeSubmit: function()
@@ -429,6 +428,11 @@ function searchStudent(studentId){
             if(data==="not_reg"){
                 $('#div-overlay-alert-msg').html("<i class='icon-exclamation-sign'></i>&nbsp;&nbsp;STUDENT ID YOU'VE ENTERED IS NOT YET REGISTERED!");
                 $('#div-overlay-alert-msg').show('blind',1000);
+                $('#studentId').html("");
+                $('#studentName').html("");
+                $('#recentBal').val("");
+                $('#btn-sub-fees').attr('disabled','disabled');
+                $('#h_student_id').val("");
             }else{
                 $('#div-overlay-alert-msg').hide('blind',1000);
                 $('#label_change_pic').addClass('label_change_pic');

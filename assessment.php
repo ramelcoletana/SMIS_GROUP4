@@ -1,9 +1,4 @@
-<?php
-    include "classes/functions.php";
-    //$_SESSION['student_id'];
 
-    
-?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -18,8 +13,8 @@
 
         <script  src="scripts/jquery.min.js"></script>
         <script src="js-ui/jquery-ui-darkhive.js"></script>
-        <script type="text/javascript" src="scripts/file_uploads.js"></script>
-        <script src="scripts/assessmnt.js"></script>
+        <script type="text/javascript" src="scripts/file_upload.js"></script>
+        <script type="text/javascript" src="scripts/assessmnt.js"></script>
     </head>
     <body>
         <div id='div-assessment-wrapper'>
@@ -89,7 +84,7 @@
                                     <option value='Grade 6'>VI</option>
                                 </select>
                              <br/><br/>
-                             
+
                              <label class='labelF'>YEAR LVL.</label>
                                 <select id='yrLevel'>
                                     <option value='First Year'>FIRST YEAR</option>
@@ -295,7 +290,8 @@
             <form id="form_upload_pic" method="post" enctype="multipart/form-data" action="javascript:void(0);" autocomplete="off">
                 <div class='browse_label' align="left">Browse Photo</div>
                 <div class='attach_file_wrapp' align="left">
-                    <div class='attach_file'><input type='file' name='photo_upload' id='photo_upload'/></div>
+                    <div class='attach_file'><input type='file' name='photo_upload' id='photo_upload'/></div><br>
+                    <!--div><button class="btn btn-primary">Upload</button></div-->
                     <input type='hidden' name='h_student_id' id='h_student_id' " />
                 </div><br clear="all">
             </form>
