@@ -407,9 +407,9 @@ class sqlfunction extends DB_Connect{
 	    
 
             //Inserting data into table tblamountPerAssessment
-            $sql5 = "INSERT INTO tblamountPerAssessment (fldTransactionNo, fldEnrollmentNo, fldStudentNo, fldAssessmentName, fldOriginalAmount, fldOriginalBalance, fldAssessmentAmount, fldAdvancedPayment, fldToBePaid) VALUES 
+            $sql5 = "INSERT INTO tblamountperassessment (fldTransactionNo, fldEnrollmentNo, fldStudentNo, fldAssessmentName, fldOriginalAmount, fldOriginalBalance, fldAssessmentAmount, fldAdvancedPayment, fldToBePaid) VALUES
             ('$transactionNo','$enrollmentNo', '$studentNo', '$row1[0]','$row1[1]','$row1[3]',$nextAss, $row1[4], $toBePaid)";
-	    mysql_query($sql5, $this->openCon());
+	        mysql_query($sql5, $this->openCon());
 	    
         }
         //INSERT INTO ENROLLDATA
