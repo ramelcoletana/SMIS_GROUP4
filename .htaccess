@@ -1,3 +1,11 @@
-RewriteEngine on
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^http://student1.e2ps
+RewriteRule (.*) http://http://student1.e2ps/smis_group4/$1 [R=301,L]
 
-RewriteRule ^(.*)\.htm$ $1.php [nc]
+RewriteEngine On
+RewriteRule ^([a-zA-Z0-9_-]+)$ assessment.php
+RewriteRule ^([a-zA-Z0-9_-]+)/$ assessment.php
+
+RewriteEngine On
+RewriteRule ^([a-zA-Z0-9_-]+)/([0-9]+)$ assessment.php
+RewriteRule ^([a-zA-Z0-9_-]+)/([0-9]+)/$ assessment.php
